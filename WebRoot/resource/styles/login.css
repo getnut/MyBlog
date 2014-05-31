@@ -1,0 +1,12 @@
+#login_main{height:410px;background:#F8F8F8;position:relative;}
+#login{width:323px;left:50%;top:5%;border:2px solid #DC3C00;position:absolute;background-color:#FFF;height:280px;}
+#login input.txt{border:1px solid #ccc;height:20px;font-size:14px;border-left:none;float:left;padding-top:8px;padding-bottom:8px;width:209px;}
+#login .label{border:1px solid #ccc;border-right:none;float:left;height:20px;width:40px;padding-top:8px;padding-bottom:8px;}
+#login dd{width:251px;height:38px;margin:0px auto; padding:5px;margin-bottom:10px;}
+#login dt{width:251px;height:38px;margin:0px auto;line-height:38px; padding:5px;}
+#login .button{height:30px;background-color:#DC3C00;border:none;display: block;width:251px;color:#FFF;font-weight:bold;cursor:pointer;}
+#login .button:hover{background-color:#9B2C05;}
+#login .tips{color:red; border:1px solid #FFD2D2;width:239px;}
+#login span.pwd{background: url(../images/login-key-icon.png) no-repeat 25% center;}
+#login span.username{background:url(../images/login-locked-icon.png) no-repeat 25% center;}
+#login div.error{color:red;line-height:20px;}

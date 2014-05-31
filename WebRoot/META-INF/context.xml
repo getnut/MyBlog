@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 数据库连接池配置 -->
+<Context>
+    <Resource name="jdbc/myblog" 
+        auth="Container" 
+        type="javax.sql.DataSource" 
+        username="root" 
+        password="baother" 
+        maxIdle="30" 
+        maxWait="10000" 
+        maxActive="100"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://127.0.0.1:3306/d_blog"
+        logAbandoned="true" />
+</Context>
