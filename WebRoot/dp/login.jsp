@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>登录</title>
+		<title>登录d</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
