@@ -1,4 +1,16 @@
 $(function (){
+	center();
+	$(window).resize(function(){
+		center();
+	});
+	
+	function center()
+	{
+		var login = $("#login");
+		var outerWidth = $(window).width() / 2 - login.width() /2;
+		var outerHeight = $(window).height() / 2 - login.height()/2;
+		login.css("left",outerWidth).css("top",outerHeight);
+	}
 	$("#loginForm").validate({
 		rules:{
 			username:{

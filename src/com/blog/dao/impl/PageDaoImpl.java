@@ -101,13 +101,15 @@ public class PageDaoImpl implements PageDao
 		}
 		return null;
 	}
+
 	
 	//多少个文章
+
+
 	@Override
 	public long totalPages() throws SQLException
 	{
 		String sql = "select count(PageId) from pages";
-		
 		try
 		{
 			return new JdbcTemplate(this.dataSource)
@@ -136,6 +138,4 @@ public class PageDaoImpl implements PageDao
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
 }

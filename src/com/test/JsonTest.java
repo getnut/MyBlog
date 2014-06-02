@@ -16,8 +16,6 @@ import com.google.gson.Gson;
 
 public class JsonTest extends HttpServlet {
 
-
-
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -36,7 +34,6 @@ public class JsonTest extends HttpServlet {
 //		}
 		request.getRequestDispatcher("sp/head.jsp").forward(request, response);
 	}
-
 	public void init() throws ServletException {
 		// Put your code here
 	}

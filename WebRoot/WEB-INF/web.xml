@@ -21,6 +21,7 @@
     <servlet-name>BlogController</servlet-name>
     <servlet-class>com.blog.controller.BlogController</servlet-class>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
