@@ -1,0 +1,237 @@
+body{
+	background-color:#F1F2F6;
+}
+a{
+	color:#333;
+	text-decoration:none;
+}
+img{
+	border:none;
+	outline:none;
+}
+a:hover{
+	color:#0099FF;
+}
+.main .content{
+	width:960px;
+	min-height:500px;
+	margin:0px auto;
+	margin-top:20px;
+}
+.main .head{
+	height:75px;
+	position:relative;
+}
+.main .head .logo{
+	display:block;
+	float:left;
+}
+.main .logo-text{
+	display:block;
+	float:left;
+	position:absolute;
+	bottom:5px;
+	left:200px;
+}
+.main .head img{
+	width:189px;
+	height:75px;
+}
+
+.main .path{
+	height:36px;	
+}
+.main .path a{
+	float:left;
+	text-align:center;
+	line-height:36px;
+}
+.main .path em{
+	width:10px;
+	height:36px;
+	background:url(../images/pt_item.png) no-repeat left 55%;
+	float:left;
+	padding-right:5px;
+}
+
+.main .blog-list{
+	width:720px;
+	min-height:400px;
+	background-color:#FFF;
+	border:2px solid #FFF;
+	border-radius: 5px;
+	margin-top:10px;
+	float:left;
+	box-shadow: 5px 5px 5px #ccc;
+}
+
+.main .blog-list .title{
+	height:40px;
+	text-indent:10px;
+	line-height:40px;
+	font-weight:bold;
+	border: none;
+	border-bottom: 1px solid #efefef;
+	border-radius: 5px 5px 0 0;
+	background: #ffffff;
+	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
+	background: -moz-linear-gradient(top,#ffffff,#fafafa);
+	background: -ms-linear-gradient(top,#ffffff,#fafafa);
+	background: -o-linear-gradient(top,#ffffff,#fafafa);
+	background: linear-gradient(top,#ffffff,#fafafa);
+}
+
+.main .blog-item{
+	margin:20px;
+	padding:10px;
+	border-bottom:1px dashed #F1F2F6;
+}
+.main .blog-item dt{
+	font-weight:bold;
+	height:35px;
+	line-height:35px;
+	text-shadow: 0px 1px 0px #000;
+}
+.main .blog-item dt a:hover{
+	color:#0099FF;
+	text-shadow: 1px 1px 1px #000;
+}
+.main .blog-item  dd p{
+	text-indent:30px;
+	line-height:180%;
+	text-align:justify;
+}
+.main .item-bottom{
+	height:25px;
+}
+.main .item-bottom span{
+	float:right;
+	height:25px;
+
+}
+/*·ÖÒ³ */
+.main .blog-bottom{
+	margin:20px;
+    height:40px;
+}
+
+.main .blog-bottom a{
+	padding:6px 15px;
+	border:1px solid #ccc;
+	border-left:none;
+	float:left;
+}
+.main .blog-bottom .return{
+	border-left:1px solid #ccc;
+	border-radius: 5px 0px 0px 5px;
+}
+.main .blog-bottom .next{
+	border-radius: 0px 5px 5px 0px;
+}
+.main .blog-bottom a:hover{
+	background:#ddd;
+}
+.main .blog-bottom .bb-a{
+	float:left;
+	border:1px solid #ccc;
+	border-left:none;
+	padding:5px 15px;
+}
+.main .sidebar{
+	width:230px;
+	float:right;
+	height:400px;
+	margin-top:10px;
+}
+
+.main .sidebar-common{
+	background-color:#FFF;
+	border-radius: 5px;
+	padding-bottom:10px;
+	box-shadow: 5px 5px 5px #ccc;
+	margin-bottom:10px;
+}
+
+.main .op{
+	padding-bottom:0px;
+}
+.main .op h1{
+	border-top:4px solid #0099FF;
+	border-radius: 6px 6px 0 0;
+}
+.main .op table{
+	border-collapse:collapse;
+}
+.main .op table td{
+	text-align:center;
+	width:50%;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+.main .op .last-row td{
+	border-bottom:none;
+}
+.main .op table td.td-1{
+	border-right:none;
+}
+.main .op table td a{
+	height:32px;
+	display:block;
+	line-height:32px;
+	text-align:center;
+
+}
+.main .op dd{
+	float:left;
+	height:35px;
+	text-align:center;
+	border:1px solid red;
+}
+.main .classes dt{
+	padding:10px;
+	background-color:#0099FF;
+	color:#FFF;
+	border-radius: 5px 5px 0 0;
+	font-weight:bold;
+	text-align:center;
+}
+.main .classes a{
+	display:block;
+	line-height:28px;
+	text-align:left;
+	text-indent:10px;
+}
+.main .sidebar-common2 .title{
+	padding:10px;
+	background-color:#0099FF;
+	border-radius: 5px 5px 0 0;
+	font-weight:bold;
+	text-align:center;
+	border: none;
+	border-bottom: 1px solid #efefef;
+	border-radius: 5px 5px 0 0;
+	background: #ffffff;
+	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
+	background: -moz-linear-gradient(top,#ffffff,#fafafa);
+	background: -ms-linear-gradient(top,#ffffff,#fafafa);
+	background: -o-linear-gradient(top,#ffffff,#fafafa);
+	background: linear-gradient(top,#ffffff,#fafafa);
+}
+.main .sidebar-common2 dl{
+	padding:10px;
+}
+.main .footer{
+	height:45px;
+	margin:20px;
+	width:948px;
+	background:#FFF;
+	margin:20px auto;
+	padding:5px;
+	border-radius: 5px;
+}
+.main .footer-content{
+	background-color:#F1F2F6;
+	height:45px;
+	line-height:45px;
+	text-align:center;
+}
