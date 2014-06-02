@@ -142,9 +142,8 @@
   	     	
   	     	 <div class="footer">
   	     	 	<div class="footer-content">
-  	     	 		Copyright @2014-6-1
+  	     	 		Codpyright @2014-6-1
   	     	 	</div>
   	     	 </div>
-  	     	 fuck!ffffffffffffffffffffff--------
   </body>
 </html>
