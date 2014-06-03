@@ -142,7 +142,7 @@
   	     	
   	     	 <div class="footer">
   	     	 	<div class="footer-content">
-  	     	 		ddddddsf-fsdpyright @2014-6-1
+  	     	 		copyright &copy;2014-6-1
   	     	 	</div>
   	     	 </div>
   </body>
