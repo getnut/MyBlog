@@ -1,14 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-   zhangleidfsdfsfsfs
     <title>33</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+    <link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<script type = "text/javascript" src = "${context}/resource/scripts/jquery-1.8.3.js"></script>
 	<script type = "text/javascript">
 		function Request(name)
@@ -34,6 +29,7 @@
 						"data":string,
 						"fuck":Math.random()
 					},
+					 cache:false,
 					success:function(text)
 					{
 						$("#content").html(text);
@@ -45,11 +41,7 @@
   </head>
   
   <body>
-    <input type = "button" id = "che" value = "click" / >
+    <input type = "button" id = "che" value = "click" />
     <div id = "content"></div>
   </body>
 </html>
-sdfsfsfsf sdfsfsfsd
-sdfdsfsdfsdsfsfsfsffffffffffffffffffffffff
-
-第二个人添加

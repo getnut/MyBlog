@@ -6,14 +6,16 @@
     <title>博客</title>
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/main.css" />
-	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/login.css" />
 	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${context}/resource/scripts/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${context}/resource/scripts/main.js"></script>
-	<script type="text/javascript" src="${context}/resource/scripts/login.js"></script>
   </head>
   
   <body class="main">
+  		<div id = "loading" style = "width:100px;height:100px;background:red;"></div>
+  		<input type="button" value="sub" class ="sub"/>
+  		<div id = "demo1" style = "border:1px solid red; height:20px;"></div>
+  		<div id = "demo2" style = "border:1px solid red; height:20px;"></div>
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
@@ -94,9 +96,10 @@
   	     		<div class="sidebar-common op">
   	     			<h1></h1>
 	  	     			<table width="100%">
-	  	     				<tr><td><a href="#">登录</a></td><td class="td-1"><a href="#">关于作者</a></td></tr>
+	  	     				<tr><td><a href="javascript:;" class="login-button" >登录</a></td><td class="td-1"><a href="#">关于作者</a></td></tr>
 	  	     				<tr class="last-row"><td><a href="#">管理文章</a></td><td class="td-1"><a href="#">写新文章</a></td></tr>
 	  	     			</table>
+	  	     			<div class="login-content"><img src="${context}/resource/images/close.png" class="close"/><div class="l-c-r"></div></div>
 	  	     	</div>
   	     		<dl class="sidebar-common classes">
   	     			<dt>博客分类</dt>
