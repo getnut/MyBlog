@@ -20,19 +20,13 @@ public class JsonTest extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-//		Gson gson = new Gson();
-//		String jsonStr = request.getParameter("data");
-//		Response res = gson.fromJson(jsonStr, Response.class);
-//		System.out.println(res.getName());
-//		Map<String,String> map = res.getData();
-//		Set<Entry<String, String>> set = map.entrySet();
-//		Iterator<Entry<String,String>> it  = set.iterator();
-//		while(it.hasNext()){
-//			Entry<String, String> e = it.next();
-//			System.out.println(e.getKey()+"-"+e.getValue());
-//			System.out.println(e.getValue().getClass());
-//		}
-		request.getRequestDispatcher("sp/head.jsp").forward(request, response);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("sp/login.htm").forward(request, response);
 	}
 	public void init() throws ServletException {
 		// Put your code here

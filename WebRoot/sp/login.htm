@@ -1,0 +1,38 @@
+	<script type="text/javascript">
+    	var flag = true;
+        if(flag){
+        	loadStyles("/MyBlog/resource/styles/login.css");
+        }  
+        function loadStyles(url){
+        	var link = document.createElement("link");
+        	link.rel = "stylesheet";
+            link.type="text/css";
+        	link.href = url;
+            document.getElementsByTagName("head")[0].appendChild(link);
+            link = null;
+        }
+    </script>
+        <!-- 登录start-->
+        <div class = "login">
+            <form action="" method="post">
+                <dl>
+                    <dt>登录</dt>
+                    <dd>
+                        <span class="label username"></span>
+                        <input type = "text" name = "username"  class = "txt" id = "username"/>
+                    </dd>
+                    <dd>
+                        <span class="label pwd"></span>
+                        <input type = "password" name = "pwd" class = "txt" id="pwd"/>
+                    </dd>
+                    <!--
+                    <dd class = "tips">tips</dd>
+                    -->
+                    <dd>
+                        <input type="button" value="登录" class="button"/>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- 登录end-->
+	
