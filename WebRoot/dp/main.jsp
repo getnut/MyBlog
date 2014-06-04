@@ -12,10 +12,6 @@
   </head>
   
   <body class="main">
-  		<div id = "loading" style = "width:100px;height:100px;background:red;"></div>
-  		<input type="button" value="sub" class ="sub"/>
-  		<div id = "demo1" style = "border:1px solid red; height:20px;"></div>
-  		<div id = "demo2" style = "border:1px solid red; height:20px;"></div>
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
