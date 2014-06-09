@@ -1,8 +1,12 @@
-.login{width:323px;height:220px;}
+
+.login{width:340px;height:260px;background-color:#fff;position:absolute;border-radius:5px;}
 .login dt{line-height:40px;text-align:center;}
 .login input.txt{background-color:#FFF;border:1px solid #ccc;height:20px;font-size:14px;border-left:none;display:block;float:left;padding-top:8px;padding-bottom:8px;width:209px;}
 .login .label{border:1px solid #ccc;border-right:none;float:left;height:20px;width:40px;padding-top:8px;padding-bottom:8px;}
-.login  dd{width:251px;height:38px;margin:0px auto; padding:5px;margin-bottom:10px;}
+.login  dd{width:251px;height:38px; padding:5px;margin:0px auto;margin-bottom:25px;position:relative;}
 .login span.pwd{background:url(../images/login-key-icon.png) no-repeat 25% center;}
 .login span.username{background:url(../images/login-locked-icon.png) no-repeat 25% center;}
-.login .button{height:30px;background-color:#0099FF;border:none;display: block;width:251px;color:#FFF;font-weight:bold;cursor:pointer;}
+.login .loginBtn{height:30px;background-color:#0099FF;border:none;display: block;width:251px;color:#FFF;font-weight:bold;cursor:pointer;}
+.login div.error{background-color:#fff;color:red;line-height:25px;position:absolute;top:49px;}
+.login .grey{background-color:#ccc;}
+.show{height:40px;line-height:40px;background-color:#fff;color:red;}

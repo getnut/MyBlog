@@ -1,0 +1,26 @@
+/*template*/
+.content{
+	width:1030px;
+	min-height:500px;
+	margin:0px auto;
+	margin-top:20px;
+}
+.head{
+	height:75px;
+	position:relative;
+}
+.head .logo{
+	display:block;
+	float:left;
+}
+.logo-text{
+	display:block;
+	float:left;
+	position:absolute;
+	bottom:5px;
+	left:200px;
+}
+.head img{
+	width:189px;
+	height:75px;
+}

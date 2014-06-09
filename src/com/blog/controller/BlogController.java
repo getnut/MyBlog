@@ -30,12 +30,13 @@ public class BlogController extends HttpServlet
 		{
 			req.setAttribute("message", Message.REQUEST_PARAMETERS_ERROR);
 			req.getRequestDispatcher("dp/error.jsp").forward(req, resp);
+			
 		}else if(BlogActionType.BLOG_LIST.equalsIgnoreCase(action))//所有文章类表
 		{
-			
+			req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 		}else if(BlogActionType.CLASS_BLOG_LIST.equalsIgnoreCase(action))//某个标签文章列表
 		{
-			
+			req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 		}
 	}
 }

@@ -26,10 +26,7 @@ public class UserServiceImpl implements UserService
 		try
 		{
 			user = this.userDao.findUserByUserNameAndPassword(userName, password);
-			if(user.getUserName() == null)
-			{
-				user = null;
-			}
+			
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();

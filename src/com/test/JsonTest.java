@@ -20,12 +20,7 @@ public class JsonTest extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		request.getRequestDispatcher("sp/login.htm").forward(request, response);
 	}
 	public void init() throws ServletException {
