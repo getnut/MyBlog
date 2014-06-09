@@ -17,7 +17,7 @@
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
-  	     		<p class="logo-text">记录我和姑娘之间的点点滴滴 <a href="#">&nbsp;&nbsp;<img style="width:15px;height:15px;" src="${context}/resource/images/click-heart.png"/></a><span class="count">(3424)</span></p>
+  	     		<p class="logo-text">姑娘姑娘伢!<a href="#">&nbsp;&nbsp;<img style="width:15px;height:15px;" src="${context}/resource/images/click-heart.png"/></a><span class="count">(3424)</span></p>
   	     	</div>
   	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
   	     	<div class="blog-list">
@@ -46,18 +46,20 @@
 		  	     				</dl>
 		  	     		</div>
   	     			 <!-- 一条博客 -->
-  	     			 
-
-	  	     		 <!-- 分页start -->
+	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="blog-bottom">
-		  	     		 	<a href= "#" class="return">返回</a>
-		  	     		 	<a href="#">1</a>
-		  	     		 	<a href="#">2</a>
-		  	     		 	<a href="#">3</a>
-		  	     		 	<a href="#">4</a>
-		  	     		 	<a href="#">5</a>
-		  	     		 	<span class="bb-a"><input type="text" value="1" style="width:35px;border:1px solid #ccc;"/>/<label>13页</label></span>
-		  	     		 	<a href="#" class="next">下一页</a>
+		  	     		 	<c:if test="${psr != null}">
+		  	     		 		<c:forEach items="${psr.alink}" var="link">
+			  	     		 	<c:choose>
+				  	     		 	<c:when test="${link.id == psr.currentPage}">
+				  	     		 		<a href="${context}/BlogController?action=blog-list&page=${link.id}" class="currentPage">${link.title}</a>
+				  	     		 	</c:when>
+			  	     		 	<c:otherwise>
+			  	     		 		<a href="${context}/BlogController?action=blog-list&page=${link.id}">${link.title}</a>
+			  	     		 	</c:otherwise>
+			  	     		 	</c:choose>
+		  	     		 	</c:forEach>
+		  	     		 	</c:if>
 		  	     		 </div>
 	  	     		 <!-- 分页end -->
   	     		</div>

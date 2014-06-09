@@ -79,24 +79,15 @@
 .main .blog-bottom a{
 	padding:6px 15px;
 	border:1px solid #ccc;
-	border-left:none;
+	margin-right:5px;
 	float:left;
 }
-.main .blog-bottom .return{
-	border-left:1px solid #ccc;
-	border-radius: 5px 0px 0px 5px;
-}
-.main .blog-bottom .next{
-	border-radius: 0px 5px 5px 0px;
+.currentPage{
+	background-color:#0099FF;
+	color:#fff;
 }
 .main .blog-bottom a:hover{
 	background:#ddd;
-}
-.main .blog-bottom .bb-a{
-	float:left;
-	border:1px solid #ccc;
-	border-left:none;
-	padding:5px 15px;
 }
 .main .sidebar{
 	width:300px;

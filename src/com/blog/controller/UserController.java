@@ -54,12 +54,11 @@ public class UserController extends HttpServlet {
 		{
 			try
 			{
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e)
 			{
 				e.printStackTrace();
 			}
-			System.out.println(SystemConfigUtils.getSystemConfigValue("name"));
 			User user = userService.login(userName, password);
 			AjaxResponse aRes = AjaxResponse.getInstance();//响应对象
 			aRes.setResponseType(ResponseType.LOGIN);

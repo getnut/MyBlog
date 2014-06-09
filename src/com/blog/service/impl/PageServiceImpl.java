@@ -2,67 +2,55 @@ package com.blog.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.blog.service.PageService;
 import com.blog.dbutils.SystemConfigUtils;
+import com.blog.entity.Alink;
 import com.blog.entity.Page;
+import com.blog.entity.PageSplitResult;
+
+
+
 public class PageServiceImpl implements PageService{
 	
-	
-	public List<Alink> getPages(int currentPage)//curPage表示当前的页数
+	private List<Alink> getAlinks(int currentPage,int rowsPerPage,int totalPages)
 	{
-		//模拟数据
-		int totalRows= 200;//总的行数
-		
-		int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));//每页的条数
-		int totalPages = totalRows / rowsPerPage;
-		System.out.println("一共的页数"+totalPages);
-
-		if(0 != totalRows % rowsPerPage)
-		{
-			totalPages = totalPages + 1;
-		}
+		//分页连接列表
 		List<Alink> alinks = new ArrayList<Alink>();
-		int startRows = (currentPage - 1) * rowsPerPage + 1;//在数据库中的开始行
 		int prePage = -1;//上一页
-		
 		int nextPage = -1;//下一页
-		
-		if(currentPage > 1)
-		{
-			prePage = currentPage - 1;
-		}
-		if(currentPage < totalPages)
-		{
-			nextPage = currentPage + 1;
-		}
-		
-		/**ddd*/
-		int startPage; //当前页面所在组的起始页面
-		int endPage; //当前页面所在组的尾页面
-		int preGroupPage; //上一组页面的起始页面
-		int nextGroupPage; // 下一组页面的起始页面
-		int groupPagesCount = 5;
 		//首页
 		int firstPage = -1;
 		//尾页
 		int tailPage = -1;
-		
-		if(totalPages > 0)
+		if(currentPage > 1)
 		{
+			prePage = currentPage - 1;
 			firstPage = 1;
+		}
+		if(currentPage < totalPages)
+		{
+			nextPage = currentPage + 1;
 			tailPage = totalPages;
 		}
+		/*前台显示的分页框*/
+		int startPage; //当前页面所在组的起始页面
+		int endPage; //当前页面所在组的尾页面
+		int preGroupPage; //上一组页面的起始页面
+		int nextGroupPage; // 下一组页面的起始页面
+		int groupPagesCount = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("groupPagesCount"));
 		
-		int tmp = currentPage % groupPagesCount;
-		if(tmp == 0)
+		int tmp = (int)((currentPage - 1) / groupPagesCount);
+		
+		startPage = tmp * groupPagesCount + 1;
+		
+		if(startPage + groupPagesCount - 1 > totalPages)
 		{
-			tmp = groupPagesCount;
+			endPage = totalPages;
+		}else
+		{
+			endPage = startPage + groupPagesCount - 1;
 		}
-		startPage = currentPage - tmp + 1;//决定是否有....
-		endPage =  startPage + groupPagesCount - 1;//决定时候有....
-
-
+		
 		preGroupPage = -1;
 		if(startPage > 1){
 			preGroupPage = startPage - 1;
@@ -91,6 +79,44 @@ public class PageServiceImpl implements PageService{
 		this.createAlink(tailPage, "尾页", alinks);
 		return alinks;
 	}
+	public PageSplitResult getPages(int currentPage)//curPage表示当前的页数
+	{
+		
+		//总的行数
+		int totalRows= 16;
+		//每页的条数
+		int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
+
+		//总的页数
+		int totalPages = totalRows % rowsPerPage == 0 ? (int)(totalRows/rowsPerPage):(int)(totalRows/rowsPerPage)+1;
+		if(currentPage < 1 || currentPage > totalPages)
+		{
+			currentPage = 1;
+		}
+		if(totalPages == 0)
+		{
+			return null;
+		}
+		//在数据库的起始行
+		int startRows = (currentPage - 1) * rowsPerPage + 1;//在数据库中的开始行
+		int selectCount;
+		if(startRows + rowsPerPage - 1 > totalRows)
+		{
+			selectCount = (totalRows - startRows) + 1;
+		}else
+		{
+			selectCount = rowsPerPage;
+		}
+		PageSplitResult psr = new PageSplitResult();
+		List<Alink> alinks = this.getAlinks(currentPage, rowsPerPage, totalPages);
+		List<Page> pages = new ArrayList<Page>();
+		psr.setAlink(alinks);
+		psr.setPages(pages);
+		psr.setTotalPages(totalPages);
+		psr.setTotalRows(totalRows);
+		psr.setCurrentPage(currentPage);
+		return psr;
+	}
 	
 	private void createAlink(int id,String title,List<Alink> alinks)
 	{
@@ -103,51 +129,8 @@ public class PageServiceImpl implements PageService{
 		}
 	}
 	public static void main(String[] args) {
-		PageServiceImpl ps = new PageServiceImpl();
-		for(int i = 1;i <= 20;i++)
-		{
-			System.out.println("当前的页数"+i);
-			List<Alink> alinks = ps.getPages(i);
-			for (int j = 0;j < alinks.size();j++)
-			{
-				Alink a = alinks.get(j);
-				System.out.print(a.getTitle()+" | ");
-			}
-			System.out.println("\n++++++++++++++++++++++++++++++++++++++++");
-		}
+		
 	}
 
 }
-class Alink
-{
-	private String title;
-	private int id;
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-}
-class SplitePage{
-	private int totalPages;//总共页数
-	
-	private int current;//当前页
-	
-	private int prePage;//上一页
-	
-	private int nextPage;//下一页
-	
-	private List<Page> pages;
-	
-	public SplitePage(){
-		
-	}
-}
+
