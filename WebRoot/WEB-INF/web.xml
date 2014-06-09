@@ -4,6 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.blog.filter.LoginFilter</filter-class>
+	</filter>
   <servlet>
     <servlet-name>JsonTest</servlet-name>
     <servlet-class>com.test.JsonTest</servlet-class>
@@ -22,6 +26,10 @@
     <servlet-class>com.blog.controller.BlogController</servlet-class>
   </servlet>
 
+<filter-mapping>
+	<filter-name>loginFilter</filter-name>
+	<url-pattern>/dp/manage/*</url-pattern>
+</filter-mapping>
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
