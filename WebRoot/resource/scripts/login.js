@@ -11,6 +11,54 @@ $(function (){
 		var outerHeight = $(window).height() / 2 - login.height()/2;
 		login.css("left",outerWidth).css("top",outerHeight);
 	}
+	center();
+	$(".loginBtn").click(function(){
+		var result = $("#loginForm").valid();
+		if(result == true)//验证通过
+		{
+			var username = $("input[name='username']").val();
+			var password = $("input[name='pwd']").val();
+			$(this).attr("disabled","true").val("登录中......").addClass("grey");
+			var that = this;
+			var dotted = [];
+			dotted.push(".");
+			dotted.push(". .");
+			dotted.push(". . .");
+			dotted.push(". . . .");
+			var index = 0;
+			var inter = setInterval(function(){
+				if(index == dotted.length){
+					index = 0;
+				}
+				$(that).val("登录中"+ dotted[index]);
+				index = index + 1;
+			}, 500);
+			$.ajax({
+				type:"post",
+				url:"/MyBlog/UserAction",
+				data:{
+					username:username,
+					password:password,
+					action:"login"
+				},
+				success:function(jsonData){
+					var data = $.parseJSON(jsonData);
+					if(data["status"] == 1){//登录成功
+						var url = data["data"]["url"];
+						clearInterval(inter);
+						document.location.href = url;
+					}else if(data["status"] == 2){//登录失败
+						var errorMessage = data["data"]["message"];
+						show(errorMessage,$(".login")[0],"show");
+					}
+				},
+				complete:function(){
+					$(that).removeAttr("disabled","true").val("登录").removeClass("grey");
+					clearInterval(inter);
+				}
+			});
+		}
+	});	 
 	$("#loginForm").validate({
 		rules:{
 			username:{
@@ -39,3 +87,29 @@ $(function (){
 		errorElement:"div"
 	});
 });
+
+
+window.show = function(message,parent,className){
+	if(typeof parent == "undefined")
+	{
+		parent = document.body;
+	}
+	var div = document.createElement("div");
+	parent.appendChild(div);
+	div.innerHTML = message;
+	div.className = className;
+	div.style.position = "absolute";
+	div.style.top="0";
+	var pW = $(parent).width();
+	var dW =$(div).width();
+	div.style.left = (pW-dW)/2+"px";
+	setTimeout(function(){
+		$(div).fadeOut("normal",function(){
+			parent.removeChild(div);
+		});
+	},2000);
+	
+};
+
+
+
