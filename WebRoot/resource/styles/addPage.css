@@ -1,0 +1,11 @@
+.add-content{
+	width:auto;
+	min-height:400px;
+}
+
+.add-content .pageTitle{
+	width:100%;
+}
+.add-content .dl-c{
+	height:40px;
+}

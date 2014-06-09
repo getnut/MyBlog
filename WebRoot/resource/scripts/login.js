@@ -18,7 +18,7 @@ $(function (){
 		{
 			var username = $("input[name='username']").val();
 			var password = $("input[name='pwd']").val();
-			$(this).attr("disabled","true").val("登录中......").addClass("grey");
+			$(this).attr("disabled","true").val("正在登录中......").addClass("grey");
 			var that = this;
 			var dotted = [];
 			dotted.push(".");

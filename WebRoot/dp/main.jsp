@@ -49,6 +49,7 @@
 	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="blog-bottom">
 		  	     		 	<c:if test="${psr != null}">
+		  	     		 	   
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
@@ -59,6 +60,7 @@
 			  	     		 	</c:otherwise>
 			  	     		 	</c:choose>
 		  	     		 	</c:forEach>
+		  	     		 		<span>共${psr.totalPages}页</span>
 		  	     		 	</c:if>
 		  	     		 </div>
 	  	     		 <!-- 分页end -->
@@ -67,7 +69,7 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/dp/manage/add.jsp" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/dp/manage/addPage.jsp" class="add">添加新文章</a></li>
   	     				<li><a href="${context}/dp/manage/manage.jsp" class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>

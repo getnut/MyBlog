@@ -104,8 +104,6 @@ public class PageDaoImpl implements PageDao
 
 	
 	//多少个文章
-
-
 	@Override
 	public long totalPages() throws SQLException
 	{

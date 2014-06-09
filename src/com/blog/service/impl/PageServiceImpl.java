@@ -63,7 +63,7 @@ public class PageServiceImpl implements PageService{
 		//首页
 		this.createAlink(firstPage, "首页", alinks);
 		//上一页
-		this.createAlink(prePage, "上一页", alinks);
+		this.createAlink(prePage, "<", alinks);
 		//start ...
 		this.createAlink(preGroupPage, "...", alinks);
 		
@@ -74,7 +74,7 @@ public class PageServiceImpl implements PageService{
 		//end ....
 		this.createAlink(nextGroupPage, "...", alinks);
 		//下一页
-		this.createAlink(nextPage, "下一页", alinks);
+		this.createAlink(nextPage, ">", alinks);
 		//尾页
 		this.createAlink(tailPage, "尾页", alinks);
 		return alinks;
@@ -83,7 +83,7 @@ public class PageServiceImpl implements PageService{
 	{
 		
 		//总的行数
-		int totalRows= 16;
+		int totalRows= 3403;
 		//每页的条数
 		int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
 

@@ -47,7 +47,7 @@
 	height:35px;
 	display:block;
 	line-height:35px;
-	border-left:5px solid #0099FF;
+	
 	text-indent:40px;
 	background-color:#F1F2F6;
 }
@@ -72,22 +72,25 @@
 }
 /*·ÖÒ³ */
 .main .blog-bottom{
-	margin:20px;
     height:40px;
 }
 
-.main .blog-bottom a{
-	padding:6px 15px;
+.main .blog-bottom a,.main .blog-bottom span{
+	padding:6px 8px;
+	margin-right:2px;
 	border:1px solid #ccc;
-	margin-right:5px;
 	float:left;
 }
-.currentPage{
+.main .blog-bottom span{
+	border:none;
+	background-color:#fff;
+}
+.main .blog-bottom .currentPage{
 	background-color:#0099FF;
 	color:#fff;
 }
 .main .blog-bottom a:hover{
-	background:#ddd;
+	border-color:#0099FF;
 }
 .main .sidebar{
 	width:300px;
