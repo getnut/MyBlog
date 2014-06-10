@@ -14,7 +14,6 @@
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/pageDetail.css" />
 	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
-	<script type="text/javascript" src="${context}/resource/scripts/showDetail.js"></script>
   </head>
   
   <body>
@@ -27,7 +26,6 @@
   	     		<h2 class="title">分类:<span>${page.clss.className}</span></h2>
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
-  	     	
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>

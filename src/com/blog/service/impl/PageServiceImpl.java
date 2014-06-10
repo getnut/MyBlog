@@ -117,6 +117,7 @@ public class PageServiceImpl implements PageService{
 			
 			//总的行数
 			int totalRows= this.pageDao.totalPages();
+			System.out.println("totalRows="+totalRows);
 			//每页的条数
 			int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
 			//总的页数
@@ -141,6 +142,7 @@ public class PageServiceImpl implements PageService{
 			}
 			List<Alink> alinks = this.getAlinks(currentPage, rowsPerPage, totalPages);
 			List<Page> pages = this.pageDao.getPages(startRows,selectCount);
+			System.out.println("pages="+pages.size());
 			psr.setAlink(alinks);
 			psr.setPages(pages);
 			psr.setTotalPages(totalPages);

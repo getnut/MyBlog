@@ -27,7 +27,7 @@
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="#">${page.pageTitle}</a></dt>
+		  	     					<dt class="blog-title"><a href="${context}/BlogController?action=blog-show&pageId=${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
 		  	     						<p class="blog-content">${page.summary}</p>
 		  	     					</dd>
@@ -61,8 +61,8 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/dp/manage/addPage.jsp" class="add">添加新文章</a></li>
-  	     				<li><a href="${context}/dp/manage/manage.jsp" class="manage">管理博客</a></li>
+  	     				<li><a href="${context}/dp/manage/addPage.jsp" target="_blank" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/dp/manage/manage.jsp" target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
   	 			<!-- 分类start -->

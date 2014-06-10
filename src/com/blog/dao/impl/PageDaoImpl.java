@@ -24,9 +24,10 @@ public class PageDaoImpl implements PageDao
 		this.dataSource = dataSource;
 	}
 	@Override
-	public List<Page> getPages(long start, long end) throws SQLException
+	public List<Page> getPages(int start, int count) throws SQLException
 	{
-	
+		start = start - 1;
+		System.out.println("start="+start+",count="+count);
 		String sql = "SELECT PageId, PageTitle, summary, WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId order by WriteTime desc limit  ?,? ";
 		 
 		try
@@ -55,7 +56,7 @@ public class PageDaoImpl implements PageDao
 					}
 					return pages;
 				}
-			}.<List<Page>>doJob(sql, new Object[]{start,end});
+			}.<List<Page>>doJob(sql, new Object[]{start,count});
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
@@ -64,9 +65,9 @@ public class PageDaoImpl implements PageDao
 	}
 
 	@Override
-	public List<Page> getPages(long classId, long start, long end) throws SQLException
+	public List<Page> getPages(long classId, int start, int count) throws SQLException
 	{
-		String sql = "SELECT PageId,PageTitle,summary, WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.ClassId = ? order by WriteTime desc limit  ?,? ";
+		String sql = "SELECT PageId,PageTitle,summary, WriteTime ,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.ClassId = ? order by WriteTime desc limit ?,? ";
 		
 		try
 		{
@@ -93,7 +94,7 @@ public class PageDaoImpl implements PageDao
 					}
 					return pages;
 				}
-			}.<List<Page>>doJob(sql, new Object[]{classId,start,end});
+			}.<List<Page>>doJob(sql, new Object[]{classId,start,count});
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
@@ -178,7 +179,7 @@ public class PageDaoImpl implements PageDao
 	}
 	@Override
 	public Page getPage(long pageId) throws SQLException {
-		String sql = "SELECT PageId,PageTitle, pageContent,WriteTime,p.ClassId,c.ClassName FROM pages p inner join classes c on p.ClassId = c.ClassId  where p.pageId = ?";
+		String sql = "SELECT PageId,PageTitle, pageContent,WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.pageId = ?";
 		
 		try
 		{
