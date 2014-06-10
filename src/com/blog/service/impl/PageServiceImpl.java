@@ -1,8 +1,14 @@
 package com.blog.service.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
+
 import com.blog.service.PageService;
+import com.blog.dao.PageDao;
+import com.blog.dbutils.DataSourceUtil;
 import com.blog.dbutils.SystemConfigUtils;
 import com.blog.entity.Alink;
 import com.blog.entity.Page;
@@ -12,6 +18,30 @@ import com.blog.entity.PageSplitResult;
 
 public class PageServiceImpl implements PageService{
 	
+	private DataSource dataSource = null;
+	private PageDao pageDao = null;
+	
+	public PageServiceImpl (DataSource dataSource,PageDao pageDao)
+	{
+		this.dataSource = dataSource;
+		this.pageDao = pageDao;
+	}
+	//发表文章
+	public boolean addPage(Page page)
+	{
+		boolean result = false;
+		try
+		{
+			result = this.pageDao.addPage(page);
+		}catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}finally
+		{
+			DataSourceUtil.close(this.dataSource);
+		}
+		return result;
+	}
 	private List<Alink> getAlinks(int currentPage,int rowsPerPage,int totalPages)
 	{
 		//分页连接列表
@@ -81,40 +111,50 @@ public class PageServiceImpl implements PageService{
 	}
 	public PageSplitResult getPages(int currentPage)//curPage表示当前的页数
 	{
-		
-		//总的行数
-		int totalRows= 3403;
-		//每页的条数
-		int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
-
-		//总的页数
-		int totalPages = totalRows % rowsPerPage == 0 ? (int)(totalRows/rowsPerPage):(int)(totalRows/rowsPerPage)+1;
-		if(currentPage < 1 || currentPage > totalPages)
-		{
-			currentPage = 1;
-		}
-		if(totalPages == 0)
-		{
-			return null;
-		}
-		//在数据库的起始行
-		int startRows = (currentPage - 1) * rowsPerPage + 1;//在数据库中的开始行
-		int selectCount;
-		if(startRows + rowsPerPage - 1 > totalRows)
-		{
-			selectCount = (totalRows - startRows) + 1;
-		}else
-		{
-			selectCount = rowsPerPage;
-		}
 		PageSplitResult psr = new PageSplitResult();
-		List<Alink> alinks = this.getAlinks(currentPage, rowsPerPage, totalPages);
-		List<Page> pages = new ArrayList<Page>();
-		psr.setAlink(alinks);
-		psr.setPages(pages);
-		psr.setTotalPages(totalPages);
-		psr.setTotalRows(totalRows);
-		psr.setCurrentPage(currentPage);
+		try
+		{
+			
+			//总的行数
+			int totalRows= this.pageDao.totalPages();
+			//每页的条数
+			int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
+			//总的页数
+			int totalPages = totalRows % rowsPerPage == 0 ? (int)(totalRows/rowsPerPage):(int)(totalRows/rowsPerPage)+1;
+			if(currentPage < 1 || currentPage > totalPages)
+			{
+				currentPage = 1;
+			}
+			if(totalPages == 0)
+			{
+				return null;
+			}
+			//在数据库的起始行
+			int startRows = (currentPage - 1) * rowsPerPage + 1;//在数据库中的开始行
+			int selectCount;
+			if(startRows + rowsPerPage - 1 > totalRows)
+			{
+				selectCount = (totalRows - startRows) + 1;
+			}else
+			{
+				selectCount = rowsPerPage;
+			}
+			List<Alink> alinks = this.getAlinks(currentPage, rowsPerPage, totalPages);
+			List<Page> pages = this.pageDao.getPages(startRows,selectCount);
+			psr.setAlink(alinks);
+			psr.setPages(pages);
+			psr.setTotalPages(totalPages);
+			psr.setTotalRows(totalRows);
+			psr.setCurrentPage(currentPage);
+			
+		}catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}finally
+		{
+			DataSourceUtil.close(this.dataSource);
+		}
+		
 		return psr;
 	}
 	
@@ -130,6 +170,21 @@ public class PageServiceImpl implements PageService{
 	}
 	public static void main(String[] args) {
 		
+	}
+	@Override
+	public Page getPage(long pageId) {
+		Page page = null;
+		try
+		{
+			page = this.pageDao.getPage(pageId);
+		}catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}finally
+		{
+			DataSourceUtil.close(this.dataSource);
+		}
+		return page;
 	}
 
 }

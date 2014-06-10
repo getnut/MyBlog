@@ -17,7 +17,6 @@
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
-  	     		<p class="logo-text">姑娘姑娘伢!<a href="#">&nbsp;&nbsp;<img style="width:15px;height:15px;" src="${context}/resource/images/click-heart.png"/></a><span class="count">(3424)</span></p>
   	     	</div>
   	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
   	     	<div class="blog-list">
@@ -25,27 +24,20 @@
   	     		<div class="blog-list-realcontent">
   	     			
   	     			  <!-- 一条博客 -->
-		  	     		<div class="blog-item">
+  	     			  <c:forEach items="${psr.pages}" var = "page">
+  	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="#">文件上传利器SWFUpload入门简易教程</a></dt>
+		  	     					<dt class="blog-title"><a href="#">${page.pageTitle}</a></dt>
 		  	     					<dd>
-		  	     						<p class="blog-content">凡做过网站开发的都应该知道表单file的确鸡肋。Ajax解决了不刷新页面提交表单，但是却没有解决文件上传不刷新页面，当然也有其它技术让不刷新页面而提交文件，该技术主要是利用隐藏的iFrame，较Ajax要麻烦许多，而且其提交方式依然在底层是使用的表单file，这里我们不详谈。而且如果是提交较小的文件，我们能接受，如果提交的文件较大，我们便要忍受很长的等待时间，而浏览器却没有任何提示，我们也没有</p>
+		  	     						<p class="blog-content">${page.summary}</p>
 		  	     					</dd>
-		  	     					<dd class="item-bottom"><span>2012-22-2</span></dd>
+		  	     					<dd class="item-bottom"><span>${page.writeTime}</span></dd>
 		  	     				</dl>
 		  	     		</div>
+  	     			  </c:forEach>
+		  	     		
   	     			 <!-- 一条博客 -->
-  	     			  <!-- 一条博客 -->
-		  	     		<div class="blog-item">
-		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="#">文件上传利器SWFUpload入门简易教程</a></dt>
-		  	     					<dd>
-		  	     						<p class="blog-content">凡做过网站开发的都应该知道表单file的确鸡肋。Ajax解决了不刷新页面提交表单，但是却没有解决文件上传不刷新页面，当然也有其它技术让不刷新页面而提交文件，该技术主要是利用隐藏的iFrame，较Ajax要麻烦许多，而且其提交方式依然在底层是使用的表单file，这里我们不详谈。而且如果是提交较小的文件，我们能接受，如果提交的文件较大，我们便要忍受很长的等待时间，而浏览器却没有任何提示，我们也没有</p>
-		  	     					</dd>
-		  	     					<dd class="item-bottom"><span>2012-22-2</span></dd>
-		  	     				</dl>
-		  	     		</div>
-  	     			 <!-- 一条博客 -->
+  	     			  
 	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="blog-bottom">
 		  	     		 	<c:if test="${psr != null}">

@@ -24,3 +24,10 @@
 	width:189px;
 	height:75px;
 }
+.footer{
+	height:45px;
+	width:800px;
+	margin-top:20px;
+	line-height:45px;
+	text-align:center;
+}

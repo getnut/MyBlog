@@ -1,0 +1,98 @@
+.page-detail{
+	float:left;
+	width:720px;
+	margin-top:10px;
+	background-color:#fff;
+}
+.page-detail h2.title{
+	font-size:13px;
+	border-bottom:1px solid #ddd;
+}
+.page-detail h1.title{
+	font-size:16px;
+}
+.page-detail .title{
+	margin:5px;
+	margin-left:10px;
+	padding-right:10px;
+	line-height:26px;
+}
+.page-detail .page-d-r{
+	margin-left:10px;
+	margin-right:10px;
+}
+ .sidebar{
+	width:300px;
+	float:right;
+	height:400px;
+	margin-top:10px;
+}
+
+.sidebar-common{
+	background-color:#FFF;
+	border-radius: 5px;
+	padding-bottom:10px;
+	box-shadow: 5px 5px 5px #ccc;
+	margin-bottom:10px;
+}
+ .add-page{
+	background-color:#0099FF;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #ccc;
+	margin-bottom:10px;
+	height:40px;
+}
+
+ .add-page li{
+	float:left;
+}
+
+ .add-page a{
+	display:block;
+	font-weight:bold;
+	color:#fff;
+	width:150px;
+	text-align:center;
+	line-height:40px;
+	background-size:30px 30px;
+}
+ .add-page a.add{
+	background:url(../images/add.png) no-repeat 5px 38%;
+	
+}
+ .add-page a.manage{
+	background:url(../images/manage.png) no-repeat 5px 38%;
+}
+ .classes dt{
+	padding:10px;
+	background-color:#0099FF;
+	color:#FFF;
+	border-radius: 5px 5px 0 0;
+	font-weight:bold;
+	text-align:center;
+}
+ .classes a{
+	display:block;
+	line-height:28px;
+	text-align:left;
+	text-indent:10px;
+}
+ .sidebar-common2 .title{
+	padding:10px;
+	background-color:#fff;
+	border-radius: 5px 5px 0 0;
+	font-weight:bold;
+	text-align:center;
+	border: none;
+	border-bottom: 1px solid #efefef;
+	border-radius: 5px 5px 0 0;
+	background: #ffffff;
+	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
+	background: -moz-linear-gradient(top,#ffffff,#fafafa);
+	background: -ms-linear-gradient(top,#ffffff,#fafafa);
+	background: -o-linear-gradient(top,#ffffff,#fafafa);
+	background: linear-gradient(top,#ffffff,#fafafa);
+}
+ .sidebar-common2 dl{
+	padding:10px;
+}

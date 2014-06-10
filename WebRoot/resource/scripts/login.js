@@ -30,7 +30,7 @@ $(function (){
 				if(index == dotted.length){
 					index = 0;
 				}
-				$(that).val("登录中"+ dotted[index]);
+				$(that).val("正在登录中"+ dotted[index]);
 				index = index + 1;
 			}, 500);
 			$.ajax({

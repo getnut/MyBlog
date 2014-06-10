@@ -12,7 +12,17 @@ public class Page
 	
 	private Classes clss;
 	
+	private String summary;
 	
+	
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
 	public String getWriteTime()
 	{
 		return writeTime;

@@ -20,6 +20,9 @@ import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.JsonUtil;
 import com.blog.dbutils.MD5Util;
 import com.blog.dbutils.SystemConfigUtils;
+import com.blog.entity.AjaxResponse;
+import com.blog.entity.ResponseType;
+import com.blog.entity.StatusCode;
 import com.blog.entity.User;
 import com.blog.service.UserService;
 import com.blog.service.impl.UserServiceImpl;
@@ -64,12 +67,12 @@ public class UserController extends HttpServlet {
 			aRes.setResponseType(ResponseType.LOGIN);
 			if(null == user)//登录失败
 			{
-				aRes.setStatus(StatusCode.LOGIN_FAIL);
+				aRes.setStatus(StatusCode.FAIL);
 				aRes.addData("message", Message.LOGIN_FAIL);
 				
 			}else//登录成功
 			{
-				aRes.setStatus(StatusCode.LOGIN_SUCCESS);
+				aRes.setStatus(StatusCode.SUCCESS);
 				aRes.addData("url", "/MyBlog/BlogController?action=blog-list");
 				String secu = SystemConfigUtils.getSystemConfigValue("token");
 				//username|time
@@ -90,61 +93,4 @@ public class UserController extends HttpServlet {
 		response.setContentType("text/html");
 	}
 }
-/*ajax的响应对象*/
-class AjaxResponse
-{
-	private int status;//响应的结果状态，比如登录，可能成功，可能失败
-	private int responseType;//响应的类型
-	private HashMap<String,Object> data = new HashMap<String, Object>();//绑定数据
-	
-	private AjaxResponse(){}
-	public void addData(String key,Object data)
-	{
-		this.data.put(key, data);
-	}
-	public void removeData(String key,Object data)
-	{
-		this.data.remove(data);
-	}
-	public int getStatus()
-	{
-		return status;
-	}
-	public void setStatus(int status)
-	{
-		this.status = status;
-	}
-	public int getResponseType()
-	{
-		return responseType;
-	}
-	public void setResponseType(int responseType)
-	{
-		this.responseType = responseType;
-	}
-	public HashMap<String, Object> getData()
-	{
-		return data;
-	}
-	public void setData(HashMap<String, Object> data)
-	{
-		this.data = data;
-	}
-	public static AjaxResponse getInstance()
-	{
-		return new AjaxResponse();
-	}
-}
-/*响应状态*/
-class StatusCode
-{	//登录成功
-	public static final int LOGIN_SUCCESS = 1;
-	//登录失败
-	public static final int LOGIN_FAIL = 2;
-	
-}
-/*响应类型*/
-class ResponseType
-{
-	public static final int LOGIN = 1;
-}
+

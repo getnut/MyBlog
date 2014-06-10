@@ -2,9 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-
 		<title>添加文章</title>
-
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
@@ -16,19 +14,27 @@
 			href="${context}/resource/styles/common.css" />
 		<link type="text/css" rel="stylesheet"
 			href="${context}/resource/styles/addPage.css" />
-			<link href="${context}/fuwenben/themes/default/css/umeditor.css"
+			
+			<link href="${context}/kd/plugins/code/prettify.css"
 			type="text/css" rel="stylesheet" />
+			
 		<script type="text/javascript"
 			src="${context}/resource/scripts/jquery-1.8.3.js"></script>
-		<script type="text/javascript"
-			src="${context}/resource/scripts/addPage.js"></script>
-		<script type="text/javascript" charset="utf-8"
-			src="${context}/fuwenben/umeditor.config.js"></script>
-		<script type="text/javascript" charset="utf-8"
-			src="${context}/fuwenben/umeditor.min.js"></script>
-		<script type="text/javascript"
-			src="${context}/fuwenben/lang/zh-cn/zh-cn.js"></script>
+		<script charset="utf-8" src="${context}/kd/kindeditor-min.js"></script>
+		<script charset="utf-8" src="${context}/kd/lang/zh_CN.js"></script>
+		<script charset="utf-8" src="${context}/kd/plugins/code/prettify.js"></script>
+		<script type="text/javascript">
 
+				var editor;
+				KindEditor.ready(function(K) {
+					editor = K.create('textarea[name="page-content"]', {
+						allowFileManager : false,
+						resizeType : 1
+					});
+					prettyPrint();
+				});
+				
+				</script>
 	</head>
 
 	<body>
@@ -40,135 +46,27 @@
 			</div>
 
 			<div class="add-content">
-				<dl>
-					<dt class="dl-c">
-						<table width="100%">
-							<tr>
-								<td width="8%">
-									<label>
-										文章标题:
-									</label>
-								</td>
-								<td>
-									<input type="text" name="pageTitle" class="pageTitle" />
-								</td>
-							</tr>
-						</table>
-					</dt>
-					<dd class="dl-c">
-						<!--style给定宽度可以影响编辑器的最终宽度-->
-						<script type="text/plain" id="myEditor" style="width:1023px;height:440px;">
-    						
-						</script>
-					</dd>
-					<dd class="dl-c"></dd>
-				</dl>
-				<script type="text/javascript">
-					//实例化编辑器
-					var um = UM.getEditor('myEditor');
-					um.addListener('blur', function() {
-						$('#focush2').html('编辑器失去焦点了')
-					});
-					um.addListener('focus', function() {
-						$('#focush2').html('')
-					});
-					//按钮的操作
-					function insertHtml() {
-						var value = prompt('插入html代码', '');
-						um.execCommand('insertHtml', value)
-					}
-					function isFocus() {
-						alert(um.isFocus())
-					}
-					function doBlur() {
-						um.blur()
-					}
-					function createEditor() {
-						enableBtn();
-						um = UM.getEditor('myEditor');
-					}
-					function getAllHtml() {
-						alert(UM.getEditor('myEditor').getAllHtml())
-					}
-					function getContent() {
-						var arr = [];
-						arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-						arr.push("内容为：");
-						arr.push(UM.getEditor('myEditor').getContent());
-						alert(arr.join("\n"));
-					}
-					function getPlainTxt() {
-						var arr = [];
-						arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-						arr.push("内容为：");
-						arr.push(UM.getEditor('myEditor').getPlainTxt());
-						alert(arr.join('\n'))
-					}
-					function setContent(isAppendTo) {
-						var arr = [];
-						arr.push("使用editor.setContent('欢迎使用umeditor')方法可以设置编辑器的内容");
-						UM.getEditor('myEditor').setContent('欢迎使用umeditor', isAppendTo);
-						alert(arr.join("\n"));
-					}
-					function setDisabled() {
-						UM.getEditor('myEditor').setDisabled('fullscreen');
-						disableBtn("enable");
-					}
-				
-					function setEnabled() {
-						UM.getEditor('myEditor').setEnabled();
-						enableBtn();
-					}
-				
-					function getText() {
-						//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-						var range = UM.getEditor('myEditor').selection.getRange();
-						range.select();
-						var txt = UM.getEditor('myEditor').selection.getText();
-						alert(txt)
-					}
-				
-					function getContentTxt() {
-						var arr = [];
-						arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-						arr.push("编辑器的纯文本内容为：");
-						arr.push(UM.getEditor('myEditor').getContentTxt());
-						alert(arr.join("\n"));
-					}
-					function hasContent() {
-						var arr = [];
-						arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-						arr.push("判断结果为：");
-						arr.push(UM.getEditor('myEditor').hasContents());
-						alert(arr.join("\n"));
-					}
-					function setFocus() {
-						UM.getEditor('myEditor').focus();
-					}
-					function deleteEditor() {
-						disableBtn();
-						UM.getEditor('myEditor').destroy();
-					}
-					function disableBtn(str) {
-						var div = document.getElementById('btns');
-						var btns = domUtils.getElementsByTagName(div, "button");
-						for ( var i = 0, btn; btn = btns[i++];) {
-							if (btn.id == str) {
-								domUtils.removeAttributes(btn, [ "disabled" ]);
-							} else {
-								btn.setAttribute("disabled", "true");
-							}
-						}
-					}
-					function enableBtn() {
-						var div = document.getElementById('btns');
-						var btns = domUtils.getElementsByTagName(div, "button");
-						for ( var i = 0, btn; btn = btns[i++];) {
-							domUtils.removeAttributes(btn, [ "disabled" ]);
-						}
-					}
-</script>
-
+			<form action = "/MyBlog/BlogController">
+				<table width="100%">
+					<tr class="dl-c">
+						<td width="70px"><label>文章标题:</label></td><td><input type="text" name="pageTitle" class="pageTitle" /></td>
+					</tr>
+					<tr class="dl-c">
+						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc"></textarea></td>
+					</tr>
+					<tr class="dl-c">
+						<td>文章分类:</td><td class="classes">博客<input type="checkbox" name="cls" value="1"/></td>
+					</tr>
+					<tr class="dl-c">
+						<td>文章摘要:</td><td class="page-sum"><textarea name="summary" class="summary"></textarea></td>
+					</tr>
+					<tr class="dl-c">
+						<td>&nbsp;</td><td><div class="add-button"><input type="button" value="发表文章" class="fabiao"/><input type="button" value="保存文章"/><input type="button" value="舍弃"/></div></td>
+					</tr>
+					</table>
+					<input type="hidden" name="action" value="blog-add"/>
+				</form>
+				<script type="text/javascript" src="${context}/resource/scripts/addPage.js"></script>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="footer">

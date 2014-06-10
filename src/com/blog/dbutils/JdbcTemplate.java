@@ -16,6 +16,7 @@ public abstract class JdbcTemplate
 	{
 		this.ds = ds;
 	}
+	//主要用户查询
 	@SuppressWarnings("unchecked")
 	public <T> T doJob(String sql,Object[]params) throws SQLException
 	{
@@ -44,4 +45,30 @@ public abstract class JdbcTemplate
 		
 	}
 	public abstract Object doInJob(ResultSet rs) throws SQLException;
+	
+	public int doCurdJob(String sql,Object[]params) throws SQLException
+	{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try
+		{
+			con = SingleThreadConnectionHolder.getConnection(ds);
+			ps = con.prepareStatement(sql);
+			for (int i = 1;i <= params.length;i++)
+			{
+				ps.setObject(i, params[i-1]);
+			}
+			int count = ps.executeUpdate();
+			return count;
+			
+		}catch(SQLException  ex)
+		{
+			ex.printStackTrace();
+			throw ex;
+		}finally
+		{
+			DataSourceUtil.close(ps, rs);
+		}
+	}
 }
