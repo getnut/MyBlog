@@ -46,7 +46,6 @@ public class LoginFilter implements Filter
 				break;
 			}
 		}
-		System.out.println("value="+value);
 		if(null == value)
 		{
 			response.sendRedirect("/MyBlog/sp/login.htm");
@@ -71,7 +70,7 @@ public class LoginFilter implements Filter
 	@Override
 	public void init(FilterConfig params) throws ServletException
 	{
-		System.out.println("loginFilter!");
+		
 	}
 
 }

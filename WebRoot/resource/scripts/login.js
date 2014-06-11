@@ -35,7 +35,7 @@ $(function (){
 			}, 500);
 			$.ajax({
 				type:"post",
-				url:"/MyBlog/UserAction",
+				url:"/MyBlog/user",
 				data:{
 					username:username,
 					password:password,

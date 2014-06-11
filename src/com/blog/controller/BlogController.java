@@ -17,6 +17,7 @@ import com.blog.dao.impl.PageDaoImpl;
 import com.blog.dao.impl.UserDaoImpl;
 import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
+import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.JsonUtil;
 import com.blog.dbutils.Validation;
 import com.blog.entity.AjaxResponse;
@@ -134,6 +135,7 @@ public class BlogController extends HttpServlet
 		}
 		long pageId = Long.parseLong(tmp);
 		Page page = this.ps.getPage(pageId);
+		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
 		req.getRequestDispatcher("dp/showPageDetail.jsp").forward(req, resp);
 	}

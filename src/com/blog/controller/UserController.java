@@ -55,13 +55,6 @@ public class UserController extends HttpServlet {
 		}
 		if(UserActionType.LOGIN.equalsIgnoreCase(action))//使用异步登录
 		{
-			try
-			{
-				Thread.sleep(2000);
-			} catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
 			User user = userService.login(userName, password);
 			AjaxResponse aRes = AjaxResponse.getInstance();//响应对象
 			aRes.setResponseType(ResponseType.LOGIN);
@@ -73,7 +66,7 @@ public class UserController extends HttpServlet {
 			}else//登录成功
 			{
 				aRes.setStatus(StatusCode.SUCCESS);
-				aRes.addData("url", "/MyBlog/BlogController?action=blog-list");
+				aRes.addData("url", "/MyBlog/blog/blog-list/1");
 				String secu = SystemConfigUtils.getSystemConfigValue("token");
 				//username|time
 				String value = user.getUserName()+"|"+DateUtil.getDateString(new Date());
@@ -81,7 +74,6 @@ public class UserController extends HttpServlet {
 				Cookie cookie = new Cookie("userInfo", value+"|"+token);
 				cookie.setMaxAge(-1);//会话cookie
 				response.addCookie(cookie);
-				
 			}
 			String json = JsonUtil.toJson(aRes);//转化为json字符串
 			response.getWriter().write(json);//发给浏览器

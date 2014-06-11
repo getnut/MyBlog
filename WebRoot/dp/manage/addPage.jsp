@@ -29,7 +29,15 @@
 				KindEditor.ready(function(K) {
 					editor = K.create('textarea[name="page-content"]', {
 						allowFileManager : false,
-						resizeType : 1
+						resizeType : 1,
+						items:[
+						        'source', '|','undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
+						        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+						        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+						        'superscript', 'clearhtml', 'selectall', '|', 'fullscreen', '/',
+						        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+						        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+						         'insertfile', 'table', 'hr', 'emoticons','anchor', 'link', 'unlink']
 					});
 					prettyPrint();
 				});

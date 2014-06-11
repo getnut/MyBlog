@@ -4,10 +4,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	
+	<filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+</filter>
+
 	<filter>
 		<filter-name>loginFilter</filter-name>
 		<filter-class>com.blog.filter.LoginFilter</filter-class>
 	</filter>
+	
+	<filter-mapping>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+</filter-mapping>
+	<filter-mapping>
+	<filter-name>loginFilter</filter-name>
+	<url-pattern>/dp/manage/*</url-pattern>
+	
+</filter-mapping>
   <servlet>
     <servlet-name>JsonTest</servlet-name>
     <servlet-class>com.test.JsonTest</servlet-class>
@@ -25,22 +44,17 @@
     <servlet-name>BlogController</servlet-name>
     <servlet-class>com.blog.controller.BlogController</servlet-class>
   </servlet>
-
-<filter-mapping>
-	<filter-name>loginFilter</filter-name>
-	<url-pattern>/dp/manage/*</url-pattern>
-</filter-mapping>
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
-    <url-pattern>/UserAction</url-pattern>
+    <url-pattern>/user</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>BlogController</servlet-name>
-    <url-pattern>/BlogController</url-pattern>
+    <url-pattern>/blog</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

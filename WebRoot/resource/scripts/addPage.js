@@ -2,7 +2,7 @@ KindEditor.ready(function(K) {
 	$(".fabiao").click(function(){
 		var title = $(".pageTitle").val();
 		var content = editor.html();
-		content = content.replace(/(\r\n|\s)/g, "");//去掉空白字符
+		content = content.replace(/(\r\n|\s)/g, " ");//去掉空白字符
 		content = K.escape(content);
 		var action = $("input[name='action']").val();
 		var cls = $("input[name='cls']").val();
@@ -10,7 +10,7 @@ KindEditor.ready(function(K) {
 		$.ajax({
 			//
 			type:"post",
-			url:"/MyBlog/BlogController",
+			url:"/MyBlog/blog",
 			data:{
 			 pageTitle:title,
 			 pageContent:content,
