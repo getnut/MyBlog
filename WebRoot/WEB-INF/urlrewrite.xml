@@ -3,20 +3,16 @@
         "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
     <rule>
-        <from>/blog/blog-show/([0-9]+)</from>
+        <from>^/blog/blog-show-([0-9]+).html</from>
         <to>/blog?action=blog-show&amp;pageId=$1</to>
     </rule>
 	<rule>
-        <from>/blog/blog-list/([0-9]+)</from>
+        <from>^/blog/blog-list-([0-9]+).html</from>
         <to>/blog?action=blog-list&amp;page=$1</to>
     </rule>
     <rule>
-        <from>/dp/manage/([a-zA-Z]+).html</from>
+        <from>^/manage/([a-zA-Z]+).html</from>
         <to>/dp/manage/$1.jsp</to>
     </rule>
-    <outbound-rule>
-        <from>/blog?action=([a-z]+-[a-z]+)&amp;pageId=([0-9]+)</from>
-        <to>/blog/$1/$2</to>
-    </outbound-rule>
 </urlrewrite>
 

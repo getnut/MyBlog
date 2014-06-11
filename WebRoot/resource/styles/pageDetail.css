@@ -1,31 +1,47 @@
+
 .page-detail{
 	float:left;
-	width:720px;
+	width:700px;
 	margin-top:10px;
 	background-color:#fff;
+	border-radius:5px;
+	min-height:500px;
+	padding:10px;
+	overflow:auto;
 }
+
 .page-detail h2.title{
 	font-size:13px;
 	border-bottom:1px solid #ddd;
+	text-indent:10px;
+	line-height:35px;
+}
+.page-detail h2.title span{
+	background-color:#ddd;
+	padding:2px;
+	margin-left:5px;
+	margin-right:5px;
+	border-radius:5px;
 }
 .page-detail h1.title{
 	font-size:16px;
+	margin-top:10px;
 }
 .page-detail .title{
 	margin:5px;
-	margin-left:10px;
-	padding-right:10px;
 	line-height:26px;
+	font-size:16px;
 }
 .page-detail .page-d-r{
-	margin-left:10px;
-	margin-right:10px;
+	margin-top:20px;
+	margin-bottom:20px;
 }
  .sidebar{
 	width:300px;
-	float:right;
+	float:left;
 	height:400px;
 	margin-top:10px;
+	margin-left:10px;
 }
 
 .sidebar-common{

@@ -66,7 +66,7 @@ public class UserController extends HttpServlet {
 			}else//登录成功
 			{
 				aRes.setStatus(StatusCode.SUCCESS);
-				aRes.addData("url", "/MyBlog/blog/blog-list/1");
+				aRes.addData("url", "/MyBlog");
 				String secu = SystemConfigUtils.getSystemConfigValue("token");
 				//username|time
 				String value = user.getUserName()+"|"+DateUtil.getDateString(new Date());

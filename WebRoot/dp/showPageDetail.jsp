@@ -23,14 +23,14 @@
   	     	</div>
   	     	<div class="page-detail">
   	     		<h1 class="title">${page.pageTitle}</h1>
-  	     		<h2 class="title">分类:<span>${page.clss.className}</span></h2>
+  	     		<h2 class="title">分类:&nbsp;<span>${page.clss.className}</span><span>suanfa</span></h2>
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/dp/manage/addPage.jsp" class="add">添加新文章</a></li>
-  	     				<li><a href="${context}/dp/manage/manage.jsp" class="manage">管理博客</a></li>
+  	     			<li><a href="${context}/manage/addPage.html"  target="_blank" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/manage/manage.html"  target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
   	 			<!-- 分类start -->

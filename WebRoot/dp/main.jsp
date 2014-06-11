@@ -27,7 +27,7 @@
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="${context}/blog/blog-show/${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
+		  	     					<dt class="blog-title"><a href="${context}/blog/blog-show-${page.pageId}.html" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
 		  	     						<p class="blog-content">${page.summary}</p>
 		  	     					</dd>
@@ -45,10 +45,10 @@
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
-				  	     		 		<a href="${context}/blog/blog-list/${link.id}" class="currentPage">${link.title}</a>
+				  	     		 		<a href="${context}/blog/blog-list-${link.id}.html" class="currentPage">${link.title}</a>
 				  	     		 	</c:when>
 			  	     		 	<c:otherwise>
-			  	     		 		<a href="${context}/blog/blog-list/${link.id}">${link.title}</a>
+			  	     		 		<a href="${context}/blog/blog-list-${link.id}.html">${link.title}</a>
 			  	     		 	</c:otherwise>
 			  	     		 	</c:choose>
 		  	     		 	</c:forEach>
@@ -61,8 +61,8 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/dp/manage/addPage.html" target="_blank" class="add">添加新文章</a></li>
-  	     				<li><a href="${context}/dp/manage/manage.html" target="_blank"  class="manage">管理博客</a></li>
+  	     				<li><a href="${context}/manage/addPage.html"  target="_blank" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/manage/manage.html"  target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
   	 			<!-- 分类start -->
