@@ -60,7 +60,7 @@
 						<td width="70px"><label>文章标题:</label></td><td><input type="text" name="pageTitle" class="pageTitle" /></td>
 					</tr>
 					<tr class="dl-c">
-						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc"></textarea></td>
+						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc">ddd</textarea></td>
 					</tr>
 					<tr class="dl-c">
 						<td>文章分类:</td><td class="classes">博客<input type="checkbox" name="cls" value="1"/></td>

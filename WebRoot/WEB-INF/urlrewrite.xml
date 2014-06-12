@@ -3,16 +3,32 @@
         "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
     <rule>
-        <from>^/blog/blog-show-([0-9]+).html</from>
-        <to>/blog?action=blog-show&amp;pageId=$1</to>
+    	<!-- 博客显示 -->
+        <from>^/blog/show/([0-9]+)</from>
+        <to>/blog?action=show&amp;pageId=$1</to>
     </rule>
 	<rule>
-        <from>^/blog/blog-list-([0-9]+).html</from>
-        <to>/blog?action=blog-list&amp;page=$1</to>
+		<!-- 博客列表 -->
+        <from>^/blog/list/([0-9]+)</from>
+        <to>/blog?action=list&amp;page=$1</to>
     </rule>
     <rule>
-        <from>^/manage/([a-zA-Z]+).html</from>
+    	<!-- 管理的动态页面 -->
+        <from>^/manage/([a-zA-Z-]+).html</from>
         <to>/dp/manage/$1.jsp</to>
+    </rule>
+    	<!-- 管理的 -->
+      <rule>
+        <from>^/manage/list/([0-9]+)</from>
+       <to>/manage?action=list&amp;page=$1</to>
+    </rule>
+      <rule>
+        <from>^/manage/delete/([0-9]+)</from>
+       <to>/manage?action=delete&amp;pageId=$1</to>
+    </rule>
+    <rule>
+        <from>^/manage/update/([0-9]+)</from>
+       <to>/manage?action=update&amp;pageId=$1</to>
     </rule>
 </urlrewrite>
 

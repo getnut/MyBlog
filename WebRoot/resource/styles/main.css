@@ -71,28 +71,7 @@
 	height:25px;
 
 }
-/*·ÖÒ³ */
-.main .blog-bottom{
-    height:40px;
-}
 
-.main .blog-bottom a,.main .blog-bottom span{
-	padding:6px 8px;
-	margin-right:2px;
-	border:1px solid #ccc;
-	float:left;
-}
-.main .blog-bottom span{
-	border:none;
-	background-color:#fff;
-}
-.main .blog-bottom .currentPage{
-	background-color:#0099FF;
-	color:#fff;
-}
-.main .blog-bottom a:hover{
-	border-color:#0099FF;
-}
 .main .sidebar{
 	width:300px;
 	float:right;

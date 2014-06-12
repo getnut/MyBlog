@@ -14,7 +14,7 @@ KindEditor.ready(function(K) {
 			data:{
 			 pageTitle:title,
 			 pageContent:content,
-			 action:action,
+			 action:"add",
 			 cls:cls,
 			 summary:summary
 			},
