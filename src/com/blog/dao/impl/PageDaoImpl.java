@@ -212,4 +212,26 @@ public class PageDaoImpl implements PageDao
 			throw ex;
 		}
 	}
+	@Override
+	public boolean deletePage(long pageId) throws SQLException {
+		
+		String sql = "delete from page where pageId = ?";
+		Object params[] = new Object[]{pageId};
+		try
+		{
+			int result =  (new JdbcTemplateAdapter(this.dataSource)).doCurdJob(sql, params);
+			if(result > 0)
+			{
+				return true;
+			}else
+			{
+				return false;
+			}
+		}catch(SQLException ex)
+		{
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
 }

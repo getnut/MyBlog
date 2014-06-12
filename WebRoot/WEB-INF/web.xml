@@ -45,6 +45,11 @@
     <servlet-name>BlogController</servlet-name>
     <servlet-class>com.blog.controller.BlogController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ManageController</servlet-name>
+    <servlet-class>com.blog.controller.ManageController</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
@@ -57,7 +62,15 @@
     <servlet-name>BlogController</servlet-name>
     <url-pattern>/blog</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManageController</servlet-name>
+    <url-pattern>/manage</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <error-page>
+	<error-code>404</error-code>
+		<location>/error.html</location>
+	</error-page>
 </web-app>

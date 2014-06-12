@@ -19,7 +19,6 @@ table{
 	border-collapse:collapse;
 }
 .add-content .dl-c>td{
-	border:1px solid #ddd;
 	padding:10px;
 }
 .add-content .add-button {

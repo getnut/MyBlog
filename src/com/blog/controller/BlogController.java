@@ -116,9 +116,6 @@ public class BlogController extends HttpServlet
 			PageSplitResult psr = this.ps.getPages(currentPage);
 			req.setAttribute("psr", psr);
 			req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
-		}else if(BlogActionType.CLASS_BLOG_LIST.equalsIgnoreCase(action))//某个标签文章列表
-		{
-			req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 		}else if(BlogActionType.BLOG_SHOW.equalsIgnoreCase(action))
 		{
 			this.showPageDetail(req, resp);

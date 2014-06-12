@@ -17,4 +17,6 @@ public interface PageDao
 	public int totalPages(long classId) throws SQLException;
 	
 	public boolean addPage(Page page) throws SQLException;
+	
+	public boolean deletePage(long pageId) throws SQLException;
 }

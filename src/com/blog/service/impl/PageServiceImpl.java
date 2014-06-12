@@ -188,6 +188,21 @@ public class PageServiceImpl implements PageService{
 		}
 		return page;
 	}
+	@Override
+	public boolean deletePage(long pageId) {
+		boolean result = false;
+		try
+		{
+			result = this.pageDao.deletePage(pageId);
+		}catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}finally
+		{
+			DataSourceUtil.close(this.dataSource);
+		}
+		return result;
+	}
 
 }
 
