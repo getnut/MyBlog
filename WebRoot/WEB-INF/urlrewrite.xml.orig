@@ -14,5 +14,12 @@
         <from>^/manage/([a-zA-Z]+).html</from>
         <to>/dp/manage/$1.jsp</to>
     </rule>
+<<<<<<< HEAD
+    <outbound-rule>
+        <from>/blog?action=blog-show&amp;pageId=([0-9]+)</from>
+        <to>/blog/blog-show/$1</to>
+    </outbound-rule>
+=======
+>>>>>>> origin/master
 </urlrewrite>
 

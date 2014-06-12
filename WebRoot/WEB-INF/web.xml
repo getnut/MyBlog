@@ -5,27 +5,28 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
-	
-	<filter>
-    <filter-name>UrlRewriteFilter</filter-name>
-    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-</filter>
-
 	<filter>
 		<filter-name>loginFilter</filter-name>
 		<filter-class>com.blog.filter.LoginFilter</filter-class>
 	</filter>
-	
-	<filter-mapping>
+<filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>com.blog.filter.Fil</filter-class>
+</filter>
+
+<filter-mapping>
     <filter-name>UrlRewriteFilter</filter-name>
     <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>  
+    <dispatcher>FORWARD</dispatcher>  
+ 
 </filter-mapping>
-	<filter-mapping>
+<filter-mapping>
 	<filter-name>loginFilter</filter-name>
 	<url-pattern>/dp/manage/*</url-pattern>
-	
+	<dispatcher>REQUEST</dispatcher>  
+    <dispatcher>FORWARD</dispatcher>  
+    <dispatcher>INCLUDE</dispatcher>  
 </filter-mapping>
   <servlet>
     <servlet-name>JsonTest</servlet-name>

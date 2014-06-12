@@ -28,9 +28,11 @@ public class LoginFilter implements Filter
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain fc) throws IOException, ServletException
 	{
+		
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		Cookie[]cookies = request.getCookies();
+		System.out.println("loginFilter invoke!!"+request.getRequestURI());
 		String value = null;
 		if(cookies == null)
 		{
