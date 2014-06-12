@@ -27,7 +27,7 @@
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="${context}/blog/blog-show/${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
+		  	     					<dt class="blog-title"><a href="<c:url value="/blog?action=blog-show&pageId=${page.pageId}"></c:url>" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
 		  	     						<p class="blog-content">${page.summary}</p>
 		  	     					</dd>

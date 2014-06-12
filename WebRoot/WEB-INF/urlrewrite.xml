@@ -15,8 +15,8 @@
         <to>/dp/manage/$1.jsp</to>
     </rule>
     <outbound-rule>
-        <from>/blog?action=([a-z]+-[a-z]+)&amp;pageId=([0-9]+)</from>
-        <to>/blog/$1/$2</to>
+        <from>/blog?action=blog-show&amp;pageId=([0-9]+)</from>
+        <to>/blog/blog-show/$1</to>
     </outbound-rule>
 </urlrewrite>
 
