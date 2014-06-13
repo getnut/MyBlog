@@ -16,18 +16,16 @@
   <body class="main">
   	     <div class="content">
   	     	<div class="head">
-  	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博�/></a>
+  	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
   	     	</div>
-  	     	<div class="path" style="clear:both;"><a href="#">所有博�/a><em></em><a href="#">所有博�/a></div>
+  	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
   	     	<div class="blog-list">
   	     		<h1 class="title">博客列表</h1>
   	     		<div class="blog-list-realcontent">
-  	     			
-  	     			  <!-- 一条博�-->
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="${context}/blog/blog-show-${page.pageId}.html" target="_blank">${page.pageTitle}</a></dt>
+		  	     					<dt class="blog-title"><a href="${context}/blog/detail/${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
 		  	     						<p class="blog-content">${page.summary}</p>
 		  	     					</dd>
@@ -35,24 +33,21 @@
 		  	     				</dl>
 		  	     		</div>
   	     			  </c:forEach>
-		  	     		
-  	     			 <!-- 一条博�-->
-  	     			  
 	  	     		 	 <!-- 分页start -->
-		  	     		 <div class="blog-bottom">
+		  	     		 <div class="fenye-bottom">
 		  	     		 	<c:if test="${psr != null}">
 		  	     		 	   
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
-				  	     		 		<a href="${context}/blog/blog-list-${link.id}.html" class="currentPage">${link.title}</a>
+				  	     		 		<a href="${context}/blog/list/${link.id}" class="currentPage">${link.title}</a>
 				  	     		 	</c:when>
 			  	     		 	<c:otherwise>
-			  	     		 		<a href="${context}/blog/blog-list-${link.id}.html">${link.title}</a>
+			  	     		 		<a href="${context}/blog/list/${link.id}">${link.title}</a>
 			  	     		 	</c:otherwise>
 			  	     		 	</c:choose>
 		  	     		 	</c:forEach>
-		  	     		 		<span>�{psr.totalPages}�/span>
+		  	     		 		<span>共${psr.totalPages}页</span>
 		  	     		 	</c:if>
 		  	     		 </div>
 	  	     		 <!-- 分页end -->
@@ -61,8 +56,8 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/manage/addPage.html"  target="_blank" class="add">添加新文�/a></li>
-  	     				<li><a href="${context}/manage/manage.html"  target="_blank"  class="manage">管理博客</a></li>
+  	     				<li><a href="${context}/manage/page-add.html"  target="_blank" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/manage/list/1"  target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
   	 			<!-- 分类start -->
@@ -71,46 +66,31 @@
   	     			<dd><a href="#">数据结构(14)</a></dd>
   	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
   	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网�2)</a></dd>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网�2)</a></dd>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网�2)</a></dd>
   	     		</dl>
   	     		<!-- 分类end -->
-  	     		<!--  最新文�start -->
+  	     		<!--  最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新文�/h1>
+  	     			<h1 class="title">最新文摘</h1>
   	     			<dl>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
+  	     			<dd><a href="#">数据结构(14)</a></dd>
+  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
+  	     			<dd><a href="#">设计模式(7)</a></dd>
   	     			</dl>
   	     		</div>
-  	     		<!--  最新文�end -->
-  	     		<!--  最多阅�start -->
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新评�/h1>
+  	     			<h1 class="title">最新评</h1>
   	     			<dl>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教�/a></dd>
+	  	     			<dd><a href="#">数据结构(14)</a></dd>
+	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
+	  	     			<dd><a href="#">设计模式(7)</a></dd>
   	     			</dl>
   	     		</div>
-  	     		<!--  最多阅� end -->
+  	     		<!--  最多阅读 end -->
   	     	</div>
   	     		 <div style="clear:both;"></div>
   	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作�/a>
-  	     			 </div>
+		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作</a>
+  	     	     </div>
 			</div>
   	     	
   	     	 

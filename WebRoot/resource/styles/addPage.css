@@ -1,12 +1,11 @@
 
-body{
-	background-color:#fff;
-}
 
 .add-content{
 	width:auto;
 	min-height:400px;
 	margin-top:20px;
+	background-color:#fff;
+	border-radius:5px;
 }
 
 .add-content .pageTitle{

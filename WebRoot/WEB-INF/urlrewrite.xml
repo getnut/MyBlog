@@ -4,8 +4,8 @@
 <urlrewrite>
     <rule>
     	<!-- 博客显示 -->
-        <from>^/blog/show/([0-9]+)</from>
-        <to>/blog?action=show&amp;pageId=$1</to>
+        <from>^/blog/detail/([0-9]+)</from>
+        <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
 	<rule>
 		<!-- 博客列表 -->

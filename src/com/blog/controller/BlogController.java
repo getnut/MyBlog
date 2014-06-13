@@ -12,9 +12,7 @@ import javax.sql.DataSource;
 import com.blog.common.BlogActionType;
 import com.blog.common.Message;
 import com.blog.dao.PageDao;
-import com.blog.dao.UserDao;
 import com.blog.dao.impl.PageDaoImpl;
-import com.blog.dao.impl.UserDaoImpl;
 import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.HtmlUtil;
@@ -27,9 +25,7 @@ import com.blog.entity.PageSplitResult;
 import com.blog.entity.ResponseType;
 import com.blog.entity.StatusCode;
 import com.blog.service.PageService;
-import com.blog.service.UserService;
 import com.blog.service.impl.PageServiceImpl;
-import com.blog.service.impl.UserServiceImpl;
 
 public class BlogController extends HttpServlet
 {
@@ -63,7 +59,6 @@ public class BlogController extends HttpServlet
 	{
 		String title = request.getParameter("pageTitle");
 		String content = request.getParameter("pageContent");
-		System.out.println("content="+content);
 		String summary = request.getParameter("summary");
 		long classes = Long.parseLong(request.getParameter("cls"));
 		Page page = new Page();
@@ -80,12 +75,10 @@ public class BlogController extends HttpServlet
 		{
 			ar.setStatus(StatusCode.SUCCESS);
 			ar.setResponseType(ResponseType.ADD_BLOG);
-			ar.addData("url", "--------------");
 		}else
 		{
 			ar.setStatus(StatusCode.FAIL);
 			ar.setResponseType(ResponseType.ADD_BLOG);
-			ar.addData("msg", "出错!");
 		}
 		response.getWriter().write(JsonUtil.toJson(ar));
 	}
@@ -134,6 +127,6 @@ public class BlogController extends HttpServlet
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
-		req.getRequestDispatcher("dp/showPageDetail.jsp").forward(req, resp);
+		req.getRequestDispatcher("dp/page-detail.jsp").forward(req, resp);
 	}
 }
