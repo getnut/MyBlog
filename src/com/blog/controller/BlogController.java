@@ -12,9 +12,7 @@ import javax.sql.DataSource;
 import com.blog.common.BlogActionType;
 import com.blog.common.Message;
 import com.blog.dao.PageDao;
-import com.blog.dao.UserDao;
 import com.blog.dao.impl.PageDaoImpl;
-import com.blog.dao.impl.UserDaoImpl;
 import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.HtmlUtil;
@@ -27,9 +25,7 @@ import com.blog.entity.PageSplitResult;
 import com.blog.entity.ResponseType;
 import com.blog.entity.StatusCode;
 import com.blog.service.PageService;
-import com.blog.service.UserService;
 import com.blog.service.impl.PageServiceImpl;
-import com.blog.service.impl.UserServiceImpl;
 
 public class BlogController extends HttpServlet
 {
@@ -116,11 +112,12 @@ public class BlogController extends HttpServlet
 			PageSplitResult psr = this.ps.getPages(currentPage);
 			req.setAttribute("psr", psr);
 			req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
-		}else if(BlogActionType.BLOG_SHOW.equalsIgnoreCase(action))
+		}else if(BlogActionType.BLOG_DETAIL.equalsIgnoreCase(action))
 		{
 			this.showPageDetail(req, resp);
 		}
 	}
+	//显示文章
 	private void showPageDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		String tmp = req.getParameter("pageId");
@@ -134,6 +131,6 @@ public class BlogController extends HttpServlet
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
-		req.getRequestDispatcher("dp/showPageDetail.jsp").forward(req, resp);
+		req.getRequestDispatcher("dp/page-detail.jsp").forward(req, resp);
 	}
 }

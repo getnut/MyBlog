@@ -33,14 +33,13 @@
 	  					<!-- 一条博客 -->
 	  	     			  <c:forEach items="${psr.pages}" var = "page">
 	  	     			  	<tr>
-	 	     					<td><a class = "manage-title" href="${context}/blog/show/${page.pageId}" target="_blank">${page.pageTitle}(${page.writeTime})</a></td>
-	 	     					<td><a href="${context}/manage/delete/${page.pageId}">删除</a>&nbsp;<a href="#">编辑</a>&nbsp;<a href="#">分类</a></td>		
+	 	     					<td><a class = "manage-title" href="${context}/blog/detail/${page.pageId}" target="_blank">${page.pageTitle}(${page.writeTime})</a></td>
+	 	     					<td style="text-align:right;"><a href="${context}/manage/delete/${page.pageId}">删除</a>&nbsp;<a href="#">编辑</a>&nbsp;<a href="#">分类</a></td>		
 			  	     		</tr>
 	  	     			  </c:forEach>
   					</tbody>
-  						<tfoot>
-  						<tr><td colspan="2">
-  						<div class="fenye-bottom">
+  				</table>
+  				<div class="fenye-bottom">
   						<c:if test="${psr != null}">
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
@@ -54,10 +53,7 @@
 		  	     		 	</c:forEach>
 		  	     		 		<span>共${psr.totalPages}页</span>
 		  	     		 	</c:if>
-		  	     		 	</div>
-		  	     		 	</td></tr>
-		  	     		 	</tfoot>
-  				</table>
+               </div>
   			</div>
   		</div>
   </body>

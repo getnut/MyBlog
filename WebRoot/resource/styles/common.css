@@ -31,3 +31,25 @@
 	line-height:45px;
 	text-align:center;
 }
+/*·ÖÒ³ */
+ .fenye-bottom{
+    height:40px;
+}
+
+ .fenye-bottom a, .fenye-bottom span{
+	padding:6px 15px;
+	margin-right:2px;
+	border:1px solid #ccc;
+	float:left;
+}
+ .fenye-bottom span{
+	border:none;
+	background-color:#fff;
+}
+ .fenye-bottom .currentPage{
+	background-color:#0099FF;
+	color:#fff;
+}
+ .fenye-bottom a:hover{
+	border-color:#0099FF;
+}

@@ -44,9 +44,8 @@
 }
 .main .blog-title a{
 	font-weight:bold;
-	height:30px;
+	min-height:30px;
 	display:block;
-	line-height:30px;
 	font-size:16px;
 }
 .main .blog-title a:hover{
