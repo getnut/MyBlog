@@ -1,15 +1,16 @@
 package com.blog.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.blog.entity.Classes;
 
-public interface ClassDao
-{
-	/*删除类别*/
-	public boolean deleteClass(long classId)throws SQLException;
-	/*增加类别*/
-	public boolean addClass(Classes cls) throws SQLException;
-	/*列出所有类别*/
-	public boolean getAllClass()throws SQLException;
+public interface ClassDao {
+
+	//添加列表然后返回id
+	public long addClass(Classes cls) throws SQLException;
+	
+	public boolean deleteClass(long classId) throws SQLException;
+	
+	public List<Classes> getAllClass() throws SQLException;
 }

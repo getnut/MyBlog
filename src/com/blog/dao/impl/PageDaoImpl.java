@@ -27,7 +27,6 @@ public class PageDaoImpl implements PageDao
 	public List<Page> getPages(int start, int count) throws SQLException
 	{
 		start = start - 1;
-		System.out.println("start="+start+",count="+count);
 		String sql = "SELECT PageId, PageTitle, summary, WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId order by WriteTime desc limit  ?,? ";
 		 
 		try

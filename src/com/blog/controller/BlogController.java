@@ -59,7 +59,6 @@ public class BlogController extends HttpServlet
 	{
 		String title = request.getParameter("pageTitle");
 		String content = request.getParameter("pageContent");
-		System.out.println("content="+content);
 		String summary = request.getParameter("summary");
 		long classes = Long.parseLong(request.getParameter("cls"));
 		Page page = new Page();
@@ -76,12 +75,10 @@ public class BlogController extends HttpServlet
 		{
 			ar.setStatus(StatusCode.SUCCESS);
 			ar.setResponseType(ResponseType.ADD_BLOG);
-			ar.addData("url", "--------------");
 		}else
 		{
 			ar.setStatus(StatusCode.FAIL);
 			ar.setResponseType(ResponseType.ADD_BLOG);
-			ar.addData("msg", "出错!");
 		}
 		response.getWriter().write(JsonUtil.toJson(ar));
 	}
