@@ -1,5 +1,4 @@
 package com.blog.dao.impl;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -22,8 +21,6 @@ public class UserDaoImpl implements UserDao
 	public User findUserByUserNameAndPassword(final String userName,final String password) throws SQLException
 	{
 		String sql = "SELECT UserId,LoginTime FROM user where UserName=? and Password= ?";
-		try
-		{
 			return new JdbcTemplate(this.dataSource)
 			{
 				@Override
@@ -41,10 +38,5 @@ public class UserDaoImpl implements UserDao
 					return user;
 				}
 			}.<User>doJob(sql, new Object[]{userName,password});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 }

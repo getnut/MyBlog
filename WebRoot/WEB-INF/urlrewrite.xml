@@ -12,10 +12,10 @@
         <from>^/blog/list/([0-9]+)</from>
         <to>/blog?action=list&amp;page=$1</to>
     </rule>
-    <rule>
+    <rule >
     	<!-- 管理的动态页面 -->
-        <from>^/manage/([a-zA-Z-]+).html</from>
-        <to>/dp/manage/$1.jsp</to>
+        <from>^/blog/add/</from>
+        <to>/blog?action=add</to>
     </rule>
     	<!-- 管理的 -->
       <rule>
@@ -30,5 +30,14 @@
         <from>^/manage/update/([0-9]+)</from>
        <to>/manage?action=update&amp;pageId=$1</to>
     </rule>
+      <rule>
+        <from>^/manage/class/delete/([0-9]+)</from>
+       <to>/manage/class?action=delete&amp;classId=$1</to>
+    </rule>
+     <rule>
+        <from>^/manage/class/([a-zA-Z]+)</from>
+       <to>/manage/class?action=$1</to>
+    </rule>
+  
 </urlrewrite>
 

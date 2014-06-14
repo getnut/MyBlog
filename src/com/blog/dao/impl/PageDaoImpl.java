@@ -28,9 +28,6 @@ public class PageDaoImpl implements PageDao
 	{
 		start = start - 1;
 		String sql = "SELECT PageId, PageTitle, summary, WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId order by WriteTime desc limit  ?,? ";
-		 
-		try
-		{
 			return new JdbcTemplate(dataSource)
 			{
 				
@@ -56,20 +53,12 @@ public class PageDaoImpl implements PageDao
 					return pages;
 				}
 			}.<List<Page>>doJob(sql, new Object[]{start,count});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 
 	@Override
 	public List<Page> getPages(long classId, int start, int count) throws SQLException
 	{
 		String sql = "SELECT PageId,PageTitle,summary, WriteTime ,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.ClassId = ? order by WriteTime desc limit ?,? ";
-		
-		try
-		{
 			return new JdbcTemplate(dataSource)
 			{
 				
@@ -94,11 +83,6 @@ public class PageDaoImpl implements PageDao
 					return pages;
 				}
 			}.<List<Page>>doJob(sql, new Object[]{classId,start,count});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 
 	
@@ -107,8 +91,7 @@ public class PageDaoImpl implements PageDao
 	public int totalPages() throws SQLException
 	{
 		String sql = "select count(PageId) from page";
-		try
-		{
+		
 			return new JdbcTemplate(this.dataSource)
 			{
 				
@@ -123,18 +106,11 @@ public class PageDaoImpl implements PageDao
 					return count;
 				}
 			}.<Integer>doJob(sql, new Object[]{});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 	@Override
 	public int totalPages(long classId) throws SQLException
 	{
 		String sql = "select count(PageId) from page where classId = ?";
-		try
-		{
 			return new JdbcTemplate(this.dataSource)
 			{
 				
@@ -149,19 +125,12 @@ public class PageDaoImpl implements PageDao
 					return count;
 				}
 			}.<Integer>doJob(sql, new Object[]{classId});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 
 	public boolean addPage(Page page) throws SQLException
 	{
 		String sql = "insert into Page(PageTitle,summary,PageContent,WriteTime,ClassId) values(?,?,?,?,?)";
 		Object params[] = new Object[]{page.getPageTitle(),page.getSummary(),page.getPageContent(),page.getWriteTime(),page.getClss().getClassId()};
-		try
-		{
 			int result =  (new JdbcTemplateAdapter(this.dataSource)).doCurdJob(sql, params);
 			if(result > 0)
 			{
@@ -170,18 +139,11 @@ public class PageDaoImpl implements PageDao
 			{
 				return false;
 			}
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
+		
 	}
 	@Override
 	public Page getPage(long pageId) throws SQLException {
 		String sql = "SELECT PageId,PageTitle, pageContent,WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.pageId = ?";
-		
-		try
-		{
 			return new JdbcTemplate(dataSource)
 			{
 				
@@ -205,19 +167,12 @@ public class PageDaoImpl implements PageDao
 					return page;
 				}
 			}.<Page>doJob(sql, new Object[]{pageId});
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 	@Override
 	public boolean deletePage(long pageId) throws SQLException {
 		
 		String sql = "delete from page where pageId = ?";
 		Object params[] = new Object[]{pageId};
-		try
-		{
 			int result =  (new JdbcTemplateAdapter(this.dataSource)).doCurdJob(sql, params);
 			if(result > 0)
 			{
@@ -226,11 +181,6 @@ public class PageDaoImpl implements PageDao
 			{
 				return false;
 			}
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-			throw ex;
-		}
 	}
 	
 }

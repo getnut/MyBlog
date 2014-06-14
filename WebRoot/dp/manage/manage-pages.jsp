@@ -21,7 +21,7 @@
   		<div class="manage">
   			<ul class="nav-bar">
   				<li><a class="current-tab" href="${context}/manage/list/1">文章管理</a></li>
-  				<li><a href="${context}/manage/manage-classes.html">分类管理</a></li>
+  				<li><a href="${context}/manage/class/list">分类管理</a></li>
   				<li><a href="${context}/manage/manage-draft.html">草稿箱</a></li>
   				<li><a href="${context}/manage/manage-withdraw.html">回收站</a></li>
   				<li><a href="${context}/manage/page-add.html" target="_blank">写新文章</a></li>

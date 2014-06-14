@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 	<head>
 		<title>添加文章</title>
@@ -52,7 +53,6 @@
 						src="${context}/resource/images/logo-.png" alt="张雷的博客" />
 				</a>
 			</div>
-
 			<div class="add-content">
 			<form action = "/MyBlog/BlogController">
 				<table width="100%">
@@ -63,7 +63,12 @@
 						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc">ddd</textarea></td>
 					</tr>
 					<tr class="dl-c">
-						<td>文章分类:</td><td class="classes">博客<input type="checkbox" name="cls" value="1"/></td>
+						<td>文章分类:</td>
+						<td class="classes">
+							<c:forEach items="${classes}" var="cls">
+								<span style="padding:5px;"><input type="checkbox" name="cls" value="${cls.classId}"/><label>${cls.className}</label></span>
+							</c:forEach>
+						</td>
 					</tr>
 					<tr class="dl-c">
 						<td>文章摘要:</td><td class="page-sum"><textarea name="summary" class="summary"></textarea></td>
