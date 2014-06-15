@@ -29,8 +29,8 @@ public class ManageController extends HttpServlet {
 	public ManageController()
 	{
 		this.dataSource = DataSourceFactory.createDataSource();
-		this.pageDao = new PageDaoImpl(dataSource);
-		this.ps = new PageServiceImpl(this.dataSource,this.pageDao);
+		this.pageDao = new PageDaoImpl();
+		this.ps = new PageServiceImpl();
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

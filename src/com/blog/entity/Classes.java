@@ -44,4 +44,28 @@ public class Classes
 		return "Classes [classId=" + classId + ", className=" + className
 				+ ", count=" + count + "]";
 	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (classId ^ (classId >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Classes other = (Classes) obj;
+		if (classId != other.classId)
+			return false;
+		return true;
+	}
 }

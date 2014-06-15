@@ -1,5 +1,8 @@
 package com.blog.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Page
 {
 	private long pageId;
@@ -10,7 +13,7 @@ public class Page
 	
 	private String writeTime;
 	
-	private Classes clss;
+	private List<Classes> clses = new ArrayList<Classes>();
 	
 	private String summary;
 	
@@ -65,13 +68,13 @@ public class Page
 		this.pageContent = pageContent;
 	}
 
-	public Classes getClss()
+	public List<Classes> getClses()
 	{
-		return clss;
+		return clses;
 	}
 
-	public void setClss(Classes clss)
+	public void setClses(List<Classes> clses)
 	{
-		this.clss = clss;
+		this.clses = clses;
 	}
 }	

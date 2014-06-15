@@ -13,10 +13,6 @@ public class UserDaoImpl implements UserDao
 {
 	private DataSource dataSource = null;
 	
-	public UserDaoImpl(DataSource ds)
-	{
-		this.dataSource = ds;
-	}
 	/**根据姓名和密码查找用户**/
 	public User findUserByUserNameAndPassword(final String userName,final String password) throws SQLException
 	{
@@ -38,5 +34,13 @@ public class UserDaoImpl implements UserDao
 					return user;
 				}
 			}.<User>doJob(sql, new Object[]{userName,password});
+	}
+	public DataSource getDataSource()
+	{
+		return dataSource;
+	}
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
 	}
 }
