@@ -31,8 +31,8 @@ public class PageServiceImpl implements PageService{
 	private ClassDao classDao = null;
 	public PageServiceImpl ()
 	{
+		
 	}
-	
 	//添加文章
 	public boolean addPage(Page page)
 	{
@@ -223,19 +223,23 @@ public class PageServiceImpl implements PageService{
 		}
 		return result;
 	}
-	
+	//其中classcount里面有值
 	public List<Classes> getAllClasses()
 	{
-		List<Classes> clses = new ArrayList<Classes>();
+		List<Classes> clses = null;
 		try
 		{
 			clses = this.classDao.getAllClass();
-		}
-		catch(SQLException ex)
+			int size = clses.size();
+			for(int i = 0;i < size;i++)
+			{
+				Classes t = clses.get(i);
+				t.setCount(this.pageClassDao.totalPageOfClass(t.getClassId()));
+			}
+		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
-		}
-		finally
+		}finally
 		{
 			DataSourceUtil.close(this.dataSource);
 		}

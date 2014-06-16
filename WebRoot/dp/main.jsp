@@ -27,7 +27,7 @@
 		  	     				<dl>
 		  	     					<dt class="blog-title"><a href="${context}/blog/detail/${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
-		  	     						<p class="blog-content">${page.summary}</p>
+		  	     						<p class="blog-content">${page.summary}<span>.....</span></p>
 		  	     					</dd>
 		  	     					<dd class="item-bottom"><span>${page.writeTime}</span></dd>
 		  	     				</dl>

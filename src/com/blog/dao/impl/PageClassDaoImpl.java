@@ -38,7 +38,7 @@ public class PageClassDaoImpl implements PageClassDao
 	@Override
 	public int totalPageOfClass(long classId) throws SQLException
 	{
-		String sql = "select count(PageClassId) from page_class where classId=?";
+		String sql = "select count(pageId) from page_class where classId=?";
 		return new JdbcTemplate(this.dataSource)
 		{
 			

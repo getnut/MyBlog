@@ -13,21 +13,6 @@
 		<script type="text/javascript" src="../resource/scripts/login.js"></script>
 	</head>
 	 <body class="main">
-         
-         <div id = "loading" style="height:100px;border:1px solid red;">
-         	    
-         </div>
-         
-     <button id = "btn">click</button>
-         <script type="text/javascript">
-         	$("#loading").ajaxStart(function(){
-   				$(this).html("正在请求中....");
- 			}); 
-             
-             $("#btn").click(function(){
-             	$.get("/MyBlog/user");
-             });
-         </script>
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="/MyBlog/resource/images/logo-.png" alt="张雷的博客"/></a>

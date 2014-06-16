@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,7 +24,11 @@
   	     	</div>
   	     	<div class="page-detail">
   	     		<h1 class="title">${page.pageTitle}</h1>
-  	     		<h2 class="title">分类:&nbsp;<span>${page.clss.className}</span><span>suanfa</span></h2>
+  	     		<h2 class="title">分类:&nbsp;
+  	     			<c:forEach items="${page.clses}" var = "cls">
+  	     				<span>${cls.className}</span>
+  	     			</c:forEach>
+  	     		</h2>
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
   	     	<div class="sidebar">
