@@ -30,12 +30,10 @@ public class PageDaoImpl implements PageDao
 		String sql = "SELECT PageId, PageTitle, summary, WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId order by WriteTime desc limit  ?,? ";
 			return new JdbcTemplate(dataSource)
 			{
-				
 				@Override
 				public Object doInJob(ResultSet rs) throws SQLException
 				{
 					Page page = null;
-					Classes clss = null;
 					List<Page> pages = new ArrayList<Page>();
 					while(rs.next())
 					{
@@ -44,11 +42,6 @@ public class PageDaoImpl implements PageDao
 						page.setPageTitle(rs.getString(2));
 						page.setSummary(rs.getString(3));
 						page.setWriteTime(DateUtil.getDateString(rs.getTimestamp(4)));
-						clss = new Classes();
-						clss.setClassId(rs.getLong(5));
-						clss.setClassName(rs.getString(6));
-						page.setClss(clss);
-						pages.add(page);
 					}
 					return pages;
 				}
@@ -58,7 +51,8 @@ public class PageDaoImpl implements PageDao
 	@Override
 	public List<Page> getPages(long classId, int start, int count) throws SQLException
 	{
-		String sql = "SELECT PageId,PageTitle,summary, WriteTime ,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.ClassId = ? order by WriteTime desc limit ?,? ";
+		start = start - 1;
+		String sql = "SELECT PageId,PageTitle,summary, WriteTime FROM page where p.ClassId = ? order by WriteTime desc limit ?,? ";
 			return new JdbcTemplate(dataSource)
 			{
 				
@@ -129,9 +123,12 @@ public class PageDaoImpl implements PageDao
 
 	public boolean addPage(Page page) throws SQLException
 	{
-		String sql = "insert into Page(PageTitle,summary,PageContent,WriteTime,ClassId) values(?,?,?,?,?)";
-		Object params[] = new Object[]{page.getPageTitle(),page.getSummary(),page.getPageContent(),page.getWriteTime(),page.getClss().getClassId()};
+		String sql = "insert into Page(PageTitle,summary,PageContent,WriteTime) values(?,?,?,?)";
+		
+		Object params[] = new Object[]{page.getPageTitle(),page.getSummary(),page.getPageContent(),page.getWriteTime()};
+		
 			int result =  (new JdbcTemplateAdapter(this.dataSource)).doCurdJob(sql, params);
+			
 			if(result > 0)
 			{
 				return true;
@@ -139,11 +136,10 @@ public class PageDaoImpl implements PageDao
 			{
 				return false;
 			}
-		
 	}
 	@Override
 	public Page getPage(long pageId) throws SQLException {
-		String sql = "SELECT PageId,PageTitle, pageContent,WriteTime,p.ClassId,c.ClassName FROM page p inner join classes c on p.ClassId = c.ClassId  where p.pageId = ?";
+		String sql = "SELECT PageId,PageTitle, pageContent,WriteTime FROM page where pageId = ?";
 			return new JdbcTemplate(dataSource)
 			{
 				
@@ -151,7 +147,6 @@ public class PageDaoImpl implements PageDao
 				public Object doInJob(ResultSet rs) throws SQLException
 				{	
 					Page page = null;
-					Classes clss = null;
 					if(rs.next())
 					{
 						page = new Page();
@@ -159,10 +154,6 @@ public class PageDaoImpl implements PageDao
 						page.setPageTitle(rs.getString(2));
 						page.setPageContent(rs.getString(3));
 						page.setWriteTime(DateUtil.getDateString(rs.getTimestamp(4)));
-						clss = new Classes();
-						clss.setClassId(rs.getLong(5));
-						clss.setClassName(rs.getString(6));
-						page.setClss(clss);
 					}
 					return page;
 				}
