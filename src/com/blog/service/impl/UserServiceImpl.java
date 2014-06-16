@@ -14,11 +14,6 @@ public class UserServiceImpl implements UserService
 	private DataSource dataSource = null;
 	private UserDao userDao = null;
 	
-	public UserServiceImpl(DataSource ds,UserDao userDao)
-	{
-		this.dataSource = ds;
-		this.userDao = userDao;
-	}
 	@Override
 	public User login(String userName, String password)
 	{
@@ -52,4 +47,5 @@ public class UserServiceImpl implements UserService
 	{
 		this.userDao = userDao;
 	}
+	
 }

@@ -13,4 +13,6 @@ public interface ClassDao {
 	public boolean deleteClass(long classId) throws SQLException;
 	
 	public List<Classes> getAllClass() throws SQLException;
+	
+	public Classes getClass(long classId) throws SQLException;
 }

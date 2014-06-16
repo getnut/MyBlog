@@ -7,10 +7,15 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.blog.service.PageService;
+import com.blog.dao.ClassDao;
+import com.blog.dao.PageClassDao;
 import com.blog.dao.PageDao;
+import com.blog.dao.PageQuery;
 import com.blog.dbutils.DataSourceUtil;
 import com.blog.dbutils.SystemConfigUtils;
+import com.blog.dbutils.TransactionManager;
 import com.blog.entity.Alink;
+import com.blog.entity.Classes;
 import com.blog.entity.Page;
 import com.blog.entity.PageSplitResult;
 
@@ -20,25 +25,38 @@ public class PageServiceImpl implements PageService{
 	
 	private DataSource dataSource = null;
 	private PageDao pageDao = null;
-	
-	public PageServiceImpl (DataSource dataSource,PageDao pageDao)
+	private PageClassDao pageClassDao = null;
+	private TransactionManager transaction = null;
+	private PageQuery pageQuery = null;
+	private ClassDao classDao = null;
+	public PageServiceImpl ()
 	{
-		this.dataSource = dataSource;
-		this.pageDao = pageDao;
 	}
-	//发表文章
+	
+	//添加文章
 	public boolean addPage(Page page)
 	{
 		boolean result = false;
 		try
 		{
-			result = this.pageDao.addPage(page);
+			this.transaction.start();
+			long parentId = this.pageDao.addPage(page);
+			List<Classes> clses = page.getClses();
+			Classes cls = null;
+			for(int i = 0;i < clses.size();i++)
+			{	
+				cls = clses.get(i);
+				this.pageClassDao.addPageClass(parentId,cls.getClassId());
+			}
+			this.transaction.commit();
+			result = true;
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
+			this.transaction.rollback();
 		}finally
 		{
-			DataSourceUtil.close(this.dataSource);
+			this.transaction.close();
 		}
 		return result;
 	}
@@ -109,6 +127,7 @@ public class PageServiceImpl implements PageService{
 		this.createAlink(tailPage, "尾页", alinks);
 		return alinks;
 	}
+	//获取第currentPage页的文章
 	public PageSplitResult getPages(int currentPage)//curPage表示当前的页数
 	{
 		PageSplitResult psr = new PageSplitResult();
@@ -117,7 +136,7 @@ public class PageServiceImpl implements PageService{
 			
 			//总的行数
 			int totalRows= this.pageDao.totalPages();
-			System.out.println("totalRows="+totalRows);
+			
 			//每页的条数
 			int rowsPerPage = Integer.parseInt(SystemConfigUtils.getSystemConfigValue("pages"));
 			//总的页数
@@ -141,8 +160,8 @@ public class PageServiceImpl implements PageService{
 				selectCount = rowsPerPage;
 			}
 			List<Alink> alinks = this.getAlinks(currentPage, rowsPerPage, totalPages);
-			List<Page> pages = this.pageDao.getPages(startRows,selectCount);
-			System.out.println("pages="+pages.size());
+			List<Page> pages = this.pageQuery.getPages(startRows, selectCount);
+			System.out.println("size:"+pages.size());
 			psr.setAlink(alinks);
 			psr.setPages(pages);
 			psr.setTotalPages(totalPages);
@@ -170,15 +189,13 @@ public class PageServiceImpl implements PageService{
 			alinks.add(a);
 		}
 	}
-	public static void main(String[] args) {
-		
-	}
-	@Override
+	
+	//获得文章
 	public Page getPage(long pageId) {
 		Page page = null;
 		try
 		{
-			page = this.pageDao.getPage(pageId);
+			page = this.pageQuery.getPage(pageId);
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
@@ -193,7 +210,10 @@ public class PageServiceImpl implements PageService{
 		boolean result = false;
 		try
 		{
-			result = this.pageDao.deletePage(pageId);
+			this.transaction.start();
+			this.pageDao.deletePage(pageId);
+			this.pageClassDao.deleteByPageId(pageId);
+			result = true;
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
@@ -203,6 +223,85 @@ public class PageServiceImpl implements PageService{
 		}
 		return result;
 	}
+	
+	public List<Classes> getAllClasses()
+	{
+		List<Classes> clses = new ArrayList<Classes>();
+		try
+		{
+			clses = this.classDao.getAllClass();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			DataSourceUtil.close(this.dataSource);
+		}
+		return clses;
+	}
+	//set和get方法
+	
+	public DataSource getDataSource()
+	{
+		return dataSource;
+	}
 
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
+	}
+
+	public PageDao getPageDao()
+	{
+		return pageDao;
+	}
+
+	public void setPageDao(PageDao pageDao)
+	{
+		this.pageDao = pageDao;
+	}
+
+	public PageClassDao getPageClassDao()
+	{
+		return pageClassDao;
+	}
+
+	public void setPageClassDao(PageClassDao pageClassDao)
+	{
+		this.pageClassDao = pageClassDao;
+	}
+
+	public TransactionManager getTransaction()
+	{
+		return transaction;
+	}
+
+	public void setTransaction(TransactionManager transaction)
+	{
+		this.transaction = transaction;
+	}
+
+	public PageQuery getPageQuery()
+	{
+		return pageQuery;
+	}
+
+	public void setPageQuery(PageQuery pageQuery)
+	{
+		this.pageQuery = pageQuery;
+	}
+
+	public ClassDao getClassDao()
+	{
+		return classDao;
+	}
+
+	public void setClassDao(ClassDao classDao)
+	{
+		this.classDao = classDao;
+	}	
+	
 }
 

@@ -2,7 +2,6 @@ package com.blog.controller;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,8 +30,8 @@ public class ClassesController extends HttpServlet
 	public ClassesController()
 	{
 		dataSource = DataSourceFactory.createDataSource();
-		cd = new ClassDaoImpl(dataSource);
-		cs = new ClassServiceImpl(dataSource, cd);
+		cd = new ClassDaoImpl();
+		cs = new ClassServiceImpl();
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException

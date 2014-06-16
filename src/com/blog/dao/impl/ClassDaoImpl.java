@@ -17,10 +17,7 @@ public class ClassDaoImpl implements ClassDao
 
 	private DataSource dataSource = null;
 	
-	public ClassDaoImpl(DataSource dataSource)
-	{
-		this.dataSource = dataSource;
-	}
+
 	@Override
 	public long addClass(Classes cls) throws SQLException {
 		String sql = "insert into classes (className) values(?)";
@@ -59,6 +56,33 @@ public class ClassDaoImpl implements ClassDao
 			}
 		}.<List<Classes>>doJob(sql, new Object[]{});
 	}
-	
-	
+	@Override
+	public Classes getClass(final long classId) throws SQLException
+	{
+		String sql = "select className from classes where classId = ?";
+		return new JdbcTemplate(this.dataSource)
+		{
+			
+			@Override
+			public Object doInJob(ResultSet rs) throws SQLException
+			{
+				Classes cls = null;
+				if(rs.next())
+				{
+					cls = new Classes();
+					cls.setClassName(rs.getString(1));
+					cls.setClassId(classId);
+				}
+				return cls;
+			}
+		}.doJob(sql, new Object[]{classId});
+	}
+	public DataSource getDataSource()
+	{
+		return dataSource;
+	}
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
+	}
 }

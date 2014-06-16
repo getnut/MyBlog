@@ -5,7 +5,16 @@ KindEditor.ready(function(K) {
 		content = content.replace(/(\r\n|\s)/g, " ");//去掉空白字符
 		content = K.escape(content);
 		var action = $("input[name='action']").val();
-		var cls = $("input[name='cls']").val();
+		var clses = "";
+		alert($(document.forms[0]).serialize());
+		$("input[name='cls']").each(function(){
+			var status = $(this).attr("checked");
+			if(status === "checked")
+			{
+				clses+=$(this).val();
+			}
+		});
+		alert(clses);
 		var summary = $(".summary").val();
 		$.ajax({
 			//
@@ -15,7 +24,7 @@ KindEditor.ready(function(K) {
 			 pageTitle:title,
 			 pageContent:content,
 			 action:"add",
-			 cls:cls,
+			 cls:clses,
 			 summary:summary
 			},
 			success:function(text){

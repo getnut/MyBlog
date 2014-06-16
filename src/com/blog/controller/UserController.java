@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -31,14 +32,23 @@ import com.blog.service.impl.UserServiceImpl;
 public class UserController extends HttpServlet {
 
 	private DataSource dataSource = null;
-	private UserDao userDao = null;
-	private UserService userService = null;
+	private UserDaoImpl userDao = null;
+	private UserServiceImpl userService = null;
 	
+	@Override
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		this.dataSource = DataSourceFactory.createDataSource();
+		this.userDao = new UserDaoImpl();
+		this.userDao.setDataSource(dataSource);
+		this.userService = new UserServiceImpl();
+		this.userService.setDataSource(dataSource);
+		this.userService.setUserDao(userDao);
+	}
 	public UserController()
 	{
-		this.dataSource = DataSourceFactory.createDataSource();
-		this.userDao = new UserDaoImpl(dataSource);
-		this.userService = new UserServiceImpl(dataSource, userDao);
+		
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

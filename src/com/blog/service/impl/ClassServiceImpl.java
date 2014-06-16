@@ -16,11 +16,7 @@ public class ClassServiceImpl implements ClassService
 
 	private ClassDao cd = null;
 	private DataSource dataSource = null;
-	public ClassServiceImpl(DataSource dataSource,ClassDao cd)
-	{
-		this.dataSource = dataSource;
-		this.cd = cd;
-	}
+
 	@Override
 	public long addClass(Classes cls)
 	{
@@ -64,6 +60,22 @@ public class ClassServiceImpl implements ClassService
 			ex.printStackTrace();
 		}
 		return result;
+	}
+	public ClassDao getCd()
+	{
+		return cd;
+	}
+	public void setCd(ClassDao cd)
+	{
+		this.cd = cd;
+	}
+	public DataSource getDataSource()
+	{
+		return dataSource;
+	}
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
 	}
 	
 }

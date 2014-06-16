@@ -3,6 +3,7 @@ package com.blog.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +13,18 @@ import javax.sql.DataSource;
 import com.blog.common.ActionType;
 import com.blog.common.Message;
 import com.blog.dao.ClassDao;
+import com.blog.dao.PageClassDao;
 import com.blog.dao.PageDao;
+import com.blog.dao.PageQuery;
 import com.blog.dao.impl.ClassDaoImpl;
+import com.blog.dao.impl.PageClassDaoImpl;
 import com.blog.dao.impl.PageDaoImpl;
+import com.blog.dao.impl.PageQueryImpl;
 import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.JsonUtil;
+import com.blog.dbutils.TransactionManager;
 import com.blog.dbutils.Validation;
 import com.blog.entity.AjaxResponse;
 import com.blog.entity.Classes;
@@ -35,19 +41,42 @@ public class BlogController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	private DataSource dataSource = null;
-	private PageDao pageDao = null;
-	private PageService ps = null;
-	private ClassDao cd = null;
-	private ClassService cs = null;
-	public BlogController()
+	private PageDaoImpl pageDao = null;
+	private PageClassDaoImpl pageClassDao = null;
+	private ClassDaoImpl classDao = null;
+	private PageQueryImpl pageQuery = null;
+	private PageServiceImpl ps = null;
+	private TransactionManager tm = null;
+	@Override
+	public void init(ServletConfig config) throws ServletException
 	{
+		super.init(config);
+		
 		this.dataSource = DataSourceFactory.createDataSource();
-		this.pageDao = new PageDaoImpl(dataSource);
-		this.ps = new PageServiceImpl(this.dataSource,this.pageDao);
-		this.cd = new ClassDaoImpl(this.dataSource);
-		this.cs = new ClassServiceImpl(this.dataSource, this.cd);
+		tm = new TransactionManager(dataSource);
+		//dao
+		this.pageDao = new PageDaoImpl();
+		this.classDao = new ClassDaoImpl();
+		this.pageQuery = new PageQueryImpl();
+		this.pageClassDao = new PageClassDaoImpl();
+		//设置dataSource
+		this.pageDao.setDataSource(this.dataSource);
+		this.classDao.setDataSource(dataSource);
+		this.pageQuery.setDataSource(dataSource);
+		this.pageClassDao.setDataSource(dataSource);
+		//service
+		this.ps = new PageServiceImpl();
+		this.ps.setDataSource(this.dataSource);
+		this.ps.setPageClassDao(pageClassDao);
+		this.ps.setPageDao(pageDao);
+		this.ps.setPageQuery(pageQuery);
+		this.ps.setClassDao(classDao);
+		this.ps.setTransaction(tm);
 	}
 	
+	public BlogController()
+	{
+	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
@@ -71,6 +100,7 @@ public class BlogController extends HttpServlet
 		}else if(ActionType.LIST.equalsIgnoreCase(action))//所有文章类表
 		{
 			this.listAllPage(req, resp);
+			
 		}else if(ActionType.DETAIL.equalsIgnoreCase(action))
 		{
 			this.showPageDetail(req, resp);
@@ -82,7 +112,7 @@ public class BlogController extends HttpServlet
 	//处理添加页面显示
 	private void showAddPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		request.setAttribute("classes", this.cs.getAllClass());
+		request.setAttribute("classes", this.ps.getAllClasses());
 		request.getRequestDispatcher("/dp/manage/page-add.jsp").forward(request, response);
 	}
 	//处理增加文章的操作
@@ -91,14 +121,17 @@ public class BlogController extends HttpServlet
 		String title = request.getParameter("pageTitle");
 		String content = request.getParameter("pageContent");
 		String summary = request.getParameter("summary");
-		long classes = Long.parseLong(request.getParameter("cls"));
+		String classes[] = request.getParameterValues("cls");
 		Page page = new Page();
-		Classes clss = new Classes();
-		clss.setClassId(classes);
+		for(int i = 0;i < classes.length;i++)
+		{
+			Classes cls = new Classes();
+			cls.setClassId(Long.parseLong(classes[i]));
+			page.getClses().add(cls);
+		}
 		page.setPageTitle(title);
 		page.setPageContent(content);
 		page.setWriteTime(DateUtil.getDateString(new Date()));
-		page.setClss(clss);
 		page.setSummary(summary);
 		boolean result = this.ps.addPage(page);
 		AjaxResponse ar = AjaxResponse.getInstance();
@@ -132,7 +165,7 @@ public class BlogController extends HttpServlet
 		/*分页查询的结果*/
 		req.setAttribute("psr", psr);
 		//分类
-		req.setAttribute("classes",this.cs.getAllClass());
+		req.setAttribute("classes",this.ps.getAllClasses());
 		req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 	}
 	//显示文章
