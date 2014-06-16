@@ -58,6 +58,12 @@ public class UserController extends HttpServlet {
 			User user = userService.login(userName, password);
 			AjaxResponse aRes = AjaxResponse.getInstance();//响应对象
 			aRes.setResponseType(ResponseType.LOGIN);
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(null == user)//登录失败
 			{
 				aRes.setStatus(StatusCode.FAIL);
