@@ -36,7 +36,6 @@
 	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="fenye-bottom">
 		  	     		 	<c:if test="${psr != null}">
-		  	     		 	   
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
@@ -89,10 +88,8 @@
   	     	</div>
   	     		 <div style="clear:both;"></div>
   	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作</a>
+		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
   	     	     </div>
 			</div>
-  	     	
-  	     	 
   </body>
 </html>

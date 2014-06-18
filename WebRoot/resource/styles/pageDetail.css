@@ -1,4 +1,7 @@
 
+.content{
+	width:
+}
 .page-detail{
 	float:left;
 	width:700px;
@@ -24,7 +27,7 @@
 	border-radius:5px;
 }
 .page-detail h1.title{
-	font-size:16px;
+	font-size:26px;
 	margin-top:10px;
 }
 .page-detail .title{
@@ -33,8 +36,7 @@
 	font-size:16px;
 }
 .page-detail .page-d-r{
-	margin-top:20px;
-	margin-bottom:20px;
+	line-height:180%;
 }
  .sidebar{
 	width:300px;

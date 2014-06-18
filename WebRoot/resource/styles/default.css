@@ -1,4 +1,8 @@
-*{font-family: '微软雅黑',Georgia,Serif;font-size:15px;margin:0px;padding:0px;}
+body{font-family: '微软雅黑',Georgia,Serif;font-size:13px;}
+p,h1,div,h2,ul,li,table,tr,td,dl,dt,dd{
+	margin:0px;
+	padding:0px;
+}
 ul {list-style-type:none;}
 body{
 	background-color:#F1F2F6;
