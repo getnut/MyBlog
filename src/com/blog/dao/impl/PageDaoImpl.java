@@ -26,7 +26,6 @@ public class PageDaoImpl implements PageDao
 		String sql = "SELECT PageId, PageTitle, summary, WriteTime FROM page  order by WriteTime desc limit ?,? ";
 			return new JdbcTemplate(dataSource)
 			{
-				
 				@Override
 				public Object doInJob(ResultSet rs) throws SQLException
 				{
@@ -38,15 +37,13 @@ public class PageDaoImpl implements PageDao
 						page.setPageTitle(rs.getString(2));
 						page.setSummary(rs.getString(3));
 						page.setWriteTime(DateUtil.getDateString(rs.getTimestamp(4)));
-						pages.add(page);
 					}
 					return pages;
 				}
 			}.<List<Page>>doJob(sql, new Object[]{start,count});
 	}
 	
-	//多少个文章
-	@Override
+	//多少个文�	@Override
 	public int totalPages() throws SQLException
 	{
 		String sql = "select count(PageId) from page";

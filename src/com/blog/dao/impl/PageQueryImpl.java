@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import com.blog.dao.PageQuery;
+import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.JdbcTemplate;
 import com.blog.entity.Classes;
 import com.blog.entity.Page;
@@ -24,7 +25,7 @@ public class PageQueryImpl implements PageQuery
 	@Override
 	public Page getPage(long pageId) throws SQLException
 	{
-		String sql = "select  p.PageTitle, p.summary, p_c.classId, c.ClassName from page p inner join page_class p_c on p.PageId = p_c.pageId inner join classes c on p_c.classId = c.ClassId where p.pageId = ?";
+		String sql = "select  p.PageTitle, p.pageContent, p_c.classId, c.ClassName from page p inner join page_class p_c on p.PageId = p_c.pageId inner join classes c on p_c.classId = c.ClassId where p.pageId = ?";
 		return new JdbcTemplate(this.dataSource)
 		{
 			
@@ -39,7 +40,7 @@ public class PageQueryImpl implements PageQuery
 					{
 						page = new Page();
 						page.setPageTitle(rs.getString(1));
-						page.setSummary(rs.getString(2));
+						page.setPageContent(rs.getString(2));
 					}
 					cls = new Classes();
 					cls.setClassId(rs.getLong(3));
@@ -55,7 +56,7 @@ public class PageQueryImpl implements PageQuery
 	public List<Page> getPages(int start, int count) throws SQLException
 	{
 		start = start - 1;
-		String sql = "select p.pageId,p.PageTitle, p.summary, p_c.classId, c.ClassName from page p inner join page_class p_c on p.PageId = p_c.pageId inner join classes c on p_c.classId = c.ClassId limit ?,?";
+		String sql = "select p.pageId,p.PageTitle,p.summary, p.writeTime from page p order by p.WriteTime desc limit ?,?";
 		return new JdbcTemplate(this.dataSource)
 		{
 			
@@ -63,39 +64,43 @@ public class PageQueryImpl implements PageQuery
 			public Object doInJob(ResultSet rs) throws SQLException
 			{
 				List<Page> pages= new ArrayList<Page>();
-				Map<Long,Classes> classCache = new HashMap<Long,Classes>();
-				Map<Long,Page> pageCache = new HashMap<Long, Page>();
 				Page page = null;
-				Classes cls = null;
 				while(rs.next())
 				{
-					Long pageId = rs.getLong(1);
-					page = pageCache.get(pageId);
-					if(page == null)
-					{
-						page = new Page();
-						page.setPageId(pageId);
-						page.setPageTitle(rs.getString(2));
-						page.setSummary(rs.getString(3));
-						pageCache.put(pageId, page);
-					}
-					Long classId = rs.getLong(4);
-					cls = classCache.get(classId);
-					if(cls == null)
-					{
-						cls = new Classes();
-						cls.setClassId(classId);
-						cls.setClassName(rs.getString(5));
-						classCache.put(classId, cls);
-					}
-					page.getClses().add(cls);
+					page = new Page();
+					page.setPageId(rs.getLong(1));
+					page.setPageTitle(rs.getString(2));
+					page.setSummary(rs.getString(3));
+					page.setWriteTime(DateUtil.getDateString(rs.getTimestamp(4)));
 					pages.add(page);
 				}
+				System.out.println("size="+pages.size());
 				return pages;
 			}
 		}.<List<Page>>doJob(sql, new Object[]{start,count});
 	}
 	
+	@SuppressWarnings("unused")
+	private List<Classes> getClassesByPageId(long pageId) throws SQLException
+	{
+		String sql = "select  c.classId,c.ClassName from page_class p_c inner join classes c on c.classId = p_c.classId where pageId = ?"; 
+		return new JdbcTemplate(this.dataSource) {
+			
+			@Override
+			public Object doInJob(ResultSet rs) throws SQLException {
+				List<Classes> clses = new ArrayList<Classes>();
+				Classes cls = null;
+				while(rs.next())
+				{
+					cls = new Classes();
+					cls.setClassId(rs.getLong(1));
+					cls.setClassName(rs.getString(2));
+					clses.add(cls);
+				}
+				return clses;
+			}
+		}.doJob(sql, new Object[]{pageId});
+	}
 	@Override
 	public List<Page> getPagesOfClass(long classId,int start, int count) throws SQLException
 	{
@@ -107,11 +112,11 @@ public class PageQueryImpl implements PageQuery
 			public Object doInJob(ResultSet rs) throws SQLException
 			{
 				List<Page> pages= new ArrayList<Page>();
-				Page page = null;
-				Classes cls = null;
+
 				while(rs.next())
 				{	
-					
+					Page page = null;
+					Classes cls = null;
 					page = new Page();
 					page.setPageId(rs.getLong(1));
 					page.setPageTitle(rs.getString(2));
@@ -130,7 +135,6 @@ public class PageQueryImpl implements PageQuery
 			}
 		}.<List<Page>>doJob(sql, new Object[]{classId,start,count});
 	}
-
 	public DataSource getDataSource()
 	{
 		return dataSource;

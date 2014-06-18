@@ -47,7 +47,8 @@ public class BlogController extends HttpServlet
 	private PageQueryImpl pageQuery = null;
 	private PageServiceImpl ps = null;
 	private TransactionManager tm = null;
-	@Override
+	private ClassServiceImpl cs = null;
+	//组长对象
 	public void init(ServletConfig config) throws ServletException
 	{
 		super.init(config);
@@ -72,6 +73,9 @@ public class BlogController extends HttpServlet
 		this.ps.setPageQuery(pageQuery);
 		this.ps.setClassDao(classDao);
 		this.ps.setTransaction(tm);
+		this.cs = new ClassServiceImpl();
+		this.cs.setDataSource(this.dataSource);
+		this.cs.setCd(this.classDao);
 	}
 	
 	public BlogController()
@@ -112,7 +116,7 @@ public class BlogController extends HttpServlet
 	//处理添加页面显示
 	private void showAddPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		request.setAttribute("classes", this.ps.getAllClasses());
+		request.setAttribute("classes", this.cs.getAllClass());
 		request.getRequestDispatcher("/dp/manage/page-add.jsp").forward(request, response);
 	}
 	//处理增加文章的操作
@@ -121,7 +125,8 @@ public class BlogController extends HttpServlet
 		String title = request.getParameter("pageTitle");
 		String content = request.getParameter("pageContent");
 		String summary = request.getParameter("summary");
-		String classes[] = request.getParameterValues("cls");
+		String classes[] = request.getParameter("cls").split(":+");
+		System.out.println(content);
 		Page page = new Page();
 		for(int i = 0;i < classes.length;i++)
 		{
@@ -146,7 +151,7 @@ public class BlogController extends HttpServlet
 		}
 		response.getWriter().write(JsonUtil.toJson(ar));
 	}
-	//显示文章
+	//显示文章列表
 	private void listAllPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		
