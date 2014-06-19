@@ -4,7 +4,7 @@
 <urlrewrite>
     <rule>
     	<!-- 博客显示 -->
-        <from>^/blog/detail/([0-9]+)</from>
+        <from>^/blog/detail-([0-9]+).html</from>
         <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
 	<rule>

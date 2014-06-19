@@ -25,7 +25,7 @@
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="${context}/blog/detail/${page.pageId}" target="_blank">${page.pageTitle}</a></dt>
+		  	     					<dt class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></dt>
 		  	     					<dd>
 		  	     						<p class="blog-content">${page.summary}<span>.....</span></p>
 		  	     					</dd>
@@ -36,7 +36,6 @@
 	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="fenye-bottom">
 		  	     		 	<c:if test="${psr != null}">
-		  	     		 	   
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
@@ -56,7 +55,7 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     				<li><a href="${context}/blog/add/"  target="_blank" class="add">添加新文章</a></li>
+  	     				<li><a href="${context}/blog/add/"  target="_self" class="add">添加新文章</a></li>
   	     				<li><a href="${context}/manage/list/1"  target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
@@ -89,10 +88,8 @@
   	     	</div>
   	     		 <div style="clear:both;"></div>
   	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作</a>
+		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
   	     	     </div>
 			</div>
-  	     	
-  	     	 
   </body>
 </html>

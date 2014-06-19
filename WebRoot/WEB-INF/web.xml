@@ -53,6 +53,12 @@
     <servlet-name>ClassesController</servlet-name>
     <servlet-class>com.blog.controller.ClassesController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CacheContainer</servlet-name>
+    <servlet-class>com.blog.cache.CacheContainer</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
 
 
   <servlet-mapping>

@@ -1,10 +1,16 @@
 package com.blog.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page
+public class Page implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6909528525506562952L;
+
 	private long pageId;
 	
 	private String pageTitle;

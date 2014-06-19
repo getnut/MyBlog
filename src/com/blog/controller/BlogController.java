@@ -12,10 +12,6 @@ import javax.sql.DataSource;
 
 import com.blog.common.ActionType;
 import com.blog.common.Message;
-import com.blog.dao.ClassDao;
-import com.blog.dao.PageClassDao;
-import com.blog.dao.PageDao;
-import com.blog.dao.PageQuery;
 import com.blog.dao.impl.ClassDaoImpl;
 import com.blog.dao.impl.PageClassDaoImpl;
 import com.blog.dao.impl.PageDaoImpl;
@@ -32,8 +28,6 @@ import com.blog.entity.Page;
 import com.blog.entity.PageSplitResult;
 import com.blog.entity.ResponseType;
 import com.blog.entity.StatusCode;
-import com.blog.service.ClassService;
-import com.blog.service.PageService;
 import com.blog.service.impl.ClassServiceImpl;
 import com.blog.service.impl.PageServiceImpl;
 
@@ -48,7 +42,7 @@ public class BlogController extends HttpServlet
 	private PageServiceImpl ps = null;
 	private TransactionManager tm = null;
 	private ClassServiceImpl cs = null;
-	//组长对象
+	//组装对象
 	public void init(ServletConfig config) throws ServletException
 	{
 		super.init(config);
@@ -184,6 +178,7 @@ public class BlogController extends HttpServlet
 			return;
 		}
 		long pageId = Long.parseLong(tmp);
+		
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
