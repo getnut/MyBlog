@@ -10,5 +10,5 @@ public interface ClassService
 	
 	public boolean removeClass(long classId);
 	
-	public List<Classes> getAllClass();
+	public List<Classes> getAllClasses();
 }

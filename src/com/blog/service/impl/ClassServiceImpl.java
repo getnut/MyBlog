@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
-
 import com.blog.dao.ClassDao;
 import com.blog.dbutils.DataSourceUtil;
 import com.blog.entity.Classes;
 import com.blog.service.ClassService;
-
+import com.blog.dao.ClassQuery;
 public class ClassServiceImpl implements ClassService
 {
 
 	private ClassDao cd = null;
+	private ClassQuery classQuery = null;
 	private DataSource dataSource = null;
 
 	@Override
@@ -35,12 +35,12 @@ public class ClassServiceImpl implements ClassService
 	}
 
 	@Override
-	public List<Classes> getAllClass()
+	public List<Classes> getAllClasses()
 	{
 		List<Classes> clses = new ArrayList<Classes>();
 		try
 		{
-			clses = this.cd.getAllClass();
+			clses =  this.classQuery.getAllClasses();
 		}catch(SQLException ex)
 		{
 			ex.printStackTrace();
@@ -77,5 +77,14 @@ public class ClassServiceImpl implements ClassService
 	{
 		this.dataSource = dataSource;
 	}
-	
+
+	public ClassQuery getClassQuery()
+	{
+		return classQuery;
+	}
+
+	public void setClassQuery(ClassQuery classQuery)
+	{
+		this.classQuery = classQuery;
+	}
 }

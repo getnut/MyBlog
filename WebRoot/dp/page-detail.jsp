@@ -40,18 +40,9 @@
   	 			<!-- 分类start -->
   	     		<dl class="sidebar-common classes">
   	     			<dt>分类</dt>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网络(2)</a></dd>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网络(2)</a></dd>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
-  	     			<dd><a href="#">计算机网络(2)</a></dd>
+  	     			<c:forEach items="${classes}" var="cls">
+  	     				<dd><a href="#">${cls.className}(${cls.count })</a></dd>
+  	     			</c:forEach>
   	     		</dl>
   	     		<!-- 分类end -->
   	     		<!--  最新文章 start -->

@@ -20,5 +20,5 @@
         name:指定对象的完整名
      -->
     <cache name="classes" maxElementsInMemory="10" eternal="false"
-        timeToIdleSeconds="5" timeToLiveSeconds="3" overflowToDisk="true" />
+        timeToIdleSeconds="120" timeToLiveSeconds="600" overflowToDisk="true" />
 </ehcache>

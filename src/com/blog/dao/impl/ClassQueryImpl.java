@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.blog.cache.CacheData;
 import com.blog.dao.ClassQuery;
 import com.blog.dbutils.JdbcTemplate;
 import com.blog.entity.Classes;
@@ -34,6 +35,8 @@ public class ClassQueryImpl implements ClassQuery {
 					tmp.setCount(rs.getLong(3));
 					clses.add(tmp);
 				}
+				System.out.println("加入到缓存中....");
+				CacheData.put(CacheData.classCache, "clses", clses);
 				return clses;
 			}
 		}.doJob(sql, new Object[]{});

@@ -223,28 +223,6 @@ public class PageServiceImpl implements PageService{
 		}
 		return result;
 	}
-	//其中classcount里面有值
-	public List<Classes> getAllClasses()
-	{
-		List<Classes> clses = null;
-		try
-		{
-			clses = this.classDao.getAllClass();
-			int size = clses.size();
-			for(int i = 0;i < size;i++)
-			{
-				Classes t = clses.get(i);
-				t.setCount(this.pageClassDao.totalPageOfClass(t.getClassId()));
-			}
-		}catch(SQLException ex)
-		{
-			ex.printStackTrace();
-		}finally
-		{
-			DataSourceUtil.close(this.dataSource);
-		}
-		return clses;
-	}
 	//set和get方法
 	
 	public DataSource getDataSource()

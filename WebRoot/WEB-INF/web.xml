@@ -54,13 +54,10 @@
     <servlet-class>com.blog.controller.ClassesController</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>CacheContainer</servlet-name>
-    <servlet-class>com.blog.cache.CacheContainer</servlet-class>
+    <servlet-name>CacheInit</servlet-name>
+    <servlet-class>com.blog.cache.CacheInit</servlet-class>
     <load-on-startup>2</load-on-startup>
   </servlet>
-
-
-
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
