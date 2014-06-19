@@ -3,12 +3,8 @@ package com.blog.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.sql.DataSource;
-
 import com.blog.dao.PageQuery;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.JdbcTemplate;
@@ -19,8 +15,6 @@ public class PageQueryImpl implements PageQuery
 {
 
 	private DataSource dataSource = null;
-	
-
 	
 	@Override
 	public Page getPage(long pageId) throws SQLException
@@ -74,7 +68,6 @@ public class PageQueryImpl implements PageQuery
 					page.setWriteTime(DateUtil.getDateString(rs.getTimestamp(4)));
 					pages.add(page);
 				}
-				System.out.println("size="+pages.size());
 				return pages;
 			}
 		}.<List<Page>>doJob(sql, new Object[]{start,count});

@@ -1,7 +1,14 @@
 package com.blog.entity;
 
-public class Classes
+import java.io.Serializable;
+
+public class Classes implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5274726638880986796L;
+
 	private long classId;
 	
 	private String className;

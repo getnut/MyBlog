@@ -33,7 +33,7 @@
   	     	<div class="sidebar">
   	     		<div class="add-page">
   	     			<ul>
-  	     			<li><a href="${context}/manage/addPage.html"  target="_blank" class="add">添加新文章</a></li>
+  	     			<li><a href="${context}/blog/add/"  target="_blank" class="add">添加新文章</a></li>
   	     				<li><a href="${context}/manage/manage.html"  target="_blank"  class="manage">管理博客</a></li>
   	     			</ul>
   	     		</div>
