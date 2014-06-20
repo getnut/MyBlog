@@ -19,6 +19,7 @@ KindEditor.ready(function(K) {
 				}
 			}
 		});
+		alert(clses);
 		$.ajax({
 			type:"post",
 			url:"/MyBlog/blog",

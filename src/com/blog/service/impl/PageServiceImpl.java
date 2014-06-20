@@ -40,13 +40,13 @@ public class PageServiceImpl implements PageService{
 		try
 		{
 			this.transaction.start();
-			long parentId = this.pageDao.addPage(page);
+			long pageId = this.pageDao.addPage(page);
 			List<Classes> clses = page.getClses();
 			Classes cls = null;
 			for(int i = 0;i < clses.size();i++)
 			{	
 				cls = clses.get(i);
-				this.pageClassDao.addPageClass(parentId,cls.getClassId());
+				this.pageClassDao.addPageClass(pageId,cls.getClassId());
 			}
 			this.transaction.commit();
 			result = true;

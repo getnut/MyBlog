@@ -1,6 +1,7 @@
 package com.blog.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,7 @@ import com.blog.entity.StatusCode;
 import com.blog.service.impl.ClassServiceImpl;
 import com.blog.service.impl.PageServiceImpl;
 import com.blog.dao.impl.ClassQueryImpl;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 public class BlogController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -126,7 +128,7 @@ public class BlogController extends HttpServlet
 		String content = request.getParameter("pageContent");
 		String summary = request.getParameter("summary");
 		String classes[] = request.getParameter("cls").split(":+");
-		System.out.println(content);
+		System.out.println(Arrays.toString(classes));
 		Page page = new Page();
 		for(int i = 0;i < classes.length;i++)
 		{

@@ -9,23 +9,15 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-		<link type="text/css" rel="stylesheet"
-			href="${context}/resource/styles/default.css" />
-		<link type="text/css" rel="stylesheet"
-			href="${context}/resource/styles/common.css" />
-		<link type="text/css" rel="stylesheet"
-			href="${context}/resource/styles/addPage.css" />
-			
-			<link href="${context}/kd/plugins/code/prettify.css"
-			type="text/css" rel="stylesheet" />
-			
-		<script type="text/javascript"
-			src="${context}/resource/scripts/jquery-1.8.3.js"></script>
+		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
+		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
+		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/addPage.css" />
+		<link href="${context}/kd/plugins/code/prettify.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
 		<script charset="utf-8" src="${context}/kd/kindeditor-min.js"></script>
 		<script charset="utf-8" src="${context}/kd/lang/zh_CN.js"></script>
 		<script charset="utf-8" src="${context}/kd/plugins/code/prettify.js"></script>
 		<script type="text/javascript">
-
 				var editor;
 				KindEditor.ready(function(K) {
 					editor = K.create('textarea[name="page-content"]', {
@@ -41,16 +33,14 @@
 						         'insertfile', 'table', 'hr', 'emoticons','anchor', 'link', 'unlink']
 					});
 					prettyPrint();
-				});
-				
-				</script>
+				});	
+		</script>
 	</head>
 
 	<body>
 		<div class="content">
 			<div class="head">
-				<a class="logo" href="#"><img
-						src="${context}/resource/images/logo-.png" alt="张雷的博客" />
+				<a class="logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客" />
 				</a>
 			</div>
 			<div class="add-content">
@@ -60,7 +50,7 @@
 						<td width="70px"><label>文章标题:</label></td><td><input type="text" name="pageTitle" class="pageTitle" /></td>
 					</tr>
 					<tr class="dl-c">
-						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc">ddd</textarea></td>
+						<td>文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc"></textarea></td>
 					</tr>
 					<tr class="dl-c">
 						<td>文章分类:</td>
