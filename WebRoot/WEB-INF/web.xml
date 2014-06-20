@@ -56,6 +56,10 @@
   <servlet>
     <servlet-name>CacheContainer</servlet-name>
     <servlet-class>com.blog.cache.CacheContainer</servlet-class>
+    <init-param>
+    	<param-name>cache</param-name>
+    	<param-value>ehcache.xml</param-value>
+    </init-param>
     <load-on-startup>2</load-on-startup>
   </servlet>
 
