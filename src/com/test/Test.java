@@ -13,7 +13,10 @@ import com.google.gson.Gson;
 
 public class Test {
 
-	
+static
+{
+	System.out.println("fuckfuckfuck!!!!!!!!!!!");
+}
 	public static void main(String[] args) 
 	{
 		

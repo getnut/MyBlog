@@ -2,6 +2,7 @@ package com.blog.controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.blog.cache.CacheData;
 import com.blog.common.ActionType;
 import com.blog.common.Message;
 import com.blog.dao.impl.ClassDaoImpl;
@@ -30,7 +32,7 @@ import com.blog.entity.ResponseType;
 import com.blog.entity.StatusCode;
 import com.blog.service.impl.ClassServiceImpl;
 import com.blog.service.impl.PageServiceImpl;
-
+import com.blog.dao.impl.ClassQueryImpl;
 public class BlogController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -42,6 +44,7 @@ public class BlogController extends HttpServlet
 	private PageServiceImpl ps = null;
 	private TransactionManager tm = null;
 	private ClassServiceImpl cs = null;
+	private ClassQueryImpl classQuery = null;
 	//组装对象
 	public void init(ServletConfig config) throws ServletException
 	{
@@ -54,11 +57,13 @@ public class BlogController extends HttpServlet
 		this.classDao = new ClassDaoImpl();
 		this.pageQuery = new PageQueryImpl();
 		this.pageClassDao = new PageClassDaoImpl();
+		this.classQuery = new ClassQueryImpl();
 		//设置dataSource
 		this.pageDao.setDataSource(this.dataSource);
 		this.classDao.setDataSource(dataSource);
 		this.pageQuery.setDataSource(dataSource);
 		this.pageClassDao.setDataSource(dataSource);
+		this.classQuery.setDataSource(this.dataSource);
 		//service
 		this.ps = new PageServiceImpl();
 		this.ps.setDataSource(this.dataSource);
@@ -70,6 +75,7 @@ public class BlogController extends HttpServlet
 		this.cs = new ClassServiceImpl();
 		this.cs.setDataSource(this.dataSource);
 		this.cs.setCd(this.classDao);
+		this.cs.setClassQuery(classQuery);
 	}
 	
 	public BlogController()
@@ -110,7 +116,7 @@ public class BlogController extends HttpServlet
 	//处理添加页面显示
 	private void showAddPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		request.setAttribute("classes", this.cs.getAllClass());
+		request.setAttribute("classes", this.cs.getAllClasses());
 		request.getRequestDispatcher("/dp/manage/page-add.jsp").forward(request, response);
 	}
 	//处理增加文章的操作
@@ -163,8 +169,17 @@ public class BlogController extends HttpServlet
 		PageSplitResult psr = this.ps.getPages(currentPage);
 		/*分页查询的结果*/
 		req.setAttribute("psr", psr);
+		List<Classes> clses = CacheData.<List<Classes>>get(CacheData.classCache, "clses");
+		if(null == clses)
+		{
+			clses = this.cs.getAllClasses();
+			System.out.println("从数据库中拿！");
+		}else
+		{
+			System.out.println("从缓存中拿！");
+		}
 		//分类
-		req.setAttribute("classes",this.ps.getAllClasses());
+		req.setAttribute("classes",clses);
 		req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 	}
 	//显示文章
@@ -182,6 +197,17 @@ public class BlogController extends HttpServlet
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
+		List<Classes> clses = CacheData.<List<Classes>>get(CacheData.classCache, "clses");
+		if(null == clses)
+		{
+			clses = this.cs.getAllClasses();
+			System.out.println("从数据库中拿！");
+		}else
+		{
+			System.out.println("从缓存中拿！");
+		}
+		//分类
+		req.setAttribute("classes",clses);
 		req.getRequestDispatcher("dp/page-detail.jsp").forward(req, resp);
 	}
 }

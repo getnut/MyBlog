@@ -56,7 +56,7 @@ public class ClassesController extends HttpServlet
 	
 	private void listClass(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		List<Classes> lists = this.cs.getAllClass();
+		List<Classes> lists = this.cs.getAllClasses();
 		req.setAttribute("classes", lists);
 		req.getRequestDispatcher("/dp/manage/manage-classes.jsp").forward(req, resp);
 	}
