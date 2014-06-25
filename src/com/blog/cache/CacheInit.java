@@ -23,7 +23,6 @@ public class CacheInit extends HttpServlet {
 			input.close();
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		CacheData.classCache = CacheData.cm.getCache("classes");

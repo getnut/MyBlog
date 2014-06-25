@@ -58,6 +58,13 @@
     <servlet-class>com.blog.cache.CacheInit</servlet-class>
     <load-on-startup>2</load-on-startup>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>VelocityTest</servlet-name>
+    <servlet-class>com.test.VelocityTest</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
     <url-pattern>/jt</url-pattern>
@@ -77,6 +84,10 @@
   <servlet-mapping>
     <servlet-name>ClassesController</servlet-name>
     <url-pattern>/manage/class</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VelocityTest</servlet-name>
+    <url-pattern>/VT</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
