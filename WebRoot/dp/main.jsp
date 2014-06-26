@@ -53,21 +53,8 @@
   	     		</div>
   	     	</div>
   	     	<div class="sidebar">
-  	     		<div class="add-page">
-  	     			<ul>
-  	     				<li><a href="${context}/blog/add/"  target="_self" class="add">添加新文章</a></li>
-  	     				<li><a href="${context}/manage/list/1"  target="_blank"  class="manage">管理博客</a></li>
-  	     			</ul>
-  	     		</div>
-  	 			<!-- 分类start -->
-  	     		<dl class="sidebar-common classes">
-  	     			<dt>分类</dt>
-  	     			<c:forEach items="${classes}" var="cls">
-  	     				<dd><a href="#">${cls.className}(${cls.count })</a></dd>
-  	     			</c:forEach>
-  	     		</dl>
-  	     		<!-- 分类end -->
-  	     		<!--  最新文�start -->
+  	 			<%@page include=""%>
+  	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最新文摘</h1>
   	     			<dl>

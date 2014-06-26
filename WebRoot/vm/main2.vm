@@ -1,0 +1,10 @@
+
+  <hr/>
+  <div>	
+		<ul>
+   		#foreach($stu in $students)
+			<li>$stu.name</li>
+		#end
+		</ul>
+  </div>
+

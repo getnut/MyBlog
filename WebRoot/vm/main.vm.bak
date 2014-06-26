@@ -1,0 +1,11 @@
+
+  
+  <body>	
+		<ul>
+   		#foreach($stu in $students)
+			<li>$stu.name</li>
+		#end
+		</ul>
+		#include("main2.vm");
+  </body>
+</html>
