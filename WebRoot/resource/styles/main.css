@@ -30,15 +30,7 @@
 	text-indent:10px;
 	line-height:40px;
 	font-weight:bold;
-	border: none;
 	border-bottom: 1px solid #efefef;
-	border-radius: 5px 5px 0 0;
-	background: #ffffff;
-	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
-	background: -moz-linear-gradient(top,#ffffff,#fafafa);
-	background: -ms-linear-gradient(top,#ffffff,#fafafa);
-	background: -o-linear-gradient(top,#ffffff,#fafafa);
-	background: linear-gradient(top,#ffffff,#fafafa);
 	font-size:14px;
 }
 .main .blog-title a{
@@ -55,7 +47,7 @@
 	margin-bottom:5px;
 	border:2px solid #fff;
 	padding:5px;
-	border-bottom:2px dotted #ddd;
+	border-bottom:1px dotted #ddd;
 }
 .main .blog-item  p.blog-content{
 	text-indent:30px;
@@ -86,40 +78,10 @@
 	padding-bottom:10px;
 	margin-bottom:10px;
 }
-.main .add-page{
-	background-color:#0099FF;
-	border-radius: 5px;
-	margin-bottom:10px;
-	height:40px;
-}
-
-.main .add-page li{
-	float:left;
-}
-
-.main .add-page a{
-	display:block;
-	font-weight:bold;
-	color:#fff;
-	width:150px;
-	text-align:center;
-	line-height:40px;
-	background-size:30px 30px;
-}
-.main .add-page a.add{
-	background:url(../images/add.png) no-repeat 5px 38%;
-	
-}
-.main .add-page a.manage{
-	background:url(../images/manage.png) no-repeat 5px 38%;
-}
 .main .classes dt{
 	padding:10px;
-	background-color:#0099FF;
-	color:#FFF;
-	border-radius: 5px 5px 0 0;
 	font-weight:bold;
-	text-align:center;
+	border-bottom:1px solid #efefef;
 	font-size:13px;
 }
 .main .classes a{
@@ -133,16 +95,8 @@
 	background-color:#fff;
 	border-radius: 5px 5px 0 0;
 	font-weight:bold;
-	text-align:center;
 	border: none;
 	border-bottom: 1px solid #efefef;
-	border-radius: 5px 5px 0 0;
-	background: #ffffff;
-	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
-	background: -moz-linear-gradient(top,#ffffff,#fafafa);
-	background: -ms-linear-gradient(top,#ffffff,#fafafa);
-	background: -o-linear-gradient(top,#ffffff,#fafafa);
-	background: linear-gradient(top,#ffffff,#fafafa);
 	font-size:13px;
 }
 .main .sidebar-common2 dl{
@@ -163,8 +117,7 @@
 	background-color:#fff;
 }
  .fenye-bottom .currentPage{
-	background-color:#0099FF;
-	color:#fff;
+	background-color:#ccc;
 }
  .fenye-bottom a:hover{
 	border-color:#0099FF;

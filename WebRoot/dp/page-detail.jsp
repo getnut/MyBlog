@@ -38,12 +38,9 @@
   	     			</ul>
   	     		</div>
   	 			<!-- 分类start -->
-  	     		<dl class="sidebar-common classes">
-  	     			<dt>分类</dt>
-  	     			<c:forEach items="${classes}" var="cls">
-  	     				<dd><a href="#">${cls.className}(${cls.count })</a></dd>
-  	     			</c:forEach>
-  	     		</dl>
+  	     		
+  	 				<%@include file="../sp/classes.html"%>
+  	 			
   	     		<!-- 分类end -->
   	     		<!--  最新文章 start -->
   	     		<div class="sidebar-common sidebar-common2">

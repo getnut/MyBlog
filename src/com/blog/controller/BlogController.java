@@ -3,7 +3,9 @@ package com.blog.controller;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -23,6 +25,7 @@ import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.JsonUtil;
+import com.blog.dbutils.ToHtml;
 import com.blog.dbutils.TransactionManager;
 import com.blog.dbutils.Validation;
 import com.blog.entity.AjaxResponse;
@@ -180,8 +183,10 @@ public class BlogController extends HttpServlet
 		{
 			System.out.println("从缓存中拿！");
 		}
-		//分类
-		req.setAttribute("classes",clses);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("classes", clses);
+		boolean result = ToHtml.toHtml("classes.vm","E:/apache-tomcat-6.0.35/webapps/MyBlog/sp/classes.html",map);
+		System.out.println("result="+result);
 		req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 	}
 	//显示文章
@@ -199,17 +204,6 @@ public class BlogController extends HttpServlet
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
-		List<Classes> clses = CacheData.<List<Classes>>get(CacheData.classCache, "clses");
-		if(null == clses)
-		{
-			clses = this.cs.getAllClasses();
-			System.out.println("从数据库中拿！");
-		}else
-		{
-			System.out.println("从缓存中拿！");
-		}
-		//分类
-		req.setAttribute("classes",clses);
 		req.getRequestDispatcher("dp/page-detail.jsp").forward(req, resp);
 	}
 }

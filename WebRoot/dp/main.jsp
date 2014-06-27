@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shotcut icon" href="../favicon.ico" type="image/x-icon" />  
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
@@ -53,7 +54,9 @@
   	     		</div>
   	     	</div>
   	     	<div class="sidebar">
-  	 			<%@page include=""%>
+  	 			<!-- 分类 -->
+  	 				<%@include file="../sp/classes.html"%>
+  	 			<!--  -->
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最新文摘</h1>
@@ -75,7 +78,7 @@
   	     	</div>
   	     		 <div style="clear:both;"></div>
   	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
+		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作者</a>&nbsp;|&nbsp;<a href="/MyBlog/manage/">管理博客</a>
   	     	     </div>
 			</div>
   </body>

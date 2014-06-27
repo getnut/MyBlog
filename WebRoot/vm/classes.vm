@@ -1,7 +1,8 @@
-	<ul>
-	#foreach($stu in $students)
-		<li>$stu.name</li>
+<!-- 生成classes的模板  -->
+<dl class="classes">
+	<dt>分类dddddddddddddddddddddddd</dt>
+	#foreach($cls in $classes)
+		<dd>${cls.className}(${cls.count})</dd>
 	#end
-	</ul>
-	#include("main2.vm");
+</dl>
 
