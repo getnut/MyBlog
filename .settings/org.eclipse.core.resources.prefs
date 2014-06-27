@@ -1,5 +1,9 @@
-#Wed Jun 11 17:51:18 CST 2014
+#Fri Jun 27 17:14:08 CST 2014
 eclipse.preferences.version=1
+encoding//WebRoot/resource/styles/common.css=UTF-8
 encoding//WebRoot/resource/styles/default.css=UTF-8
+encoding//WebRoot/resource/styles/main.css=UTF-8
+encoding//WebRoot/resource/styles/pageDetail.css=UTF-8
+encoding//WebRoot/resource/styles/right-bar.css=UTF-8
 encoding//WebRoot/sp/login.htm=UTF-8
 encoding/<project>=UTF-8
