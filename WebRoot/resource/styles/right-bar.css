@@ -1,0 +1,42 @@
+ .sidebar{
+	width:290px;
+	position:absolute;
+	min-height:400px;
+	margin-top:10px;
+	font-family:'微软雅黑';
+	border:1px solid #efefef;
+	border-left:none;
+	position:absolute;
+	right:0px;
+	top:0px;
+}
+
+.sidebar-common{
+	padding-bottom:10px;
+}
+ .classes dt{
+	font-weight:bold;
+	font-size:13px;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-color:#efefef;
+	text-indent:10px;
+}
+ .classes a{
+	display:block;
+	line-height:28px;
+	text-indent:10px;
+}
+ .sidebar-common2 .title{
+	font-weight:bold;
+	font-size:13px;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-color:#efefef;
+	text-indent:10px;
+}
+.sidebar-common2 dl a{
+	display:block;
+	line-height:28px;
+	text-indent:10px;
+}

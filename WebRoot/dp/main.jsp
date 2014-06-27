@@ -4,35 +4,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>博客</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shotcut icon" href="../favicon.ico" type="image/x-icon" />  
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/main.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/right-bar.css" />
 	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${context}/resource/scripts/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${context}/resource/scripts/main.js"></script>
   </head>
-  
   <body class="main">
   	     <div class="content">
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
   	     	</div>
   	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
-  	     	<div class="blog-list">
-  	     		<h1 class="title">博客列表</h1>
-  	     		<div class="blog-list-realcontent">
+  	     	<div class="real-content">
+  	     		<!--  -->
+  	     			<div class="blog-list">
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
-		  	     				<dl>
-		  	     					<dt class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></dt>
-		  	     					<dd>
-		  	     						<p class="blog-content">${page.summary}<span>.....</span></p>
-		  	     					</dd>
-		  	     					<dd class="item-bottom"><span>${page.writeTime}</span></dd>
-		  	     				</dl>
-		  	     		</div>
+		  	     				<table width="100%">
+		  	     					<tr>
+			  	     					<td class="blog-tag"><dl><dd class="time"><em></em>${page.writeTime}</dd><dd class="tags"><em></em>demo,demo2</dd><dd class="comment"><em></em>阅读次数(2033)</dd></dl></td>
+			  	     					<td>
+			  	     						<div>
+					  	     					<h1 class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
+					  	     					<div>
+					  	     						<p class="blog-content">${page.summary}<span>.....</span></p>
+					  	     					</div>
+					  	     					
+				  	     					</div>
+			  	     					</td>
+		  	     					</tr>
+		  	     				</table>
+		  	     		 </div>
   	     			  </c:forEach>
 	  	     		 	 <!-- 分页start -->
 		  	     		 <div class="fenye-bottom">
@@ -51,12 +57,10 @@
 		  	     		 	</c:if>
 		  	     		 </div>
 	  	     		 <!-- 分页end -->
-  	     		</div>
+  	     		
   	     	</div>
   	     	<div class="sidebar">
-  	 			<!-- 分类 -->
-  	 				<%@include file="../sp/classes.html"%>
-  	 			<!--  -->
+  	 			
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最新文摘</h1>
@@ -76,9 +80,10 @@
   	     		</div>
   	     		<!--  最多阅读 end -->
   	     	</div>
-  	     		 <div style="clear:both;"></div>
+  	     		<!--  -->
+  	     	</div>
   	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作者</a>&nbsp;|&nbsp;<a href="/MyBlog/manage/">管理博客</a>
+		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
   	     	     </div>
 			</div>
   </body>

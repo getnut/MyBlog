@@ -13,13 +13,6 @@
 	display:block;
 	float:left;
 }
-.logo-text{
-	display:block;
-	float:left;
-	position:absolute;
-	bottom:5px;
-	left:200px;
-}
 .head img{
 	width:189px;
 	height:75px;
@@ -30,10 +23,12 @@
 	margin-top:20px;
 	line-height:45px;
 	text-align:center;
+	font-family:'微软雅黑';
 }
-/*��ҳ */
+
  .fenye-bottom{
     height:40px;
+    font-family:'微软雅黑';
 }
 
  .fenye-bottom a, .fenye-bottom span{
@@ -47,7 +42,7 @@
 	background-color:#fff;
 }
  .fenye-bottom .currentPage{
-	background-color:#0099FF;
+	background-color:#ccc;
 	color:#fff;
 }
  .fenye-bottom a:hover{

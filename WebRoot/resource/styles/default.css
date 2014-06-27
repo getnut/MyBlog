@@ -1,4 +1,4 @@
-body{font-family: '微软雅黑',Georgia,Serif;font-size:13px;}
+body{Georgia,Serif;font-size:13px;color:#333;}
 p,h1,div,h2,ul,li,table,tr,td,dl,dt,dd{
 	margin:0px;
 	padding:0px;
@@ -16,5 +16,5 @@ img{
 	outline:none;
 }
 a:hover{
-	color:#0099FF;
+	color:#000;
 }

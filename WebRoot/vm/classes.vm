@@ -1,6 +1,6 @@
 <!-- 生成classes的模板  -->
 <dl class="classes">
-	<dt>分类dddddddddddddddddddddddd</dt>
+	<dt>分类</dt>
 	#foreach($cls in $classes)
 		<dd>${cls.className}(${cls.count})</dd>
 	#end

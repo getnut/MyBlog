@@ -13,6 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/pageDetail.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/right-bar.css" />
 	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
   </head>
   
@@ -31,12 +32,7 @@
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
   	     	<div class="sidebar">
-  	     		<div class="add-page">
-  	     			<ul>
-  	     			<li><a href="${context}/blog/add/"  target="_blank" class="add">添加新文章</a></li>
-  	     				<li><a href="${context}/manage/manage.html"  target="_blank"  class="manage">管理博客</a></li>
-  	     			</ul>
-  	     		</div>
+  	     		
   	 			<!-- 分类start -->
   	     		
   	 				<%@include file="../sp/classes.html"%>

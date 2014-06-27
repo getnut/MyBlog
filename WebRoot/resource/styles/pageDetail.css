@@ -1,114 +1,35 @@
 
-.content{
-	width:
-}
 .page-detail{
 	float:left;
-	width:700px;
+	width:698px;
 	margin-top:10px;
 	background-color:#fff;
-	border-radius:5px;
 	min-height:500px;
 	padding:10px;
-	overflow:auto;
+	border:1px solid #efefef;
 }
 
 .page-detail h2.title{
 	font-size:13px;
-	border-bottom:1px solid #ddd;
+	border-bottom:1px dotted #efefef;
 	text-indent:10px;
 	line-height:35px;
 }
 .page-detail h2.title span{
-	background-color:#ddd;
 	padding:2px;
 	margin-left:5px;
 	margin-right:5px;
-	border-radius:5px;
 }
 .page-detail h1.title{
-	font-size:26px;
 	margin-top:10px;
 }
 .page-detail .title{
 	margin:5px;
 	line-height:26px;
 	font-size:16px;
+	font-family:'微软雅黑';
+	
 }
 .page-detail .page-d-r{
 	line-height:180%;
-}
- .sidebar{
-	width:300px;
-	float:left;
-	height:400px;
-	margin-top:10px;
-	margin-left:10px;
-}
-
-.sidebar-common{
-	background-color:#FFF;
-	border-radius: 5px;
-	padding-bottom:10px;
-	margin-bottom:10px;
-}
- .add-page{
-	background-color:#0099FF;
-	border-radius: 5px;
-	margin-bottom:10px;
-	height:40px;
-}
-
- .add-page li{
-	float:left;
-}
-
- .add-page a{
-	display:block;
-	font-weight:bold;
-	color:#fff;
-	width:150px;
-	text-align:center;
-	line-height:40px;
-	background-size:30px 30px;
-}
- .add-page a.add{
-	background:url(../images/add.png) no-repeat 5px 38%;
-	
-}
- .add-page a.manage{
-	background:url(../images/manage.png) no-repeat 5px 38%;
-}
- .classes dt{
-	padding:10px;
-	background-color:#0099FF;
-	color:#FFF;
-	border-radius: 5px 5px 0 0;
-	font-weight:bold;
-	text-align:center;
-}
- .classes a{
-	display:block;
-	line-height:28px;
-	text-align:left;
-	text-indent:10px;
-}
- .sidebar-common2 .title{
-	padding:10px;
-	background-color:#fff;
-	border-radius: 5px 5px 0 0;
-	font-weight:bold;
-	text-align:center;
-	border: none;
-	border-bottom: 1px solid #efefef;
-	border-radius: 5px 5px 0 0;
-	background: #ffffff;
-	background: -webkit-linear-gradient(top,#ffffff,#fafafa);
-	background: -moz-linear-gradient(top,#ffffff,#fafafa);
-	background: -ms-linear-gradient(top,#ffffff,#fafafa);
-	background: -o-linear-gradient(top,#ffffff,#fafafa);
-	background: linear-gradient(top,#ffffff,#fafafa);
-}
- .sidebar-common2 dl{
-	padding:10px;
 }
