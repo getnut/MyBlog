@@ -1,11 +1,8 @@
  .sidebar{
-	width:290px;
+	width:300px;
 	position:absolute;
-	min-height:400px;
-	margin-top:10px;
 	font-family:'微软雅黑';
 	border:1px solid #efefef;
-	border-left:none;
 	position:absolute;
 	right:0px;
 	top:0px;

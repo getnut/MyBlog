@@ -174,19 +174,6 @@ public class BlogController extends HttpServlet
 		PageSplitResult psr = this.ps.getPages(currentPage);
 		/*分页查询的结果*/
 		req.setAttribute("psr", psr);
-		List<Classes> clses = CacheData.<List<Classes>>get(CacheData.classCache, "clses");
-		if(null == clses)
-		{
-			clses = this.cs.getAllClasses();
-			System.out.println("从数据库中拿！");
-		}else
-		{
-			System.out.println("从缓存中拿！");
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("classes", clses);
-		boolean result = ToHtml.toHtml("classes.vm","E:/apache-tomcat-6.0.35/webapps/MyBlog/sp/classes.html",map);
-		System.out.println("result="+result);
 		req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
 	}
 	//显示文章

@@ -2,9 +2,12 @@ package com.blog.dbutils;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -47,8 +50,6 @@ public class ToHtml
 	public static boolean toHtml(String temName,String toHtmlPath,Map<String,Object> map)
 	{
 		
-		System.out.println(temName);
-		System.out.println(toHtmlPath);
 		VelocityContext context = new VelocityContext();
 		Set<Entry<String,Object>> sets = map.entrySet();
 		Iterator<Entry<String,Object>> its = sets.iterator();
@@ -59,7 +60,6 @@ public class ToHtml
 		}
 		//获取模板文件
 		Template template = Velocity.getTemplate(temName);
-		
 		File file = new File(toHtmlPath);
 		if(!file.getParentFile().exists())
 		{
@@ -68,7 +68,7 @@ public class ToHtml
 		BufferedWriter writer = null;
 		try
 		{	
-			writer = new BufferedWriter(new FileWriter(file));
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),Charset.forName("UTF-8")));
 			template.merge(context, writer);
 		} catch (IOException e)
 		{

@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shotcut icon" href="../favicon.ico" type="image/x-icon" />  
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
@@ -26,7 +27,7 @@
   	     			  	<div class="blog-item">
 		  	     				<table width="100%">
 		  	     					<tr>
-			  	     					<td class="blog-tag"><dl><dd class="time"><em></em>${page.writeTime}</dd><dd class="tags"><em></em>demo,demo2</dd><dd class="comment"><em></em>阅读次数(2033)</dd></dl></td>
+			  	     					<td class="blog-tag"><dl><dd class="time"><label></label><span>${page.writeTime}</span></dd><dd class="tags"><label></label><span>demo,demo2</span></dd><dd class="comment"><label></label><span>阅读次数(2033)</span></dd></dl></td>
 			  	     					<td>
 			  	     						<div>
 					  	     					<h1 class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
@@ -60,18 +61,20 @@
   	     		
   	     	</div>
   	     	<div class="sidebar">
-  	 			
+  	     		<!-- 分类start -->
+  	 				<%@include file="../sp/classes.html" %>
+  	     		<!-- 分类end -->
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新文摘</h1>
+  	     			<h1 class="title">最多阅读</h1>
   	     			<dl>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
+	  	     			<dd><a href="#">数据结构(14)</a></dd>
+	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
+	  	     			<dd><a href="#">设计模式(7)</a></dd>
   	     			</dl>
   	     		</div>
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新评</h1>
+  	     			<h1 class="title">最新评论</h1>
   	     			<dl>
 	  	     			<dd><a href="#">数据结构(14)</a></dd>
 	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*"  pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -22,21 +22,20 @@
   	     	<div class="head">
   	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
   	     	</div>
+  	     	<div class="real-content">
   	     	<div class="page-detail">
   	     		<h1 class="title">${page.pageTitle}</h1>
-  	     		<h2 class="title">分类:&nbsp;
+  	     		<h2 class="title">
+  	     			分类:&nbsp;
   	     			<c:forEach items="${page.clses}" var = "cls">
   	     				<span>${cls.className}</span>
   	     			</c:forEach>
   	     		</h2>
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
-  	     	<div class="sidebar">
-  	     		
+  	     	<div class="sidebar">	
   	 			<!-- 分类start -->
-  	     		
-  	 				<%@include file="../sp/classes.html"%>
-  	 			
+  	 				<%@include file="../sp/classes.html" %>
   	     		<!-- 分类end -->
   	     		<!--  最新文章 start -->
   	     		<div class="sidebar-common sidebar-common2">
@@ -63,7 +62,7 @@
   	     		</div>
   	     		<!--  最多阅读  end -->
   	     	</div>
-  	     		 <div style="clear:both;"></div>
+  	     		 </div>
   	     		 <div class="footer">
 		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作者</a>
   	     			 </div>
