@@ -1,11 +1,7 @@
  .sidebar{
-	width:300px;
-	position:absolute;
+	width:280px;
+	float:left;
 	font-family:'微软雅黑';
-	border:1px solid #efefef;
-	position:absolute;
-	right:0px;
-	top:0px;
 }
 
 .sidebar-common{
@@ -14,9 +10,9 @@
  .classes dt{
 	font-weight:bold;
 	font-size:13px;
-	padding-top:5px;
-	padding-bottom:5px;
-	background-color:#efefef;
+	line-height:32px;
+	color:#fff;
+	background-color:#555;
 	text-indent:10px;
 }
  .classes a{
@@ -27,9 +23,9 @@
  .sidebar-common2 .title{
 	font-weight:bold;
 	font-size:13px;
-	padding-top:5px;
-	padding-bottom:5px;
-	background-color:#efefef;
+	color:#fff;
+	line-height:32px;
+	background-color:#555;
 	text-indent:10px;
 }
 .sidebar-common2 dl a{

@@ -15,11 +15,22 @@
 	<script type="text/javascript" src="${context}/resource/scripts/main.js"></script>
   </head>
   <body class="main">
-  	     <div class="content">
-  	     	<div class="head">
-  	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 <div class="head">
+ 			 	<div class="logo-wrap">
+ 			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 		<div class="head-nav">
+ 			 			<ul>
+		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="#">相册</a></li>
+		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="#">相册</a></li>
+		  	     			
+  	     				</ul>
+ 			 		</div>
+ 			 	</div>
   	     	</div>
-  	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
+  			
+  	     <div class="content">
   	     	<div class="real-content">
   	     		<!--  -->
   	     			<div class="blog-list">
@@ -85,9 +96,10 @@
   	     	</div>
   	     		<!--  -->
   	     	</div>
+  	     	<div style="clear:both;"></div>
   	     		 <div class="footer">
 		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
   	     	     </div>
-			</div>
+		  </div>
   </body>
 </html>

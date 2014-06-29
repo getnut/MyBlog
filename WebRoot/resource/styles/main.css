@@ -14,18 +14,12 @@ body{font-family:'微软雅黑';}
 	float:left;
 	padding-right:5px;
 }
-
-.main .real-content{
-	width:1030px;
-	position:relative;
-}
 .main .blog-list{
 	width:700px;
-	min-height:400px;
-	background-color:#FFF;
 	padding:8px;
 	padding-bottom:50px;
 	border:1px solid #efefef;
+	float:left;
 }
 .main .blog-tag{
 	width:180px;
@@ -86,9 +80,6 @@ body{font-family:'微软雅黑';}
 
  .fenye-bottom{
     height:40px;
-    position:absolute;
-    left:10px;
-    bottom:0px;
 }
 
  .fenye-bottom a,.main .fenye-bottom span{
