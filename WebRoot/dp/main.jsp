@@ -16,36 +16,45 @@
   </head>
   <body class="main">
  			 <div class="head">
- 			 	<div class="logo-wrap">
  			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
- 			 		<div class="head-nav">
+ 			 	</div>
+  	     	
+  			<div class="nav">
  			 			<ul>
 		  	     			<li><a href="#">首页</a></li>
 		  	     			<li><a href="#">相册</a></li>
-		  	     			<li><a href="#">首页</a></li>
-		  	     			<li><a href="#">相册</a></li>
-		  	     			
+		  	     			<li><a href="#">关于我和她</a></li>
   	     				</ul>
  			 		</div>
- 			 	</div>
-  	     	</div>
-  			
   	     <div class="content">
-  	     	<div class="real-content">
+  	     		
   	     		<!--  -->
-  	     			<div class="blog-list">
+  	     			<div class="content-main">
+  	     			
+  	     			<div class="recommend">
+  	     				<h1><a href="#">最大的视频秀场，是怎么运行的？</a></h1>
+  	     				<p class="re-su">天鸽如何销售、并让用户产生强烈的付费意愿呢？天鸽如何销售、并让用户产生强烈的付费意愿呢？天鸽如何销售、并让用户产生强烈的付费意愿呢？天鸽如何销售、并让用户产生强烈的付费意愿呢？天鸽如何销售、并让用户产生强烈的付费意愿呢？天鸽如何销售、并让用户产生强烈的付费意愿呢？</p>
+  	     				<div class="recommend-img"><img src="/MyBlog/news-images/recommend.jpg" width="630"/></div>
+  	     				<p class="re-tag">2014-06-30 07:08:00</p>
+  	     			</div>
+  	     			
+  	     			 <!-- 博客的列表项 -->
   	     			  <c:forEach items="${psr.pages}" var = "page">
   	     			  	<div class="blog-item">
 		  	     				<table width="100%">
 		  	     					<tr>
-			  	     					<td class="blog-tag"><dl><dd class="time"><label></label><span>${page.writeTime}</span></dd><dd class="tags"><label></label><span>demo,demo2</span></dd><dd class="comment"><label></label><span>阅读次数(2033)</span></dd></dl></td>
+			  	     					<td class="blog-item-img">
+			  	     						<img src="/MyBlog/news-images/hello.jpg" width="220"/>
+			  	     					</td>
 			  	     					<td>
-			  	     						<div>
+			  	     						<div style="padding-left:15px;">
 					  	     					<h1 class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
+					  	     					<div class="blog-tips">
+					  	     						<span>分类:&nbsp;study</span><span>&nbsp;${page.writeTime}</span>
+					  	     					</div>
 					  	     					<div>
 					  	     						<p class="blog-content">${page.summary}<span>.....</span></p>
 					  	     					</div>
-					  	     					
 				  	     					</div>
 			  	     					</td>
 		  	     					</tr>
@@ -73,7 +82,7 @@
   	     	</div>
   	     	<div class="sidebar">
   	     		<!-- 分类start -->
-  	 				<%@include file="../sp/classes.html" %>
+  	 				<%@ include file="../sp/classes.html" %>
   	     		<!-- 分类end -->
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
@@ -95,7 +104,6 @@
   	     		<!--  最多阅读 end -->
   	     	</div>
   	     		<!--  -->
-  	     	</div>
   	     	<div style="clear:both;"></div>
   	     		 <div class="footer">
 		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>

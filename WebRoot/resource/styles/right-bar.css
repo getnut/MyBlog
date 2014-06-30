@@ -1,6 +1,7 @@
  .sidebar{
 	width:280px;
 	float:left;
+	margin-left:30px;
 	font-family:'微软雅黑';
 }
 
@@ -15,10 +16,13 @@
 	background-color:#555;
 	text-indent:10px;
 }
+.classes{
+	padding-bottom:10px;
+}
  .classes a{
 	display:block;
-	line-height:28px;
-	text-indent:10px;
+	line-height:35px;
+	border-bottom:1px dashed #ddd;
 }
  .sidebar-common2 .title{
 	font-weight:bold;
@@ -30,6 +34,6 @@
 }
 .sidebar-common2 dl a{
 	display:block;
-	line-height:28px;
-	text-indent:10px;
+	line-height:35px;
+	border-bottom:1px dashed #ddd;
 }

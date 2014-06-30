@@ -14,88 +14,62 @@ body{font-family:'微软雅黑';}
 	float:left;
 	padding-right:5px;
 }
-.main .blog-list{
-	width:700px;
-	padding:8px;
-	padding-bottom:50px;
-	border:1px solid #efefef;
-	float:left;
-}
-.main .blog-tag{
-	width:180px;
-	border-right:1px dotted #efefef;
-}
-.main .blog-tag dd{
-	height:26px;
-}
-.main .blog-tag dd span{
-	display:block;
-	float:left;
-	height:26px;
-	line-height:26px;
-}
-.main .blog-tag dd label{
-	width:26px;
-	height:26px;
-	background:url(../images/content.png) no-repeat;
-	float:left;
-}
-.main dd.time label{
-	background-position: 0px 4px;
-}
-.main dd.tags label{
-	background-position: 0px -79px;
-}
-.main dd.comment label{
-	background-position: 0px -24px;
-}
 
 .main .blog-title a{
 	display:block;
-	text-align:center;
 	line-height:26px;
-	font-size:13px;
+	font-size:16px;
+	font-weight:normal;
 }
 .main .blog-title a:hover{
 	text-decoration:underline;
 }
 .main .blog-item{
-	border-bottom:1px dotted #efefef;
-	padding:10px;
-	position:relative;
-	
+	border-bottom:1px dashed #ddd;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+ .blog-item  p.blog-content{
+	line-height:180%;
+	text-align:justify;
+	color:#666;
+	text-indent:5px;
+}
+.main .blog-item-img{
+	width:220px;
+}
+.main .recommend{
+	border-bottom:1px dashed #ddd;
+}
+.recommend h1{
+	line-height:38px;
+	margin-bottom:10px;
+}
+.recommend h1 a{
+	font-size:26px;
+	font-weight:normal;
+}
+.recommend h1 a:hover{
+	text-decoration:underline;
+}
+.recommend p{
+	margin-bottom:10px;
+}
+.recommend p.re-tag{
+	margin-top:10px;
+}
+.recommend p.re-su{
+	font-size: 18px;
+	line-height:180%;
+	color: #666;
+	margin-bottom:10px;
 }
 .main .blog-item td{
 	vertical-align: top;
 }
-.main .blog-item .blog-tag{
-	vertical-align: middle;
-}
-.main .blog-item  p.blog-content{
-	text-indent:25px;
-	line-height:180%;
-	padding-left:10px;
-	text-align:justify;
+.main .blog-tips{
+	color:#666;
+	line-height:24px;
 }
 
- .fenye-bottom{
-    height:40px;
-}
-
- .fenye-bottom a,.main .fenye-bottom span{
-	padding:6px 8px;
-	margin-right:2px;
-	border:1px solid #efefef;
-	float:left;
-}
- .fenye-bottom span{
-	border:none;
-	background-color:#fff;
-}
- .fenye-bottom .currentPage{
-	background-color:#ccc;
-	color:#fff;
-}
- .fenye-bottom a:hover{
-	border-color:#0099FF;
-}

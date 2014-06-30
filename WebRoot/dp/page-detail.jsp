@@ -18,11 +18,20 @@
   </head>
   
   <body>
+  				<div class="head">
+ 			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 	</div>
+  	     	
+  					<div class="nav">
+ 			 			<ul>
+		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="#">相册</a></li>
+		  	     			<li><a href="#">关于我和她</a></li>
+  	     				</ul>
+ 			 		</div>
     	<div class="content">
-  	     	<div class="head">
-  	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
-  	     	</div>
-  	     	<div class="real-content">
+  	     	
+  	     	<div class="content-main">
   	     	<div class="page-detail">
   	     		<h1 class="title">${page.pageTitle}</h1>
   	     		<h2 class="title">

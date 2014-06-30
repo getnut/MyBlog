@@ -1,15 +1,8 @@
 
-
-.real-content{
-	position:relative;
-}
 .page-detail{
-	width:698px;
+	width:630px;
 	margin-top:10px;
-	background-color:#fff;
-	min-height:500px;
 	padding:10px;
-	border:1px solid #efefef;
 }
 
 .page-detail h2.title{
@@ -32,7 +25,4 @@
 	font-size:16px;
 	font-family:'微软雅黑';
 	
-}
-.page-detail .page-d-r{
-	line-height:180%;
 }
