@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shotcut icon" href="../favicon.ico" type="image/x-icon" />  
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
@@ -14,11 +15,22 @@
 	<script type="text/javascript" src="${context}/resource/scripts/main.js"></script>
   </head>
   <body class="main">
-  	     <div class="content">
-  	     	<div class="head">
-  	     		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 <div class="head">
+ 			 	<div class="logo-wrap">
+ 			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 		<div class="head-nav">
+ 			 			<ul>
+		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="#">相册</a></li>
+		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="#">相册</a></li>
+		  	     			
+  	     				</ul>
+ 			 		</div>
+ 			 	</div>
   	     	</div>
-  	     	<div class="path" style="clear:both;"><a href="#">所有博客</a><em></em><a href="#">所有博客</a></div>
+  			
+  	     <div class="content">
   	     	<div class="real-content">
   	     		<!--  -->
   	     			<div class="blog-list">
@@ -26,7 +38,7 @@
   	     			  	<div class="blog-item">
 		  	     				<table width="100%">
 		  	     					<tr>
-			  	     					<td class="blog-tag"><dl><dd class="time"><em></em>${page.writeTime}</dd><dd class="tags"><em></em>demo,demo2</dd><dd class="comment"><em></em>阅读次数(2033)</dd></dl></td>
+			  	     					<td class="blog-tag"><dl><dd class="time"><label></label><span>${page.writeTime}</span></dd><dd class="tags"><label></label><span>demo,demo2</span></dd><dd class="comment"><label></label><span>阅读次数(2033)</span></dd></dl></td>
 			  	     					<td>
 			  	     						<div>
 					  	     					<h1 class="blog-title"><a href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
@@ -60,18 +72,20 @@
   	     		
   	     	</div>
   	     	<div class="sidebar">
-  	 			
+  	     		<!-- 分类start -->
+  	 				<%@include file="../sp/classes.html" %>
+  	     		<!-- 分类end -->
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新文摘</h1>
+  	     			<h1 class="title">最多阅读</h1>
   	     			<dl>
-  	     			<dd><a href="#">数据结构(14)</a></dd>
-  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-  	     			<dd><a href="#">设计模式(7)</a></dd>
+	  	     			<dd><a href="#">数据结构(14)</a></dd>
+	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
+	  	     			<dd><a href="#">设计模式(7)</a></dd>
   	     			</dl>
   	     		</div>
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新评</h1>
+  	     			<h1 class="title">最新评论</h1>
   	     			<dl>
 	  	     			<dd><a href="#">数据结构(14)</a></dd>
 	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
@@ -82,9 +96,10 @@
   	     	</div>
   	     		<!--  -->
   	     	</div>
+  	     	<div style="clear:both;"></div>
   	     		 <div class="footer">
 		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
   	     	     </div>
-			</div>
+		  </div>
   </body>
 </html>

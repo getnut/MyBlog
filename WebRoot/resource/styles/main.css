@@ -14,47 +14,39 @@ body{font-family:'微软雅黑';}
 	float:left;
 	padding-right:5px;
 }
-
-.main .real-content{
-	width:1030px;
-	position:relative;
-}
 .main .blog-list{
 	width:700px;
-	min-height:400px;
-	background-color:#FFF;
-	margin-top:10px;
-	position:relative;
 	padding:8px;
 	padding-bottom:50px;
 	border:1px solid #efefef;
-	border-top:4px solid #efefef;
+	float:left;
 }
-
-
 .main .blog-tag{
 	width:180px;
 	border-right:1px dotted #efefef;
 }
 .main .blog-tag dd{
-	line-height:26px;
-	text-indent:25px;
-	position:relative;
+	height:26px;
 }
-.main .blog-tag dd em{
+.main .blog-tag dd span{
+	display:block;
+	float:left;
+	height:26px;
+	line-height:26px;
+}
+.main .blog-tag dd label{
 	width:26px;
 	height:26px;
 	background:url(../images/content.png) no-repeat;
-	position:absolute;
-	left:0px;
+	float:left;
 }
-.main dd.time em{
+.main dd.time label{
 	background-position: 0px 4px;
 }
-.main dd.tags em{
+.main dd.tags label{
 	background-position: 0px -79px;
 }
-.main dd.comment em{
+.main dd.comment label{
 	background-position: 0px -24px;
 }
 
@@ -88,9 +80,6 @@ body{font-family:'微软雅黑';}
 
  .fenye-bottom{
     height:40px;
-    position:absolute;
-    left:10px;
-    bottom:0px;
 }
 
  .fenye-bottom a,.main .fenye-bottom span{

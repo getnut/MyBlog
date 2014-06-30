@@ -1,6 +1,9 @@
 
+
+.real-content{
+	position:relative;
+}
 .page-detail{
-	float:left;
 	width:698px;
 	margin-top:10px;
 	background-color:#fff;

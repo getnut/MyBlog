@@ -1,11 +1,12 @@
-body{Georgia,Serif;font-size:13px;color:#333;backgroung-color:#F0F0F0}
+body{Georgia,Serif;font-size:13px;color:#333;}
+*{margin:0px;padding:0px;word-wrap: break-word;}
 p,h1,div,h2,ul,li,table,tr,td,dl,dt,dd{
 	margin:0px;
 	padding:0px;
 }
 ul {list-style-type:none;}
 body{
-	background-color:#fff;
+	background-color:#f0f0f0;
 }
 a{
 	color:#333;
