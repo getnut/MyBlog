@@ -16,15 +16,13 @@
   </head>
   <body class="main">
  			 <div class="head">
- 			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
- 			 	</div>
-  	     	
+ 				 <a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 			 </div>
   			<div class="nav">
  			 			<ul>
 		  	     			<li><a href="#">首页</a></li>
 		  	     			<li><a href="#">相册</a></li>
-		  	     			<li><a href="#">关于我和她</a></li>
-  	     				</ul>
+		  	     			<li><a href="#">关于我和她</a></li></ul>
  			 		</div>
   	     <div class="content">
   	     		

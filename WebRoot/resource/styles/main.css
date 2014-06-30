@@ -1,19 +1,4 @@
 body{font-family:'微软雅黑';}
-.main .path{
-	height:36px;	
-}
-.main .path a{
-	float:left;
-	text-align:center;
-	line-height:36px;
-}
-.main .path em{
-	width:10px;
-	height:36px;
-	background:url(../images/pt_item.png) no-repeat left 55%;
-	float:left;
-	padding-right:5px;
-}
 
 .main .blog-title a{
 	display:block;
@@ -31,10 +16,10 @@ body{font-family:'微软雅黑';}
 }
 
  .blog-item  p.blog-content{
-	line-height:180%;
+	line-height:220%;
 	text-align:justify;
 	color:#666;
-	text-indent:5px;
+	letter-spacing:1px;
 }
 .main .blog-item-img{
 	width:220px;
@@ -68,8 +53,12 @@ body{font-family:'微软雅黑';}
 .main .blog-item td{
 	vertical-align: top;
 }
+.main .blog-item .blog-item-img{
+	vertical-align:middle;
+}
 .main .blog-tips{
-	color:#666;
-	line-height:24px;
+	color:#999;
+	line-height:28px;
+	font-size:12px;
 }
 

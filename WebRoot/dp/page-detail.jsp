@@ -16,12 +16,13 @@
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/right-bar.css" />
 	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
   </head>
-  
   <body>
+  				<!--  head start -->
   				<div class="head">
  			 		<a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
  			 	</div>
-  	     	
+  	     		<!--  head end -->
+  	     		<!--  nav start -->
   					<div class="nav">
  			 			<ul>
 		  	     			<li><a href="#">首页</a></li>
@@ -29,8 +30,8 @@
 		  	     			<li><a href="#">关于我和她</a></li>
   	     				</ul>
  			 		</div>
+ 			 	<!--  nav end -->
     	<div class="content">
-  	     	
   	     	<div class="content-main">
   	     	<div class="page-detail">
   	     		<h1 class="title">${page.pageTitle}</h1>
@@ -42,7 +43,8 @@
   	     		</h2>
   	     		<div class="page-d-r">${page.pageContent}</div>
   	     	</div>
-  	     	<div class="sidebar">	
+  	     		 </div>
+  	     		 <div class="sidebar">	
   	 			<!-- 分类start -->
   	 				<%@include file="../sp/classes.html" %>
   	     		<!-- 分类end -->
@@ -71,7 +73,7 @@
   	     		</div>
   	     		<!--  最多阅读  end -->
   	     	</div>
-  	     		 </div>
+  	     		<div style="clear:both;"></div>
   	     		 <div class="footer">
 		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作者</a>
   	     			 </div>

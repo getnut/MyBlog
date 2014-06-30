@@ -21,6 +21,7 @@
 	height:40px;
 	margin-bottom:10px;
 	box-shadow:2px 2px 3px #aaa;
+	font-family:'微软雅黑';
 }
 .nav li{
 	float:left;
@@ -41,20 +42,20 @@
 /*template*/
 .content{
 	width:1000px;
-	height:100%;
 	margin:0px auto;
 	box-shadow:2px 2px 3px #aaa;
-	background-color:#FAFAFC;
+	/*background-color:#FAFAFC;*/
+	background-color:#FFF;
 	padding-top:10px;
 }
 .content .content-main{
 	width:630px;
 	float:left;
+	overflow:hidden;
 	margin-left:30px;
 }
 .footer{
 	height:45px;
-	width:800px;
 	margin-top:20px;
 	line-height:45px;
 	text-align:center;
