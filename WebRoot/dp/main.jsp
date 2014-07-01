@@ -22,12 +22,21 @@
  			 			<ul>
 		  	     			<li><a href="#">首页</a></li>
 		  	     			<li><a href="#">相册</a></li>
-		  	     			<li><a href="#">关于我和她</a></li></ul>
- 			 		</div>
+		  	     			<li><a href="#">关于我和她</a></li>
+		  	     		</ul>
+ 			</div>
+ 			<div id="love-line">
+ 				<div class="love-timeline">
+ 					<div class="love-circle">相遇<span class="love-tips">2014-6-1</span></div>
+ 					<div class="love-circle p2">相识<span class="love-tips">2014-6-1</span></div>
+ 					<div class="love-circle p3">相知<span class="love-tips">2014-6-1</span></div>
+ 					<div class="love-circle p4">相恋<span class="love-tips">2014-6-1</span></div>
+ 					<div class="love-circle p5">相爱<span class="love-tips">2014-6-1</span></div>
+ 				</div>
+ 			</div>
   	     <div class="content">
-  	     		
-  	     		<!--  -->
-  	     			<div class="content-main">
+  	     	<!-- content-main-start -->
+  	     	<div class="content-main">
   	     			
   	     			<div class="recommend">
   	     				<h1><a href="#">最大的视频秀场，是怎么运行的？</a></h1>
@@ -78,34 +87,33 @@
 	  	     		 <!-- 分页end -->
   	     		
   	     	</div>
+  	     	<!-- content-main-end -->
+  	     	<!-- 侧栏 start -->
   	     	<div class="sidebar">
   	     		<!-- 分类start -->
-  	 				<%@ include file="../sp/classes.html" %>
+  	     			<dl class="classes">
+  	 					<%@ include file="../sp/classes.html" %>
+  	 				</dl>
   	     		<!-- 分类end -->
   	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最多阅读</h1>
   	     			<dl>
-	  	     			<dd><a href="#">数据结构(14)</a></dd>
-	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-	  	     			<dd><a href="#">设计模式(7)</a></dd>
+	  	     			<%@ include file="../sp/most-read.html" %>
   	     			</dl>
   	     		</div>
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最新评论</h1>
   	     			<dl>
-	  	     			<dd><a href="#">数据结构(14)</a></dd>
-	  	     			<dd><a href="#">BFS-广度优先搜索(2)</a></dd>
-	  	     			<dd><a href="#">设计模式(7)</a></dd>
+	  	     			<%@ include file="../sp/last-comments.html" %>
   	     			</dl>
   	     		</div>
   	     		<!--  最多阅读 end -->
   	     	</div>
-  	     		<!--  -->
-  	     	<div style="clear:both;"></div>
-  	     		 <div class="footer">
-		  	     	 		copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a>
-  	     	     </div>
+  	     	<!-- 侧栏 end -->
+  	     		 <div style="clear:both;"></div>
+  	     		 <div class="footer">copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a></div>
+  	     	     <div class="return-to-top"></div>
 		  </div>
   </body>
 </html>

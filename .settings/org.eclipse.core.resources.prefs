@@ -1,12 +1,15 @@
-#Mon Jun 30 11:12:36 CST 2014
+#Tue Jul 01 16:26:54 CST 2014
 eclipse.preferences.version=1
 encoding//WebRoot/dp/main.jsp=UTF-8
 encoding//WebRoot/dp/page-detail.jsp=UTF-8
+encoding//WebRoot/resource/styles/addPage.css=UTF-8
 encoding//WebRoot/resource/styles/common.css=UTF-8
 encoding//WebRoot/resource/styles/default.css=UTF-8
 encoding//WebRoot/resource/styles/main.css=UTF-8
 encoding//WebRoot/resource/styles/pageDetail.css=UTF-8
 encoding//WebRoot/resource/styles/right-bar.css=UTF-8
 encoding//WebRoot/sp/classes.html=UTF-8
+encoding//WebRoot/sp/last-comments.html=UTF-8
 encoding//WebRoot/sp/login.htm=UTF-8
+encoding//WebRoot/sp/most-read.html=UTF-8
 encoding/<project>=UTF-8

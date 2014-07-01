@@ -61,4 +61,50 @@ body{font-family:'微软雅黑';}
 	line-height:28px;
 	font-size:12px;
 }
-
+/*love-line*/
+#love-line{
+	width:1000px;
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:60px;
+}
+.love-timeline{
+	height:4px;
+	margin-top:80px;
+	background-color:#555;
+	position:relative;
+}
+.love-circle{
+	width:27px;
+	height:23px;
+	background:red;
+	position:absolute;
+	left:20px;
+	top:-10px;
+	background:url(../images/bg.png) no-repeat -225px -406px;
+	padding-top:25px;
+}
+.love-tips{
+	position:absolute;
+	width:93px;
+	height:48px;
+	background:url(../images/bg.png) no-repeat -198px -321px;
+	top:-48px;
+	left:20px;
+	color:#fff;
+	text-align:center;
+	line-height:32px;
+}
+.p2{
+	left:150px;
+}
+.p3{
+	left:340px;
+}
+.p4{
+	left:640px;
+}
+.p5{
+	left:890px;
+}

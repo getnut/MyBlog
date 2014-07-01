@@ -46,32 +46,24 @@
   	     		 </div>
   	     		 <div class="sidebar">	
   	 			<!-- 分类start -->
-  	 				<%@include file="../sp/classes.html" %>
+  	     			<dl class="classes">
+  	 					<%@ include file="../sp/classes.html" %>
+  	 				</dl>
   	     		<!-- 分类end -->
-  	     		<!--  最新文章 start -->
+  	     		<!-- 最新文�start -->
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新文章</h1>
+  	     			<h1 class="title">最多阅读</h1>
   	     			<dl>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
+	  	     			<%@ include file="../sp/most-read.html" %>
   	     			</dl>
   	     		</div>
-  	     		<!--  最新文章 end -->
-  	     		<!--  最多阅读 start -->
   	     		<div class="sidebar-common sidebar-common2">
   	     			<h1 class="title">最新评论</h1>
   	     			<dl>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
-  	     				<dd><a href="#">文件上传利器SWFUpload入门简易教程</a></dd>
+	  	     			<%@ include file="../sp/last-comments.html" %>
   	     			</dl>
   	     		</div>
-  	     		<!--  最多阅读  end -->
+  	     		<!--  最多阅读 end -->
   	     	</div>
   	     		<div style="clear:both;"></div>
   	     		 <div class="footer">

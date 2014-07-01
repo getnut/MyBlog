@@ -1,27 +1,31 @@
-
 .add-content{
 	width:auto;
-	min-height:400px;
-	margin-top:20px;
-	background-color:#fff;
-	border-radius:5px;
+	min-height:500px;
 }
 
 .add-content .pageTitle{
 	padding-top:5px;
 	padding-bottom:5px;
 	width:100%;
+	border:none;
+}
+.add-content .add-left{
 	border:1px solid #ddd;
+	font-family:'微软雅黑';
+	background:#fff;
+	width:120px;
+	text-align:center;
 }
-table{
-	border-collapse:collapse;
-}
-.add-content .dl-c>td{
-	padding:10px;
+.add-classes{
+	font-family:'微软雅黑';
 }
 .add-content .add-button {
 	width:400px;
 	margin:0px auto;
+	padding-top:10px;
+}
+.add-content .add-right{
+	border:1px solid #ddd;
 }
 .add-content .add-button input{
 	display:block;
@@ -32,15 +36,19 @@ table{
 	text-align:center;
 	color:#fff;
 	border:none;
-	background-color:#0099FF;
+	background-color:#555;
 	margin-right:20px;
+	font-family:'微软雅黑';
+	box-shadow:2px 2px 3px #aaa;
+	cursor:pointer;
 }
 .add-content .page-sum{
 	height:100px;
 }
 .add-content .page-sum textarea{
-	border:1px solid #ddd;
+	border:none;
 	width:100%;
 	height:100%;
 	resize:none;
+	
 }
