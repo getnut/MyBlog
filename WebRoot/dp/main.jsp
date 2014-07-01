@@ -74,10 +74,10 @@
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
-				  	     		 		<a href="${context}/blog/list/${link.id}" class="currentPage">${link.title}</a>
+				  	     		 		<a href="${context}/blog/list/${link.id}.html" class="currentPage">${link.title}</a>
 				  	     		 	</c:when>
 			  	     		 	<c:otherwise>
-			  	     		 		<a href="${context}/blog/list/${link.id}">${link.title}</a>
+			  	     		 		<a href="${context}/blog/list/${link.id}.html">${link.title}</a>
 			  	     		 	</c:otherwise>
 			  	     		 	</c:choose>
 		  	     		 	</c:forEach>
@@ -112,7 +112,7 @@
   	     	</div>
   	     	<!-- 侧栏 end -->
   	     		 <div style="clear:both;"></div>
-  	     		 <div class="footer">copyright &copy;2014-6-1 <a href="#">关于作我的中国行</a></div>
+  	     		 <div class="footer">copyright &copy;2014-6-1 <a href="/MyBlog/manage/">管理博客</a></div>
   	     	     <div class="return-to-top"></div>
 		  </div>
   </body>

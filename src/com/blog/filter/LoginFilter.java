@@ -32,7 +32,6 @@ public class LoginFilter implements Filter
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		Cookie[]cookies = request.getCookies();
-		System.out.println("loginFilter invoke!!"+request.getRequestURI());
 		String value = null;
 		if(cookies == null)
 		{
@@ -57,7 +56,8 @@ public class LoginFilter implements Filter
 			String array[] = value.split("\\|");
 			String secu = SystemConfigUtils.getSystemConfigValue("token");
 			if(array.length == 3 && MD5Util.getMd5(array[0]+"|"+array[1]+secu).equals(array[2]))//没有被篡改
-			{
+			{	
+				//没有被篡改
 				fc.doFilter(req, res);
 			}else//被篡改
 			{

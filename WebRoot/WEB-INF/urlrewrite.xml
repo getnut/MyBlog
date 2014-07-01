@@ -7,9 +7,13 @@
         <from>^/blog/detail-([0-9]+).html</from>
         <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
+    <rule>
+        <from>^/manage/([a-zA-Z]+).html</from>
+        <to>/dp/manage/$1.jsp</to>
+    </rule>
 	<rule>
 		<!-- 博客列表 -->
-        <from>^/blog/list/([0-9]+)</from>
+        <from>^/blog/list/([0-9]+).html</from>
         <to>/blog?action=list&amp;page=$1</to>
     </rule>
     <rule >
@@ -18,14 +22,18 @@
         <to>/blog?action=add</to>
     </rule>
     	<!-- 管理的 -->
-      <rule>
-        <from>^/manage/list/([0-9]+)</from>
+    	
+    
+     <rule>
+        <from>^/manage/list/([0-9]+).html</from>
        <to>/manage?action=list&amp;page=$1</to>
     </rule>
+   
       <rule>
         <from>^/manage/delete/([0-9]+)</from>
        <to>/manage?action=delete&amp;pageId=$1</to>
     </rule>
+   
     <rule>
         <from>^/manage/update/([0-9]+)</from>
        <to>/manage?action=update&amp;pageId=$1</to>
@@ -35,9 +43,12 @@
        <to>/manage/class?action=delete&amp;classId=$1</to>
     </rule>
      <rule>
-        <from>^/manage/class/([a-zA-Z]+)</from>
-       <to>/manage/class?action=$1</to>
+        <from>^/manage/class/list</from>
+       <to>/manage/class?action=list</to>
     </rule>
-  
+  	<rule>
+        <from>^/manage/$</from>
+       <to>/manage?action=list&amp;page=1</to>
+    </rule>
 </urlrewrite>
 

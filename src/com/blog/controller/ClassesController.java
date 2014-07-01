@@ -1,37 +1,64 @@
 package com.blog.controller;
-
-
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
 import com.blog.common.ActionType;
-import com.blog.dao.ClassDao;
 import com.blog.dao.impl.ClassDaoImpl;
+import com.blog.dao.impl.ClassQueryImpl;
+import com.blog.dao.impl.PageClassDaoImpl;
+import com.blog.dao.impl.PageDaoImpl;
+import com.blog.dao.impl.PageQueryImpl;
 import com.blog.dbutils.DataSourceFactory;
+import com.blog.dbutils.TransactionManager;
 import com.blog.entity.Classes;
-import com.blog.service.ClassService;
 import com.blog.service.impl.ClassServiceImpl;
+import com.blog.service.impl.PageServiceImpl;
 
 @SuppressWarnings("serial")
 public class ClassesController extends HttpServlet
 {
 	private DataSource dataSource = null;
-	
-	private ClassDao cd = null;
-	
-	private ClassService cs = null;
+	private PageDaoImpl pageDao = null;
+	private PageClassDaoImpl pageClassDao = null;
+	private ClassDaoImpl classDao = null;
+	private PageQueryImpl pageQuery = null;
+	private PageServiceImpl ps = null;
+	private TransactionManager tm = null;
+	private ClassServiceImpl cs = null;
+	private ClassQueryImpl classQuery = null;
 	
 	public ClassesController()
-	{
-		dataSource = DataSourceFactory.createDataSource();
-		cd = new ClassDaoImpl();
-		cs = new ClassServiceImpl();
+	{		
+		this.dataSource = DataSourceFactory.createDataSource();
+		tm = new TransactionManager(dataSource);
+		//dao
+		this.pageDao = new PageDaoImpl();
+		this.classDao = new ClassDaoImpl();
+		this.pageQuery = new PageQueryImpl();
+		this.pageClassDao = new PageClassDaoImpl();
+		this.classQuery = new ClassQueryImpl();
+		//设置dataSource
+		this.pageDao.setDataSource(this.dataSource);
+		this.classDao.setDataSource(dataSource);
+		this.pageQuery.setDataSource(dataSource);
+		this.pageClassDao.setDataSource(dataSource);
+		this.classQuery.setDataSource(this.dataSource);
+		//service
+		this.ps = new PageServiceImpl();
+		this.ps.setDataSource(this.dataSource);
+		this.ps.setPageClassDao(pageClassDao);
+		this.ps.setPageDao(pageDao);
+		this.ps.setPageQuery(pageQuery);
+		this.ps.setClassDao(classDao);
+		this.ps.setTransaction(tm);
+		this.cs = new ClassServiceImpl();
+		this.cs.setDataSource(this.dataSource);
+		this.cs.setCd(this.classDao);
+		this.cs.setClassQuery(classQuery);
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
