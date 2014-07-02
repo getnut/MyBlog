@@ -7,46 +7,48 @@
         <from>^/blog/detail-([0-9]+).html</from>
         <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
-    <rule>
-        <from>^/manage/([a-zA-Z]+).html</from>
-        <to>/dp/manage/$1.jsp</to>
-    </rule>
 	<rule>
 		<!-- 博客列表 -->
         <from>^/blog/list/([0-9]+).html</from>
         <to>/blog?action=list&amp;page=$1</to>
     </rule>
-    <rule >
-    	<!-- 管理的动态页面 -->
-        <from>^/blog/add/</from>
+    <rule>
+        <from>^/manage/([a-zA-Z]+).html</from>
+        <to>/dp/manage/$1.jsp</to>
+    </rule>
+    <rule>
+    	<!-- 博客添加页面显示 -->
+        <from>^/blog/add/$</from>
         <to>/blog?action=add</to>
     </rule>
-    	<!-- 管理的 -->
-    	
-    
      <rule>
+     	<!-- 管理博客列表 -->
         <from>^/manage/list/([0-9]+).html</from>
        <to>/manage?action=list&amp;page=$1</to>
     </rule>
-   
       <rule>
-        <from>^/manage/delete/([0-9]+)</from>
+      	<!-- 博客文章删除 -->
+        <from>^/manage/delete/([0-9]+)$</from>
        <to>/manage?action=delete&amp;pageId=$1</to>
     </rule>
    
     <rule>
-        <from>^/manage/update/([0-9]+)</from>
+    	<!-- 博客文章跟新 -->
+        <from>^/manage/update/([0-9]+)$</from>
        <to>/manage?action=update&amp;pageId=$1</to>
     </rule>
       <rule>
-        <from>^/manage/class/delete/([0-9]+)</from>
+      	<!-- 博客分类删除 -->
+        <from>^/manage/class/delete/([0-9]+)$</from>
        <to>/manage/class?action=delete&amp;classId=$1</to>
     </rule>
      <rule>
-        <from>^/manage/class/list</from>
+     	<!-- 博客分类显示 -->
+       <from>^/manage/class/$</from>
        <to>/manage/class?action=list</to>
     </rule>
   	<rule>
+  		<!-- 博客管理界面显示 -->
         <from>^/manage/$</from>
        <to>/manage?action=list&amp;page=1</to>
     </rule>

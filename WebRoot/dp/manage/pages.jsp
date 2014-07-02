@@ -22,8 +22,8 @@
  			 </div>
   			<div class="nav">
  			 			<ul class="nav-bar">
-  							<li><a class="current-tab" href="${context}/manage/list-1.html">文章管理</a></li>
-  							<li><a href="${context}/manage/class#list">分类管理</a></li>
+  							<li><a class="current-tab" href="${context}/manage/">文章管理</a></li>
+  							<li><a href="${context}/manage/class/">分类管理</a></li>
   							<li><a href="${context}/manage/draft.html">草稿箱</a></li>
   							<li><a href="${context}/manage/withdraw.html">回收站</a></li>
   							<li><a href="${context}/manage/add.html" target="_blank">写新文章</a></li>
@@ -35,11 +35,12 @@
   		<div class="content">
   			<div class="manage-content">
   				<table width="100%">
-  					<tr><th>标题</th><th>操作</th></tr>
+  					<tr><th>ID</th><th>标题</th><th>操作</th></tr>
   					<tbody>
 	  					<!-- 一条博客 -->
 	  	     			  <c:forEach items="${psr.pages}" var="page">
 	  	     			  	<tr>
+	  	     			  		<td>${page.pageId}</td>
 	 	     					<td><a class = "manage-title" href="${context}/blog/detail-${page.pageId}.html" target="_blank">${page.pageTitle}(${page.writeTime})</a></td>
 	 	     					<td><a href="${context}/manage/delete/${page.pageId}">删除</a>&nbsp;<a href="#">编辑</a>&nbsp;<a href="#">分类</a></td>		
 			  	     		</tr>
@@ -51,10 +52,10 @@
 		  	     		 		<c:forEach items="${psr.alink}" var="link">
 			  	     		 	<c:choose>
 				  	     		 	<c:when test="${link.id == psr.currentPage}">
-				  	     		 		<a href="${context}/manage/list/${link.id}" class="currentPage">${link.title}</a>
+				  	     		 		<a href="${context}/manage/list/${link.id}.html" class="currentPage">${link.title}</a>
 				  	     		 	</c:when>
 			  	     		 	<c:otherwise>
-			  	     		 		<a href="${context}/manage/list/${link.id}">${link.title}</a>
+			  	     		 		<a href="${context}/manage/list/${link.id}.html">${link.title}</a>
 			  	     		 	</c:otherwise>
 			  	     		 	</c:choose>
 		  	     		 	</c:forEach>

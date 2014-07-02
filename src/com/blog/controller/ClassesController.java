@@ -75,7 +75,6 @@ public class ClassesController extends HttpServlet
 			this.listClass(req, resp);
 		}else if(ActionType.DELETE.equalsIgnoreCase(action))
 		{
-			System.out.println("classes delete!!!");
 			
 			this.deleteClass(req, resp);
 		}
@@ -85,12 +84,12 @@ public class ClassesController extends HttpServlet
 	{
 		List<Classes> lists = this.cs.getAllClasses();
 		req.setAttribute("classes", lists);
-		req.getRequestDispatcher("/dp/manage/manage-classes.jsp").forward(req, resp);
+		req.getRequestDispatcher("/dp/manage/classes.jsp").forward(req, resp);
 	}
 	private void deleteClass(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		Long classId = Long.parseLong(req.getParameter("classId"));
 		this.cs.removeClass(classId);
-		resp.sendRedirect("/MyBlog/manage/class/list");
+		resp.sendRedirect("/MyBlog/manage/class/");
 	}
 }

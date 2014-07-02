@@ -25,8 +25,8 @@
  			 </div>
   			<div class="nav">
  			 			<ul class="nav-bar">
-  							<li><a class="current-tab" href="${context}/manage/list-1.html">文章管理</a></li>
-  							<li><a href="${context}/manage/class#list">分类管理</a></li>
+  							<li><a  href="${context}/manage/">文章管理</a></li>
+  							<li><a class="current-tab" href="${context}/manage/class/">分类管理</a></li>
   							<li><a href="${context}/manage/draft.html">草稿箱</a></li>
   							<li><a href="${context}/manage/withdraw.html">回收站</a></li>
   							<li><a href="${context}/manage/add.html" target="_blank">写新文章</a></li>
@@ -38,14 +38,15 @@
   		<div class="content">
   			<div class="manage-content">
   				<table width="100%">
-  					<tr><th>分类</th><th>数量</th><th>操作</th></tr>
+  					<tr><th>ID</th><th>分类</th><th>数量</th><th>操作</th></tr>
   					<tbody>
 	  					<!-- 一条博客 -->
 	  	     			  <c:forEach items= "${classes}"  var="cls">
 	  	     			  	<tr>
+	  	     			  		<td>${cls.classId}</td>
 	 	     					<td>${cls.className}</td>
 	 	     					<td>34</td>
-	 	     					<td><a href="${context}/manage/class#delete#${cls.classId}">删除</a>&nbsp;<a href="#">编辑</a></td>		
+	 	     					<td><a href="${context}/manage/class/delete/${cls.classId}">删除</a>&nbsp;<a href="#">编辑</a></td>		
 			  	     		</tr>
 	  	     			  </c:forEach>
   					</tbody>

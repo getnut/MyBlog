@@ -2,6 +2,8 @@ package com.blog.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +20,16 @@ import com.blog.dao.impl.PageClassDaoImpl;
 import com.blog.dao.impl.PageDaoImpl;
 import com.blog.dao.impl.PageQueryImpl;
 import com.blog.dbutils.DataSourceFactory;
+import com.blog.dbutils.DateUtil;
+import com.blog.dbutils.JsonUtil;
 import com.blog.dbutils.TransactionManager;
 import com.blog.dbutils.Validation;
+import com.blog.entity.AjaxResponse;
+import com.blog.entity.Classes;
+import com.blog.entity.Page;
 import com.blog.entity.PageSplitResult;
+import com.blog.entity.ResponseType;
+import com.blog.entity.StatusCode;
 import com.blog.service.PageService;
 import com.blog.service.impl.ClassServiceImpl;
 import com.blog.service.impl.PageServiceImpl;
@@ -67,7 +76,7 @@ public class ManageController extends HttpServlet {
 		this.cs.setCd(this.classDao);
 		this.cs.setClassQuery(classQuery);
 	}
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
 		String action = req.getParameter("action");
@@ -77,9 +86,12 @@ public class ManageController extends HttpServlet {
 			this.listPage(req, resp);
 		}else if(ActionType.DELETE.equalsIgnoreCase(action)){
 			this.deletePage(req, resp);
+		}else if(ActionType.ADD.equalsIgnoreCase(action))
+		{
+			this.addPage(req, resp);
 		}
 	}
-	
+	//delete pages
 	private void deletePage(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		String tmp = req.getParameter("pageId");
@@ -87,9 +99,10 @@ public class ManageController extends HttpServlet {
 		boolean result = this.ps.deletePage(pageId);
 		if(result)
 		{
-			resp.sendRedirect("/MyBlog/manage/list-1.html");
+			resp.sendRedirect("/MyBlog/manage/");
 		}
 	}
+	//show the list of pages
 	private void listPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		String tmp = req.getParameter("page");
@@ -98,4 +111,37 @@ public class ManageController extends HttpServlet {
 		req.setAttribute("psr", psr);
 		req.getRequestDispatcher("/dp/manage/pages.jsp").forward(req, resp);
 	}
+	//add the blog
+		private void addPage(HttpServletRequest request, HttpServletResponse response) throws IOException
+		{	
+			String title = request.getParameter("pageTitle");
+			String content = request.getParameter("pageContent");
+			String summary = request.getParameter("summary");
+			String classes[] = request.getParameter("cls").split(":+");
+			System.out.println(Arrays.toString(classes));
+			Page page = new Page();
+			for(int i = 0;i < classes.length;i++)
+			{
+				Classes cls = new Classes();
+				cls.setClassId(Long.parseLong(classes[i]));
+				page.getClses().add(cls);
+			}
+			page.setPageTitle(title);
+			page.setPageContent(content);
+			page.setWriteTime(DateUtil.getDateString(new Date()));
+			page.setSummary(summary);
+			boolean result = this.ps.addPage(page);
+			AjaxResponse ar = AjaxResponse.getInstance();
+			if(result)
+			{
+				ar.setStatus(StatusCode.SUCCESS);
+				ar.setResponseType(ResponseType.ADD_BLOG);
+			}else
+			{
+				ar.setStatus(StatusCode.FAIL);
+				ar.setResponseType(ResponseType.ADD_BLOG);
+			}
+			response.getWriter().write(JsonUtil.toJson(ar));
+		}
+	
 }

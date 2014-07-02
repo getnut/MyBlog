@@ -78,20 +78,8 @@ public class BlogController extends HttpServlet
 	{
 		
 	}
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
-		String action = request.getParameter("action");
-		//添加博客
-		if(ActionType.ADD.equalsIgnoreCase(action))
-		{
-			this.addBlog(request, response);
-		}
-	}
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException
 	{
 		String action = req.getParameter("action");
@@ -105,38 +93,7 @@ public class BlogController extends HttpServlet
 			this.showPageDetail(req, resp);
 		}
 	}
-	//处理增加文章的操作
-	private void addBlog(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{	
-		String title = request.getParameter("pageTitle");
-		String content = request.getParameter("pageContent");
-		String summary = request.getParameter("summary");
-		String classes[] = request.getParameter("cls").split(":+");
-		System.out.println(Arrays.toString(classes));
-		Page page = new Page();
-		for(int i = 0;i < classes.length;i++)
-		{
-			Classes cls = new Classes();
-			cls.setClassId(Long.parseLong(classes[i]));
-			page.getClses().add(cls);
-		}
-		page.setPageTitle(title);
-		page.setPageContent(content);
-		page.setWriteTime(DateUtil.getDateString(new Date()));
-		page.setSummary(summary);
-		boolean result = this.ps.addPage(page);
-		AjaxResponse ar = AjaxResponse.getInstance();
-		if(result)
-		{
-			ar.setStatus(StatusCode.SUCCESS);
-			ar.setResponseType(ResponseType.ADD_BLOG);
-		}else
-		{
-			ar.setStatus(StatusCode.FAIL);
-			ar.setResponseType(ResponseType.ADD_BLOG);
-		}
-		response.getWriter().write(JsonUtil.toJson(ar));
-	}
+	
 	/*显示文章列表*/
 	private void listAllPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
