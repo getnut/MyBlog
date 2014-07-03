@@ -19,6 +19,7 @@ import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
 import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.JsonUtil;
+import com.blog.dbutils.SystemConfigUtils;
 import com.blog.dbutils.TransactionManager;
 import com.blog.entity.AjaxResponse;
 import com.blog.entity.Classes;
@@ -41,6 +42,8 @@ public class BlogController extends HttpServlet
 	private TransactionManager tm = null;
 	private ClassServiceImpl cs = null;
 	private ClassQueryImpl classQuery = null;
+	
+	private String jspToken = SystemConfigUtils.getSystemConfigValue("JspToken");
 	//组装对象
 	public void init(ServletConfig config) throws ServletException
 	{
@@ -83,7 +86,7 @@ public class BlogController extends HttpServlet
 			throws ServletException, IOException
 	{
 		String action = req.getParameter("action");
-		
+		resp.setCharacterEncoding("UTF-8");
 	    if(ActionType.LIST.equalsIgnoreCase(action))
 		{	//所有文章类表
 			this.listAllPage(req, resp);
@@ -103,7 +106,8 @@ public class BlogController extends HttpServlet
 		PageSplitResult psr = this.ps.getPages(currentPage);
 		/*分页查询的结果*/
 		req.setAttribute("psr", psr);
-		req.getRequestDispatcher("/dp/main.jsp").forward(req, resp);
+		System.out.println("this.jspToken="+this.jspToken);
+		req.getRequestDispatcher("/common/main.jsp?from="+this.jspToken).include(req, resp);
 	}
 	/*显示文章*/
 	private void showPageDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -113,6 +117,6 @@ public class BlogController extends HttpServlet
 		Page page = this.ps.getPage(pageId);
 		page.setPageContent(HtmlUtil.encodeHtml(page.getPageContent()));
 		req.setAttribute("page", page);
-		req.getRequestDispatcher("dp/page-detail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/common/page-detail.jsp?from"+this.jspToken).forward(req, resp);
 	}
 }

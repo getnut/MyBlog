@@ -84,7 +84,7 @@ public class ClassesController extends HttpServlet
 	{
 		List<Classes> lists = this.cs.getAllClasses();
 		req.setAttribute("classes", lists);
-		req.getRequestDispatcher("/dp/manage/classes.jsp").forward(req, resp);
+		req.getRequestDispatcher("/manage/classes.jsp").forward(req, resp);
 	}
 	private void deleteClass(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{

@@ -19,6 +19,7 @@
 	margin-bottom:10px;
 	box-shadow:2px 2px 3px #aaa;
 	font-family:'微软雅黑';
+	position:relative;
 }
 .nav li{
 	float:left;
@@ -31,10 +32,26 @@
 	text-align:center;
 	display:block;
 	color:#fff;
+	
 }
 .nav li a:hover{
 	color:#fff;
 	background-color:#2d2d2d;
+}
+
+.search{
+	height:40px;
+	position:absolute;
+	right:10px;
+}
+.search input{
+	border:none;
+	display:block;
+	height:26px;
+	width:200px;
+	margin-top:7px;
+	margin-bottom:7px;
+	font-family:'微软雅黑';
 }
 /*template*/
 .content{

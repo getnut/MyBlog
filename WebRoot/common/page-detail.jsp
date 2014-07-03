@@ -58,9 +58,9 @@
   	     			</dl>
   	     		</div>
   	     		<div class="sidebar-common sidebar-common2">
-  	     			<h1 class="title">最新评论</h1>
+  	     			<h1 class="title">相关评论</h1>
   	     			<dl>
-	  	     			<%@ include file="../sp/last-comments.html" %>
+	  	     			<%@ include file="../sp/relative-comments.html" %>
   	     			</dl>
   	     		</div>
   	     		<!--  最多阅读 end -->

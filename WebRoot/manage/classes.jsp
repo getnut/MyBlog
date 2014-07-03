@@ -27,12 +27,12 @@
  			 			<ul class="nav-bar">
   							<li><a  href="${context}/manage/">文章管理</a></li>
   							<li><a class="current-tab" href="${context}/manage/class/">分类管理</a></li>
-  							<li><a href="${context}/manage/draft.html">草稿箱</a></li>
-  							<li><a href="${context}/manage/withdraw.html">回收站</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">写新文章</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">缓存管理</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">评论管理</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">博客配置</a></li>
+  							<li><a href="#">草稿箱</a></li>
+  							<li><a href="#">回收站</a></li>
+  							<li><a href="${context}/manage/add.jsp" target="_blank">写新文章</a></li>
+  							<li><a href="#" target="_blank">缓存管理</a></li>
+  							<li><a href="#" target="_blank">评论管理</a></li>
+  							<li><a href="#" target="_blank">博客配置</a></li>
   						</ul>
  			</div>
   		<div class="content">

@@ -22,7 +22,7 @@ KindEditor.ready(function(K) {
 		alert(clses);
 		$.ajax({
 			type:"post",
-			url:"/MyBlog/blog",
+			url:"/MyBlog/manage/blog/add",
 			data:{
 			 pageTitle:title,
 			 pageContent:content,

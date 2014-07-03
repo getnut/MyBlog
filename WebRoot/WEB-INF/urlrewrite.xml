@@ -3,39 +3,29 @@
         "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
     <rule>
-    	<!-- 博客显示 -->
-        <from>^/blog/detail-([0-9]+).html</from>
+    	<!-- page show -->
+        <from>^/page/detail/([0-9]+).html$</from>
         <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
 	<rule>
-		<!-- 博客列表 -->
-        <from>^/blog/list/([0-9]+).html</from>
+		<!-- page list show -->
+        <from>^/page/([0-9]+)$</from>
         <to>/blog?action=list&amp;page=$1</to>
     </rule>
-    <rule>
-        <from>^/manage/([a-zA-Z]+).html</from>
-        <to>/dp/manage/$1.jsp</to>
-    </rule>
-    <rule>
-    	<!-- 博客添加页面显示 -->
-        <from>^/blog/add/$</from>
-        <to>/blog?action=add</to>
-    </rule>
      <rule>
-     	<!-- 管理博客列表 -->
-        <from>^/manage/list/([0-9]+).html</from>
+     	<!-- 博客列表 -->
+       <from>^/manage/page/list/([0-9]+)$</from>
        <to>/manage?action=list&amp;page=$1</to>
     </rule>
       <rule>
-      	<!-- 博客文章删除 -->
-        <from>^/manage/delete/([0-9]+)$</from>
+      	<!-- 文章删除 -->
+        <from>^/manage/page/delete/([0-9]+)$</from>
        <to>/manage?action=delete&amp;pageId=$1</to>
     </rule>
-   
     <rule>
-    	<!-- 博客文章跟新 -->
-        <from>^/manage/update/([0-9]+)$</from>
-       <to>/manage?action=update&amp;pageId=$1</to>
+    	<!-- 文章跟新 -->
+       <from>^/manage/page/edit/([0-9]+)$</from>
+       <to>/manage?action=edit&amp;pageId=$1</to>
     </rule>
       <rule>
       	<!-- 博客分类删除 -->

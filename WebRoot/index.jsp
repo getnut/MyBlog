@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-	request.getRequestDispatcher("blog/list/1.html").forward(request,response);
+	request.getRequestDispatcher("/page/1").forward(request,response);
 %>

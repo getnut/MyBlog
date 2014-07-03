@@ -4,25 +4,28 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	
 	<filter>
 		<filter-name>loginFilter</filter-name>
 		<filter-class>com.blog.filter.LoginFilter</filter-class>
 	</filter>
 <filter>
     <filter-name>UrlRewriteFilter</filter-name>
-    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter  </filter-class>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
 </filter>
-
+<filter>
+    <filter-name>JspFilter</filter-name>
+    <filter-class>com.blog.filter.JspFilter</filter-class>
+</filter>
 <filter-mapping>
     <filter-name>UrlRewriteFilter</filter-name>
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>  
     <dispatcher>FORWARD</dispatcher>  
+    <dispatcher>INCLUDE</dispatcher>  
 </filter-mapping>
 <filter-mapping>
 	<filter-name>loginFilter</filter-name>
-	<url-pattern>/dp/manage/*</url-pattern>
+	<url-pattern>/manage/*</url-pattern>
 	<dispatcher>REQUEST</dispatcher>  
     <dispatcher>FORWARD</dispatcher>  
     <dispatcher>INCLUDE</dispatcher>  
@@ -63,6 +66,11 @@
     <servlet-name>VelocityTest</servlet-name>
     <servlet-class>com.test.VelocityTest</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UploadController</servlet-name>
+    <servlet-class>com.blog.controller.UploadController</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>JsonTest</servlet-name>
@@ -88,6 +96,10 @@
     <servlet-name>VelocityTest</servlet-name>
     <url-pattern>/VT</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadController</servlet-name>
+    <url-pattern>/manage/upload</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
@@ -97,8 +109,7 @@
 	</error-page>
 	<jsp-config>
     <jsp-property-group>  
-    <description>     
-            Special property group for JSP Configuration JSP example.  
+    <description>      
         </description>  
         <display-name>JSPConfiguration</display-name>  
         <url-pattern>*.html</url-pattern>  

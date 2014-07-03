@@ -109,7 +109,7 @@ public class ManageController extends HttpServlet {
 		int currentPage = Integer.parseInt(tmp);
 		PageSplitResult psr = this.ps.getPages(currentPage);
 		req.setAttribute("psr", psr);
-		req.getRequestDispatcher("/dp/manage/pages.jsp").forward(req, resp);
+		req.getRequestDispatcher("/manage/pages.jsp").forward(req, resp);
 	}
 	//add the blog
 		private void addPage(HttpServletRequest request, HttpServletResponse response) throws IOException

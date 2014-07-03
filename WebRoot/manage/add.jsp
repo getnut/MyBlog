@@ -21,8 +21,10 @@
 				KindEditor.ready(function(K) {
 					editor = K.create('textarea[name="page-content"]', {
 						themeType : 'simple',
-						allowFileManager : false,
+						allowFileManager : true,
 						resizeType : 1,
+						allowImageUpload:true,
+						uploadJson : '../manage/upload',// 相对于当前页面的路径
 						items:[
 						        'source', '|','undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
 						        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
@@ -42,14 +44,14 @@
  			 </div>
   			<div class="nav">
  			 			<ul class="nav-bar">
-  							<li><a class="current-tab" href="${context}/manage/list-1.html">文章管理</a></li>
-  							<li><a href="${context}/manage/class#list">分类管理</a></li>
-  							<li><a href="${context}/manage/draft.html">草稿箱</a></li>
-  							<li><a href="${context}/manage/withdraw.html">回收站</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">写新文章</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">缓存管理</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">评论管理</a></li>
-  							<li><a href="${context}/manage/add.html" target="_blank">博客配置</a></li>
+  							<li><a  href="${context}/manage/">文章管理</a></li>
+  							<li><a class="current-tab" href="${context}/manage/class/">分类管理</a></li>
+  							<li><a href="#">草稿箱</a></li>
+  							<li><a href="#">回收站</a></li>
+  							<li><a href="#" target="_blank">写新文章</a></li>
+  							<li><a href="#" target="_blank">缓存管理</a></li>
+  							<li><a href="#" target="_blank">评论管理</a></li>
+  							<li><a href="#" target="_blank">博客配置</a></li>
   						</ul>
  			</div>
 		<div class="content">
