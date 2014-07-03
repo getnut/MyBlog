@@ -24,7 +24,10 @@
 						allowFileManager : true,
 						resizeType : 1,
 						allowImageUpload:true,
-						uploadJson : '../manage/upload',// 相对于当前页面的路径
+						uploadJson : '../../manage/upload',// 相对于当前页面的路径
+						 afterUpload : function(url) {
+	                        alert(url);
+	                	},
 						items:[
 						        'source', '|','undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
 						        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',

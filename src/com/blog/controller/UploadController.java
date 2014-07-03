@@ -3,7 +3,9 @@ package com.blog.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.blog.dbutils.DateUtil;
 
 public class UploadController extends HttpServlet {
 
@@ -39,7 +43,8 @@ public class UploadController extends HttpServlet {
 		upload.setHeaderEncoding("UTF-8"); //处理文件名中文
 		upload.setFileSizeMax(1024 * 1024 * 2);// 设置每个文件最大为2M
 		upload.setSizeMax(1024 * 1024 * 10);// 一共最多能上传10M
-		String path = getServletContext().getRealPath("/imgs");//获取文件要保存的目录
+		String imgRealtiveUrl = DateUtil.getPartDateString(new Date());
+		String path = getServletContext().getRealPath("/imgs")+imgRealtiveUrl;//获取文件要保存的目录
 		File dir = new File(path);
 		if(!dir.exists())
 		{
@@ -53,14 +58,16 @@ public class UploadController extends HttpServlet {
 				System.err.println("说明是:" + ds);
 			} else {
 				String imgName = item.getName();
-				imgName = imgName.substring(imgName.lastIndexOf("\\") + 1);//解析文件名
-				item.write(new File(path + "/" + imgName));
-				out.write(jsonStr("1",context+"/imgs/"+imgName));
+				String extension = imgName.substring(imgName.lastIndexOf("."));//解析文件名扩展某个
+				UUID uuid = UUID.randomUUID();
+				imgName = uuid.toString()+extension;
+				item.write(new File(path + imgName));
+				out.write(jsonStr("0",context+"/imgs/"+imgRealtiveUrl+imgName));
 			}
 		}
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.write(jsonStr("0","上传失败"));
+			out.write(jsonStr("1","上传失败"));
 		}
 		
 	}
