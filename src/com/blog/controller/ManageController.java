@@ -1,11 +1,14 @@
 package com.blog.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +26,10 @@ import com.blog.dao.impl.PageDaoImpl;
 import com.blog.dao.impl.PageQueryImpl;
 import com.blog.dbutils.DataSourceFactory;
 import com.blog.dbutils.DateUtil;
+import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.JsonUtil;
+import com.blog.dbutils.SystemConfigUtils;
+import com.blog.dbutils.ToHtml;
 import com.blog.dbutils.TransactionManager;
 import com.blog.dbutils.Validation;
 import com.blog.entity.AjaxResponse;
@@ -126,11 +132,13 @@ public class ManageController extends HttpServlet {
 	//add the blog
 		private void addPage(HttpServletRequest request, HttpServletResponse response) throws IOException
 		{	
+			String realPath = SystemConfigUtils.getSystemConfigValue("realPath");
 			String title = request.getParameter("pageTitle");
 			String content = request.getParameter("pageContent");
 			String summary = request.getParameter("summary");
 			String classes[] = request.getParameter("cls").split(":+");
 			System.out.println(Arrays.toString(classes));
+			content = HtmlUtil.encodeHtml(content);
 			Page page = new Page();
 			for(int i = 0;i < classes.length;i++)
 			{
@@ -143,6 +151,7 @@ public class ManageController extends HttpServlet {
 			page.setWriteTime(DateUtil.getDateString(new Date()));
 			page.setSummary(summary);
 			boolean result = this.ps.addPage(page);
+			/*生成静态页面*/
 			AjaxResponse ar = AjaxResponse.getInstance();
 			if(result)
 			{

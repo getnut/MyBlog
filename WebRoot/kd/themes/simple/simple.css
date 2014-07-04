@@ -1,7 +1,7 @@
 /* container */
 .ke-container-simple {
 	display: block;
-	border: 1px solid #CCC;
+	border: 1px solid #fff;
 	background-color: #FFF;
 	overflow: hidden;
 }

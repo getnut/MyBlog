@@ -1,12 +1,30 @@
 package com.blog.dbutils;
 
+
+
+/**
+ * 
+ *	<   &lt;
+ *	> &gt;
+ * 	&amp;
+ **/
 public class HtmlUtil {
+	//encode html
 	public static String encodeHtml(String html)
 	{
-		html = html.replaceAll("&lt;", "<");
-		html = html.replaceAll("&gt;", ">");
-		html = html.replaceAll("&quot;", "\"");
-		html = html.replaceAll("&amp;", "&");
+		
 		return html;
 	}
+	
+	//decode html
+	public static String decodeHtml(String html)
+	{
+		StringBuilder builder = new StringBuilder();
+		
+		return html;
+		
+	}
+	
+	//去除空行
+	
 }

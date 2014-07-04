@@ -1,5 +1,7 @@
 package com.test;
 
+import java.util.regex.Pattern;
+
 public class Student 
 {
 	private String name;
@@ -15,5 +17,10 @@ public class Student
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	public static void main(String[] args) {
+		String line = System.getProperty("line.separator");
+		//在window系统下结果为true
+		System.out.println(line.equals("\r\n"));
 	}
 }

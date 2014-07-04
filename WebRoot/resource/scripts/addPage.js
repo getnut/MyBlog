@@ -19,7 +19,11 @@ KindEditor.ready(function(K) {
 				}
 			}
 		});
-		alert(clses);
+		$.blockUI({css:{
+			width:250px,
+			height:50px,
+			line-height:50px
+		},message:"正在添加文章....."}); 
 		$.ajax({
 			type:"post",
 			url:"/MyBlog/manage/page/add",
@@ -31,6 +35,18 @@ KindEditor.ready(function(K) {
 			},
 			success:function(text){
 				alert(text);
+				$.unblockUI({ 
+	                onUnblock: function(){ 
+					 $.growlUI('提示', '添加成功!');	
+					} 
+	            });
+			},
+			error:function(){
+				$.unblockUI({ 
+	                onUnblock: function(){ 
+					 $.growlUI('提示', '添加失败!');	
+					} 
+	            });
 			}
 		});//ajax end!
 	});	

@@ -39,4 +39,8 @@ public class SystemConfigUtils
 	{
 		return config.getProperty(key);
 	}
+	public static void setSystemConfigValue(String key,String value)
+	{
+		config.setProperty(key, value);
+	}
 }

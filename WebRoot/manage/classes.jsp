@@ -4,7 +4,6 @@
 <html>
   <head>
     <title>文章管理</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -14,11 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
 	<link type="text/css" rel="stylesheet" href="${context}/resource/styles/manage.css" />
-	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
-	<script type="text/javascript" src="${context}/resource/scripts/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="${context}/resource/scripts/manage.js"></script>
   </head>
-  
   <body>
   		<div class="head">
  				 <a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
@@ -29,7 +24,7 @@
   							<li><a class="current-tab" href="${context}/manage/class/">分类管理</a></li>
   							<li><a href="#">草稿箱</a></li>
   							<li><a href="#">回收站</a></li>
-  							<li><a href="${context}/manage/add.jsp" target="_blank">写新文章</a></li>
+  							<li><a href="${context}/manage/page/add-show">写新文章</a></li>
   							<li><a href="#" target="_blank">缓存管理</a></li>
   							<li><a href="#" target="_blank">评论管理</a></li>
   							<li><a href="#" target="_blank">博客配置</a></li>
@@ -53,5 +48,8 @@
   				</table>
   			</div>
   		</div>
+  	<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="${context}/resource/scripts/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="${context}/resource/scripts/manage.js"></script>
   </body>
 </html>

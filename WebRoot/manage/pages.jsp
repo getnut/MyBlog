@@ -26,7 +26,7 @@
   							<li><a  href="${context}/manage/class/">分类管理</a></li>
   							<li><a href="#">草稿箱</a></li>
   							<li><a href="#">回收站</a></li>
-  							<li><a href="${context}/manage/add.jsp" target="_blank">写新文章</a></li>
+  							<li><a href="${context}/manage/page/add-show">写新文章</a></li>
   							<li><a href="#" target="_blank">缓存管理</a></li>
   							<li><a href="#" target="_blank">评论管理</a></li>
   							<li><a href="#" target="_blank">博客配置</a></li>

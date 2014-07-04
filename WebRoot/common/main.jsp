@@ -57,7 +57,7 @@
 			  	     					</td>
 			  	     					<td>
 			  	     						<div style="padding-left:15px;">
-					  	     					<h1 class="blog-title"><a href="${context}/page/detail-${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
+					  	     					<h1 class="blog-title"><a href="${context}/pages/${page.pageId}.html" target="_blank">${page.pageTitle}</a></h1>
 					  	     					<div class="blog-tips">
 					  	     						<span>分类:&nbsp;study</span><span>&nbsp;${page.writeTime}</span>
 					  	     					</div>

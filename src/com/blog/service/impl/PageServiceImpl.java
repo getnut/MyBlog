@@ -2,9 +2,14 @@ package com.blog.service.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.sql.DataSource;
+
+import org.apache.commons.lang.SystemUtils;
 
 import com.blog.service.PageService;
 import com.blog.dao.ClassDao;
@@ -13,6 +18,7 @@ import com.blog.dao.PageDao;
 import com.blog.dao.PageQuery;
 import com.blog.dbutils.DataSourceUtil;
 import com.blog.dbutils.SystemConfigUtils;
+import com.blog.dbutils.ToHtml;
 import com.blog.dbutils.TransactionManager;
 import com.blog.entity.Alink;
 import com.blog.entity.Classes;
@@ -42,11 +48,24 @@ public class PageServiceImpl implements PageService{
 			this.transaction.start();
 			long pageId = this.pageDao.addPage(page);
 			List<Classes> clses = page.getClses();
+			page.setPageId(pageId);
 			Classes cls = null;
+			
 			for(int i = 0;i < clses.size();i++)
 			{	
 				cls = clses.get(i);
 				this.pageClassDao.addPageClass(pageId,cls.getClassId());
+				cls.setClassName(this.classDao.getClass(cls.getClassId()).getClassName());
+			}
+			//生成静态的页面
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("page", page);
+			map.put("context",SystemConfigUtils.getSystemConfigValue("context"));
+			result = ToHtml.toHtml("/vm/page-detail.vm",SystemConfigUtils.getSystemConfigValue("realPath")+"/pages/"+page.getPageId()+".html",map);
+			//如果生成失败
+			if(!result)
+			{
+				throw new SQLException();
 			}
 			this.transaction.commit();
 			result = true;

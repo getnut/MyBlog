@@ -3,19 +3,15 @@ package com.blog.dbutils;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Map.Entry;
-
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -24,13 +20,12 @@ public class ToHtml
 	
 	static
 	{
-		System.out.println("fumc!");
 		Properties pro = new Properties();
 		InputStream input = ToHtml.class.getClassLoader().getResourceAsStream("velocity.properties");
 		try
 		{
 			pro.load(input);
-			pro.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, "E:/apache-tomcat-6.0.35/webapps/MyBlog/vm"); 
+			pro.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH,SystemConfigUtils.getSystemConfigValue("realPath"));
 			Velocity.init(pro);
 		} catch (IOException e)
 		{
@@ -49,7 +44,7 @@ public class ToHtml
 	}
 	public static boolean toHtml(String temName,String toHtmlPath,Map<String,Object> map)
 	{
-		
+		System.out.println(temName);
 		VelocityContext context = new VelocityContext();
 		Set<Entry<String,Object>> sets = map.entrySet();
 		Iterator<Entry<String,Object>> its = sets.iterator();
@@ -85,7 +80,6 @@ public class ToHtml
 				e.printStackTrace();
 			}
 		}
-		
 		return true;	
 	}
 }

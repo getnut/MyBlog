@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
 		<title>添加文章</title>
@@ -12,35 +12,7 @@
 		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/default.css" />
 		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/common.css" />
 		<link type="text/css" rel="stylesheet" href="${context}/resource/styles/addPage.css" />
-		<link href="${context}/kd/plugins/code/prettify.css" type="text/css" rel="stylesheet" />
-		<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
-		<script charset="utf-8" src="${context}/kd/kindeditor-min.js"></script>
-		<script charset="utf-8" src="${context}/kd/lang/zh_CN.js"></script>
-		<script type="text/javascript">
-				var editor;
-				KindEditor.ready(function(K) {
-					editor = K.create('textarea[name="page-content"]', {
-						themeType : 'simple',
-						allowFileManager : true,
-						resizeType : 1,
-						allowImageUpload:true,
-						uploadJson : '../../manage/upload',// 相对于当前页面的路径
-						 afterUpload : function(url) {
-	                        alert(url);
-	                	},
-						items:[
-						        'source', '|','undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
-						        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-						        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-						        'superscript', 'clearhtml', 'selectall', '|', 'fullscreen', '/',
-						        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-						        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-						         'insertfile', 'table', 'hr', 'emoticons','anchor', 'link', 'unlink']
-					});
-				});	
-		</script>
 	</head>
-
 	<body>
 			 <div class="head">
  				 <a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
@@ -60,12 +32,12 @@
 		<div class="content">
 			<div class="add-content">
 			<form>
-				<table width="100%">
+				<table width="100%"  style="border-collapse: collapse;">
 					<tr class="dl-c">
 						<td class="add-left" width="70px"><label>文章标题:</label></td><td class="add-right"><input type="text" name="pageTitle" class="pageTitle" /></td>
 					</tr>
 					<tr class="dl-c">
-						<td class="add-left">文章内容:</td><td><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc"></textarea></td>
+						<td class="add-left">文章内容:</td><td class="add-right"><textarea name="page-content" style="width:100%;height:400px;visibility:hidden;" id="pc"></textarea></td>
 					</tr>
 					<tr class="dl-c">
 						<td class="add-left">文章分类:</td>
@@ -84,11 +56,36 @@
 					</table>
 					<input type="hidden" name="action" value="blog-add"/>
 				</form>
-				<script type="text/javascript" src="${context}/resource/scripts/addPage.js"></script>
+				
 			</div>
 			<div style="clear: both;"></div>
 			<div class="footer">copyright &copy;2014-6-1</div>
 		</div>
+		<script type="text/javascript" src="${context}/resource/scripts/jquery-1.8.3.js"></script>
+		<script charset="utf-8" src="${context}/kd/kindeditor-min.js"></script>
+		<script charset="utf-8" src="${context}/kd/lang/zh_CN.js"></script>
+		<script type="text/javascript" src="${context}/resource/scripts/jquery.blockUI.js"></script>
+		<script type="text/javascript">
+				var editor;
+				KindEditor.ready(function(K) {
+					editor = K.create('textarea[name="page-content"]', {
+						themeType : 'simple',
+						allowFileManager :false,
+						resizeType : 1,
+						allowImageUpload:true,
+						uploadJson : '../../manage/upload',// 相对于当前页面的路径
+						items:[
+						        'source', '|','undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
+						        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+						        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+						        'superscript', 'clearhtml', 'selectall', '|', 'fullscreen', '/',
+						        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+						        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image','multiimage',
+						         'insertfile', 'table', 'hr', 'emoticons','anchor', 'link', 'unlink']
+					});
+				});	
+		</script>
+		<script type="text/javascript" src="${context}/resource/scripts/addPage.js"></script>
 	</body>
 </html>
 
