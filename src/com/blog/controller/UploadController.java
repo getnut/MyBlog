@@ -31,6 +31,7 @@ public class UploadController extends HttpServlet {
 	
 	{
 		String context = this.getServletContext().getContextPath();
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		DiskFileItemFactory df = new DiskFileItemFactory();//磁盘对象
 		df.setRepository(new File("d:/a")); //设置临时目录
@@ -53,14 +54,15 @@ public class UploadController extends HttpServlet {
 				System.err.println("说明是:" + ds);
 			} else {
 				String imgName = item.getName();
+				System.out.println("imgNam="+imgName);
 				imgName = imgName.substring(imgName.lastIndexOf("\\") + 1);//解析文件名
 				item.write(new File(path + "/" + imgName));
-				out.write(jsonStr("1",context+"/imgs/"+imgName));
+				out.write(jsonStr("0",context+"/imgs/"+imgName));
 			}
 		}
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.write(jsonStr("0","上传失败"));
+			out.write(jsonStr("1","上传失败"));
 		}
 		
 	}
