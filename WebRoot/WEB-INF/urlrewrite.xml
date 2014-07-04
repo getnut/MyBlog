@@ -4,7 +4,7 @@
 <urlrewrite>
     <rule>
     	<!-- page show -->
-        <from>^/page/detail/([0-9]+).html$</from>
+        <from>^/page/detail-([0-9]+).html$</from>
         <to>/blog?action=detail&amp;pageId=$1</to>
     </rule>
 	<rule>
@@ -13,7 +13,7 @@
         <to>/blog?action=list&amp;page=$1</to>
     </rule>
      <rule>
-     	<!-- 博客列表 -->
+     	<!-- 文章列表 -->
        <from>^/manage/page/list/([0-9]+)$</from>
        <to>/manage?action=list&amp;page=$1</to>
     </rule>
@@ -21,6 +21,18 @@
       	<!-- 文章删除 -->
         <from>^/manage/page/delete/([0-9]+)$</from>
        <to>/manage?action=delete&amp;pageId=$1</to>
+    </rule>
+    
+     <rule>
+      	<!-- 文章添加页码显示 -->
+       <from>^/manage/page/add-show</from>
+       <to>/manage?action=add-show</to>
+    </rule>
+    
+    <rule>
+      	<!-- 文章添加页码显示 -->
+       <from>^/manage/page/add</from>
+       <to>/manage?action=add</to>
     </rule>
     <rule>
     	<!-- 文章跟新 -->

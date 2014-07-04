@@ -2,8 +2,10 @@ package com.blog.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -89,7 +91,17 @@ public class ManageController extends HttpServlet {
 		}else if(ActionType.ADD.equalsIgnoreCase(action))
 		{
 			this.addPage(req, resp);
+		}else if(ActionType.ADD_SHOW.equalsIgnoreCase(action))
+		{
+			this.addShow(req, resp);
 		}
+	}
+	
+	private void addShow(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
+	{
+		List<Classes> classes = this.cs.getAllClasses();
+		req.setAttribute("classes", classes);
+		req.getRequestDispatcher("/manage/add.jsp").forward(req, res);
 	}
 	//delete pages
 	private void deletePage(HttpServletRequest req, HttpServletResponse resp) throws IOException

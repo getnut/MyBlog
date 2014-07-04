@@ -22,11 +22,10 @@ KindEditor.ready(function(K) {
 		alert(clses);
 		$.ajax({
 			type:"post",
-			url:"/MyBlog/manage/blog/add",
+			url:"/MyBlog/manage/page/add",
 			data:{
 			 pageTitle:title,
 			 pageContent:content,
-			 action:"add",
 			 cls:clses,
 			 summary:summary
 			},
