@@ -3,7 +3,6 @@ KindEditor.ready(function(K) {
 		var title = $(".pageTitle").val();
 		var content = editor.html();
 		content = content.replace(/(\r\n|\s)/g, " ");//去掉空白字符
-		content = K.escape(content);
 		var action = $("input[name='action']").val();
 		var summary = $(".summary").val();
 		var clses = "";
@@ -19,11 +18,8 @@ KindEditor.ready(function(K) {
 				}
 			}
 		});
-		$.blockUI({css:{
-			width:250px,
-			height:50px,
-			line-height:50px
-		},message:"正在添加文章....."}); 
+		$.blockUI({
+		     message:"正在添加文章....."}); 
 		$.ajax({
 			type:"post",
 			url:"/MyBlog/manage/page/add",

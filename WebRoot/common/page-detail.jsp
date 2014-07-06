@@ -25,7 +25,7 @@
   	     		<!--  nav start -->
   					<div class="nav">
  			 			<ul>
-		  	     			<li><a href="#">首页</a></li>
+		  	     			<li><a href="${context}/">首页</a></li>
 		  	     			<li><a href="#">相册</a></li>
 		  	     			<li><a href="#">关于我和她</a></li>
   	     				</ul>

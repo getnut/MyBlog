@@ -22,6 +22,7 @@
  			 </div>
   			<div class="nav">
  			 			<ul class="nav-bar">
+ 			 				<li><a href="${context}/">首页</a></li>
   							<li><a class="current-tab" href="${context}/manage/">文章管理</a></li>
   							<li><a  href="${context}/manage/class/">分类管理</a></li>
   							<li><a href="#">草稿箱</a></li>

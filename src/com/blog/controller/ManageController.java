@@ -102,7 +102,7 @@ public class ManageController extends HttpServlet {
 			this.addShow(req, resp);
 		}
 	}
-	
+	//show the add page
 	private void addShow(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
 		List<Classes> classes = this.cs.getAllClasses();
@@ -129,16 +129,16 @@ public class ManageController extends HttpServlet {
 		req.setAttribute("psr", psr);
 		req.getRequestDispatcher("/manage/pages.jsp").forward(req, resp);
 	}
-	//add the blog
+	
+		//add the page
 		private void addPage(HttpServletRequest request, HttpServletResponse response) throws IOException
 		{	
-			String realPath = SystemConfigUtils.getSystemConfigValue("realPath");
 			String title = request.getParameter("pageTitle");
 			String content = request.getParameter("pageContent");
+			content = HtmlUtil.encodeHtml(content);
+			System.out.println("content="+content);
 			String summary = request.getParameter("summary");
 			String classes[] = request.getParameter("cls").split(":+");
-			System.out.println(Arrays.toString(classes));
-			content = HtmlUtil.encodeHtml(content);
 			Page page = new Page();
 			for(int i = 0;i < classes.length;i++)
 			{
@@ -151,7 +151,6 @@ public class ManageController extends HttpServlet {
 			page.setWriteTime(DateUtil.getDateString(new Date()));
 			page.setSummary(summary);
 			boolean result = this.ps.addPage(page);
-			/*生成静态页面*/
 			AjaxResponse ar = AjaxResponse.getInstance();
 			if(result)
 			{

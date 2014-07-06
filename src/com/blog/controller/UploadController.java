@@ -39,8 +39,8 @@ public class UploadController extends HttpServlet {
 		DiskFileItemFactory df = new DiskFileItemFactory();//磁盘对象
 		df.setRepository(new File("d:/a")); //设置临时目录
 		df.setSizeThreshold(1024*400); //8k的缓冲区,文件大于8K则保存到临时目录
-		ServletFileUpload upload = new ServletFileUpload(df);//声明解析request的对�
-		upload.setHeaderEncoding("UTF-8"); //处理文件名中�
+		ServletFileUpload upload = new ServletFileUpload(df);//声明解析request的对�
+		upload.setHeaderEncoding("UTF-8"); //处理文件名中�
 		upload.setFileSizeMax(1024 * 1024 * 2);// 设置每个文件最大为2M
 		upload.setSizeMax(1024 * 1024 * 10);// 一共最多能上传10M
 		String imgRealtiveUrl = DateUtil.getPartDateString(new Date());
@@ -55,10 +55,10 @@ public class UploadController extends HttpServlet {
 		for (FileItem item: list) {
 			if (item.isFormField()) {
 				String ds = item.getString("UTF-8");//处理中文
-				System.err.println("说明�" + ds);
+				System.err.println("说明" + ds);
 			} else {
 				String imgName = item.getName();
-				String extension = imgName.substring(imgName.lastIndexOf("."));//解析文件名扩展某�
+				String extension = imgName.substring(imgName.lastIndexOf("."));//解析文件名扩展某�
 				UUID uuid = UUID.randomUUID();
 				imgName = uuid.toString()+extension;
 				item.write(new File(path + imgName));

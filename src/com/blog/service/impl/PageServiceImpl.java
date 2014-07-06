@@ -17,6 +17,7 @@ import com.blog.dao.PageClassDao;
 import com.blog.dao.PageDao;
 import com.blog.dao.PageQuery;
 import com.blog.dbutils.DataSourceUtil;
+import com.blog.dbutils.HtmlUtil;
 import com.blog.dbutils.SystemConfigUtils;
 import com.blog.dbutils.ToHtml;
 import com.blog.dbutils.TransactionManager;
@@ -59,6 +60,9 @@ public class PageServiceImpl implements PageService{
 			}
 			//生成静态的页面
 			Map<String,Object> map = new HashMap<String,Object>();
+			String tmp = HtmlUtil.decodeHtml(page.getPageContent());
+			System.out.println("tmp="+tmp);
+			page.setPageContent(tmp);
 			map.put("page", page);
 			map.put("context",SystemConfigUtils.getSystemConfigValue("context"));
 			result = ToHtml.toHtml("/vm/page-detail.vm",SystemConfigUtils.getSystemConfigValue("realPath")+"/pages/"+page.getPageId()+".html",map);
