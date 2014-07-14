@@ -18,8 +18,7 @@ KindEditor.ready(function(K) {
 				}
 			}
 		});
-		$.blockUI({
-		     message:"正在添加文章....."}); 
+		$.blockUI({message:"正在添加文章....."}); 
 		$.ajax({
 			type:"post",
 			url:"/MyBlog/manage/page/add",

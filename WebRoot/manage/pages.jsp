@@ -43,7 +43,7 @@
 	  	     			  	<tr>
 	  	     			  		<td>${page.pageId}</td>
 	 	     					<td><a class = "manage-title" href="${context}/page/${page.pageId}.html" target="_blank">${page.pageTitle}(${page.writeTime})</a></td>
-	 	     					<td><a href="${context}/manage/page/delete/${page.pageId}">删除</a>&nbsp;<a href="#">编辑</a>&nbsp;<a href="#">分类</a></td>		
+	 	     					<td><a href="${context}/manage/page/delete/${page.pageId}">删除</a>&nbsp;<a href="${context}/manage/page/edit/${page.pageId}">编辑</a>&nbsp;<a href="#">分类</a></td>		
 			  	     		</tr>
 	  	     			  </c:forEach>
   					</tbody>

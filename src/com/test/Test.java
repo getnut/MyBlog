@@ -9,80 +9,42 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.quartz.Job;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.SchedulerFactory;
+import org.quartz.ee.jmx.jboss.JBoss4RMIRemoteMBeanScheduler;
+import org.quartz.impl.StdSchedulerFactory;
+import static org.quartz.JobBuilder.*;
+import static org.quartz.TriggerBuilder.*;
+import static org.quartz.SimpleScheduleBuilder.*;
 import com.google.gson.Gson;
 
 public class Test {
 
-static
-{
-	System.out.println("fuckfuckfuck!!!!!!!!!!!");
-}
-	public static void main(String[] args) 
+
+	public static void main(String[] args) throws SchedulerException 
 	{
+		Scheduler  fc = StdSchedulerFactory.getDefaultScheduler();
 		
-		new Thread(){
-			@Override
-			public void run() {
-				try {
-					write();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}.start();
-		new Thread(){
-			@Override
-			public void run() {
-				try {
-					read();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}.start();
-		System.out.println("------------------------------------");
-	}
-	
-	
-	public static void read() throws IOException
-	{
-		File file = new File("E:/1.txt");
-		BufferedReader bw = new BufferedReader(new FileReader(file));
-		int count = 4;
-		for(int i = 0;i < count;i++)
-		{
-			try {
-				Thread.sleep(4000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			String line = bw.readLine();
-			System.out.println("读数据"+line);
-		}
-		bw.close();
-	}
-	public static void write() throws IOException
-	{
-		File file = new File("E:/1.txt");
-		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		int count = 4;
-		for(int i = 0;i < count;i++)
-		{
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			bw.write("-----\n");
-			System.out.println("写数据");
-		}
-		bw.close();
+		fc.start();
+		JodDeail jd = newJob();
+		fc.shutdown();
 	}
 }
 
+
+class MyJob implements Job
+{
+
+	@Override
+	public void execute(JobExecutionContext jc) throws JobExecutionException {
+		System.out.println("zhangleibaother!!!!!!!!");
+	}
+}
 class Person{
 	private String name;
 	

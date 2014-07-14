@@ -16,7 +16,7 @@
   </head>
   <body class="main">
  			 <div class="head">
- 				 <a class = "logo" href="#"><img src="${context}/resource/images/logo-.png" alt="张雷的博客"/></a>
+ 				
  			 </div>
   			<div class="nav">
  			 			<ul>
